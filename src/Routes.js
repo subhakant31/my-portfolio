@@ -1,1 +1,3 @@
-const routes = {};
+const routes = [];
+
+const router = createBrowserRouter(routes);
