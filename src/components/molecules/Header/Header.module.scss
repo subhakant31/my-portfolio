@@ -1,0 +1,32 @@
+@import "@/styles/variables";
+
+.header {
+  background-color: $glassBgColor;
+  border-radius: 50px;
+  border: 1px solid $glassBorderColor;
+  padding: 7px;
+  position: sticky;
+  top: 15px;
+  .navigation {
+    .navList {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .listItem {
+        padding: 15px 40px;
+        width: fit-content;
+        border-radius: 30px;
+        font-size: $font-size-small;
+        &.active {
+          background-color: $accentColor;
+        }
+        &.logo {
+          padding: 0;
+          font-weight: 800;
+          font-size: $font-size-medium;
+        }
+      }
+    }
+  }
+}

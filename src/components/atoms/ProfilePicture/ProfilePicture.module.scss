@@ -1,0 +1,14 @@
+@import "@/styles/variables";
+
+.imageWrapper {
+  height: 500px;
+  width: 500px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20%;
+    border: 7px solid $accentColor;
+    transition: 3s;
+  }
+}
