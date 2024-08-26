@@ -1,0 +1,40 @@
+@import '@/styles/variables';
+
+.servicesList {
+    display: flex;
+}
+
+.serviceCardWrapper {
+    flex-basis: 25%;
+    padding: 70px 16px 16px 16px;
+    background-color: $glassBgColor;
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    .heading {
+        margin-bottom: 10px;
+    }
+    .separator {
+        margin-bottom: 10px;
+        height: 2px;
+        height: 2px;
+        display: flex;
+        gap: 3px;
+        .separator1 {
+            width: 15px;
+        background-color: $accentColor;
+
+        }
+        .separator2 {
+            width: 5px;
+        background-color: $accentColor;
+
+        }
+    }
+    .description {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+}

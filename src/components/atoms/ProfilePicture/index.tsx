@@ -14,7 +14,7 @@ export const ProfilePicture = ({
     const image = document.querySelector(".profile-picture") as HTMLElement;
     if (image) {
       const getRandomPercentage = () =>
-        `${Math.floor(Math.random() * (201 - 40)) + 40}%`;
+        `${Math.floor(Math.random() * (100 - 20)) + 20}%`;
 
       const updateBorderRadius = () => {
         image.style.borderTopLeftRadius = getRandomPercentage();

@@ -10,13 +10,13 @@ export const HeroBanner = () => {
     <div className={styles.heroBanner}>
       <div className={styles.textWrapper}>
         <TextPill
-          text={"Hello, I'm Subhakanta Mishra Developer CEO"}
+          text={"Hello, I'm Subhakanta Mishra. Full stack developer"}
           className={styles.textPill}
         ></TextPill>
         <div className={styles.headingWrapper}>
           <Heading
             tagName={"h1"}
-            content={"I'm a Developer And Entrepreneur Based In United States"}
+            content={"I'm a Full stack Developer Based In India"}
             className={styles.heading}
           ></Heading>
           <div className={styles.pillIcon}>{renderPillIcon({ size: 100 })}</div>

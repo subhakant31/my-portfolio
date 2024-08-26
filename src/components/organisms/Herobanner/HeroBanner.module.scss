@@ -4,11 +4,11 @@
   width: 100%;
   height: 90vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   .textWrapper {
     max-width: 55%;
-
+    padding: 0 16px;
     .textPill {
       margin-bottom: 15px;
     }
@@ -25,6 +25,10 @@
     .description {
       margin-bottom: 50px;
     }
+  }
+
+  .imageWrapper {
+    padding: 0 16px;
   }
 
   
