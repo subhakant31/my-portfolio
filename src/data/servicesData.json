@@ -1,0 +1,33 @@
+{
+  "services": [
+    {
+      "serviceTitle": "Marketing",
+      "serviceDescription": {
+        "html": "<p>SEO, Running ads on social media, you name it I can make it done</p>"
+      },
+      "iconCode": "announcement"
+    },
+    {
+      "serviceTitle": "Web Development",
+      "serviceDescription": {
+        "html": "<p>SEO, Running ads on social media, you name it I can make it done</p>"
+      },
+      "iconCode": "code"
+    },
+    {
+      "serviceTitle": "Marketing",
+      "serviceDescription": {
+        "html": "<p>SEO, Running ads on social media, you name it I can make it done</p>"
+      },
+      "iconCode": "lock"
+    },
+    {
+      "serviceTitle": "Marketing",
+      "serviceDescription": {
+        "html": "<p>SEO, Running ads on social media, you name it I can make it done</p>"
+      },
+      "iconCode": "network"
+    }
+  ],
+  "separatorColor": "#26e989"
+}

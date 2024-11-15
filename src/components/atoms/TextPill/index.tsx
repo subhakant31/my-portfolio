@@ -1,7 +1,7 @@
 import styles from "./TextPill.module.scss";
 import pillIcon from "@/assets/icons/pill-icon.svg";
 import { TextPillProps } from "@/types/TextPillProps";
-export const renderPillIcon = ({ size }) => {
+export const renderPillIcon = ({ size }: any) => {
   return (
     <svg
       version='1.1'

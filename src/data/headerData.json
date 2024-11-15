@@ -1,0 +1,24 @@
+{
+  "listItems": [
+    {
+      "linkText": "Home",
+      "linkLocation": "/"
+    },
+    {
+      "linkText": "Skills",
+      "linkLocation": "/skills"
+    },
+    {
+      "linkText": "Service",
+      "linkLocation": "/service"
+    },
+    {
+      "linkText": "Resume",
+      "linkLocation": "/Resume"
+    },
+    {
+      "linkText": "Contact",
+      "linkLocation": "/contact"
+    }
+  ]
+}

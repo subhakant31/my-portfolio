@@ -2,17 +2,12 @@
 import Image from "next/image";
 import styles from "./ProfilePicture.module.scss";
 import { useEffect } from "react";
-
-export const ProfilePicture = ({
-  src,
-  className,
-}: {
-  src: string;
-  className?: string;
-}) => {
+import { ProfilePictureProps } from "@/types/ProfilePictureProps";
+export const ProfilePicture = (props: ProfilePictureProps) => {
+  /* For creating dynamic shape border around hero image */
   useEffect(() => {
     const image = document.querySelector(".profile-picture") as HTMLElement;
-    if (image) {
+    if (image && props?.enableImageEffects) {
       const getRandomPercentage = () =>
         `${Math.floor(Math.random() * (100 - 20)) + 20}%`;
 
@@ -31,9 +26,16 @@ export const ProfilePicture = ({
     }
   }, []);
 
+  const borderColor: any = {
+    "--borderColor": props?.borderColor || "none",
+  };
+
   return (
-    <div className={`${styles.imageWrapper} ${className}`}>
-      <Image src={src} alt='profile image' className='profile-picture' />
+    <div
+      className={`${styles.imageWrapper} ${props?.className}`}
+      style={borderColor}
+    >
+      <Image src={props.src} alt={props?.altText} className='profile-picture' />
     </div>
   );
 };

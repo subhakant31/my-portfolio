@@ -1,0 +1,15 @@
+{
+  "title": "I'm a Full stack Developer Based In India",
+  "titleSize": "h1",
+  "bodycopy": {
+    "html": "<p>I've done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use.</p>"
+  },
+  "eyeBrowText": "Hello, I'm Subhakanta Mishra. Full stack developer",
+  "enableImageEffects": true,
+  "imageReference": {
+    "imagePath": "/images/profile-picture.jpg",
+    "altText": "picture of a man sitting on chair not looking at the camera"
+  },
+  "renderPillIcon": false,
+  "borderColor": "#26e989"
+}

@@ -3,31 +3,48 @@ import { TextPill } from "@/components/atoms/TextPill";
 import { Heading } from "@/components/atoms/Heading";
 import { renderPillIcon } from "@/components/atoms/TextPill";
 import profilePicture from "../../../assets/images/profile-picture.jpg";
-import Image from "next/image";
 import { ProfilePicture } from "@/components/atoms/ProfilePicture";
-export const HeroBanner = () => {
+import { HeroBannerProps } from "@/types/heroBannerProps";
+import { RichText } from "@/components/atoms/RichText";
+export const HeroBanner = (props: HeroBannerProps) => {
   return (
     <div className={styles.heroBanner}>
       <div className={styles.textWrapper}>
-        <TextPill
-          text={"Hello, I'm Subhakanta Mishra. Full stack developer"}
-          className={styles.textPill}
-        ></TextPill>
+        {props?.eyeBrowText && (
+          <TextPill
+            text={props?.eyeBrowText}
+            className={styles.textPill}
+          ></TextPill>
+        )}
         <div className={styles.headingWrapper}>
-          <Heading
-            tagName={"h1"}
-            content={"I'm a Full stack Developer Based In India"}
-            className={styles.heading}
-          ></Heading>
-          <div className={styles.pillIcon}>{renderPillIcon({ size: 100 })}</div>
+          {props?.title && (
+            <Heading
+              tagName={props?.titleSize}
+              content={props?.title}
+              className={styles.heading}
+            ></Heading>
+          )}
+
+          {props?.renderPillIcon && (
+            <div className={styles.pillIcon}>
+              {renderPillIcon({ size: 100 })}
+            </div>
+          )}
         </div>
-        <p className={styles.description}>
-          I've done remote work for agencies, consulted for startups, and
-          collaborated with talented people to create digital products for both
-          business and consumer use.
-        </p>
+        {props.bodycopy?.html && (
+          <RichText
+            className={styles.description}
+            html={props.bodycopy.html}
+          ></RichText>
+        )}
       </div>
-      <ProfilePicture src={profilePicture} className={styles.imageWrapper}></ProfilePicture>
+      <ProfilePicture
+        src={profilePicture}
+        altText={props?.imageReference?.altText ?? ""}
+        enableImageEffects={props?.enableImageEffects}
+        className={styles.imageWrapper}
+        borderColor={props?.borderColor}
+      ></ProfilePicture>
     </div>
   );
 };
