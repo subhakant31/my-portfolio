@@ -1,0 +1,51 @@
+.advantagesWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  .advantageCardWrapper {
+    padding: 16px;
+    width: 49%;
+    border-radius: 15px;
+    background-color: #1f1f1f;
+    display: flex;
+    gap: 32px;
+    position: relative;
+    flex-direction: column;
+    .iconHeadingWrapper {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      .iconWrapper {
+        height: 48px;
+        width: 48px;
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    .confidentPercentage {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      padding: 5px 15px;
+      border-radius: 10px;
+      background-color: #272727;
+      border: 1px solid #545454;
+    }
+    .percentageBarWrapper {
+      width: 100%;
+      height: 10px;
+      background-color: #272727;
+      border-radius: 10px;
+      .percentageBar {
+        height: 100%;
+        background-color: #26e989;
+        border-radius: 10px;
+        transition: width 0.5s ease-in-out;
+      }
+    }
+  }
+}

@@ -2,9 +2,8 @@
 
 .heroBanner {
   width: 100%;
-  height: 90vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   .textWrapper {
     max-width: 55%;
@@ -30,6 +29,4 @@
   .imageWrapper {
     padding: 0 16px;
   }
-
-  
 }

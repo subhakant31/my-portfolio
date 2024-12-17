@@ -37,6 +37,7 @@ export const Services = (props: ServicesProps) => {
       {props?.services?.map((item, index) => {
         return <ServiceCard {...item} />;
       })}
+      
     </div>
   );
 };

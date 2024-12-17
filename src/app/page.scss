@@ -1,0 +1,30 @@
+main {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 100vh; /* Make sure main takes full viewport height */
+}
+
+.section {
+  scroll-snap-align: center; /* Aligns each section to the center of the viewport */
+  height: 100vh; /* Each section takes full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:nth-child(even) {
+    background-color: #0e0e0e;
+  }
+  .section-container {
+    max-width: 1500px;
+  }
+}
+
+.header {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 1500px;
+}

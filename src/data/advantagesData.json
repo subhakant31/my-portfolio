@@ -1,0 +1,24 @@
+{
+  "advantages": [
+    {
+      "advantageTitle": "Cybersecurity",
+      "advantageIcon": "lock",
+      "confidentPercentage": 95
+    },
+    {
+      "advantageTitle": "Web Development",
+      "advantageIcon": "settings",
+      "confidentPercentage": 90
+    },
+    {
+      "advantageTitle": "Marketing",
+      "advantageIcon": "announcement",
+      "confidentPercentage": 85
+    },
+    {
+      "advantageTitle": "Networking",
+      "advantageIcon": "network",
+      "confidentPercentage": 80
+    }
+  ]
+}

@@ -2,23 +2,23 @@
   "listItems": [
     {
       "linkText": "Home",
-      "linkLocation": "/"
+      "linkLocation": "#home"
     },
     {
       "linkText": "Skills",
-      "linkLocation": "/skills"
+      "linkLocation": "#advantages"
     },
     {
       "linkText": "Service",
-      "linkLocation": "/service"
+      "linkLocation": "#services"
     },
     {
       "linkText": "Resume",
-      "linkLocation": "/Resume"
+      "linkLocation": "#Resume"
     },
     {
       "linkText": "Contact",
-      "linkLocation": "/contact"
+      "linkLocation": "#contact"
     }
   ]
 }

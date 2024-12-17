@@ -3,13 +3,7 @@ import pillIcon from "@/assets/icons/pill-icon.svg";
 import { TextPillProps } from "@/types/TextPillProps";
 export const renderPillIcon = ({ size }: any) => {
   return (
-    <svg
-      version='1.1'
-      viewBox='0 0 2048 1601'
-      width={size}
-      height={size}
-      xmlns='http://www.w3.org/2000/svg'
-    >
+    <svg version='1.1' viewBox='0 0 2048 1601' width={size} height={size}>
       <path
         transform='translate(0)'
         d='m0 0h2048v1601h-2048z'

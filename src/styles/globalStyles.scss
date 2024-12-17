@@ -44,14 +44,18 @@ p {
 body {
   background-color: $body-bg-color;
   color: $default-font-color;
+  margin: 0;
 }
 
 main {
-  max-width: $max-width;
   margin: 0 auto;
 }
 
 ul {
   margin: 0;
   padding: 0;
+}
+
+html {
+  overflow: hidden;
 }

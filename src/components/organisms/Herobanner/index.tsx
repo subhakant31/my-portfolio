@@ -1,7 +1,6 @@
 import styles from "./HeroBanner.module.scss";
-import { TextPill } from "@/components/atoms/TextPill";
+import { TextPill, renderPillIcon } from "@/components/atoms/TextPill";
 import { Heading } from "@/components/atoms/Heading";
-import { renderPillIcon } from "@/components/atoms/TextPill";
 import profilePicture from "../../../assets/images/profile-picture.jpg";
 import { ProfilePicture } from "@/components/atoms/ProfilePicture";
 import { HeroBannerProps } from "@/types/heroBannerProps";
