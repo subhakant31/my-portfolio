@@ -8,7 +8,7 @@ import { FaFacebook } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
 
-const iconMap = {
+const iconMap: any = {
   announcement: GrAnnounce,
   code: FaCode,
   lock: FaLock,

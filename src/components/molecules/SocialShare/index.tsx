@@ -8,7 +8,11 @@ export default function SocialShare(props: SocialShareReference) {
       <div className="icon-list">
         {props?.socialLinks?.map((socialLink: NavLinks) => {
           return (
-            <a className="social-icon" href={socialLink.iconCode}>
+            <a
+              className="social-icon"
+              href={socialLink.iconCode}
+              key={socialLink.iconCode}
+            >
               {getReactIcon(socialLink.iconCode)}
             </a>
           );
