@@ -5,6 +5,9 @@
   position: relative;
   .text {
     font-size: $font-size-small;
+    @media screen and (max-width: 768px) {
+      font-size: 0.7rem;
+    }
     padding: 5px 15px;
     border-radius: 20px;
     background-color: $glassBgColor;

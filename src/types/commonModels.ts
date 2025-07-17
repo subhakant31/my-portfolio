@@ -1,6 +1,6 @@
 export interface CtaLink {
   linkText?: string;
-  linkLocation?: string;
+  linkLocation: string;
 }
 
 export interface RichTextProps {

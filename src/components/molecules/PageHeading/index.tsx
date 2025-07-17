@@ -4,7 +4,12 @@ import { Heading } from "@/components/atoms/Heading";
 import { TextPill } from "@/components/atoms/TextPill";
 const PageHeading = (props: PageHeadingProps) => {
   return (
-    <div className={styles.pageHeadingContainer}>
+    <div
+      className={styles.pageHeadingContainer}
+      style={
+        { "--text-align": props.textAlign || "center" } as React.CSSProperties
+      }
+    >
       <TextPill
         className={styles.textPill}
         text={props?.eyeBrowText}

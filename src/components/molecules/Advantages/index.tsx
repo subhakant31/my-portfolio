@@ -57,7 +57,7 @@ const AdvantageCard = ({
           className={styles.percentageBar}
           style={{
             width: currentWidth,
-            transition: "width 0.5s ease-in-out",
+            transition: "width 2s ease-in-out",
           }}
         ></div>
       </div>

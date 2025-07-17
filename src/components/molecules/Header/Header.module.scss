@@ -1,12 +1,9 @@
 @import "@/styles/variables";
 
 .header {
-  background-color: $glassBgColor;
   border-radius: 50px;
-  border: 1px solid $glassBorderColor;
   padding: 7px;
-  position: sticky;
-  top: 15px;
+
   .navigation {
     .navList {
       list-style: none;
@@ -16,10 +13,18 @@
       .listItem {
         padding: 15px 40px;
         width: fit-content;
-        border-radius: 30px;
         font-size: $font-size-small;
         &.active {
           background-color: $accentColor;
+          /* From https://css.glass */
+          background: rgba(255, 255, 255, 0.16);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(5.7px);
+          -webkit-backdrop-filter: blur(5.7px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          animation: scale 0.5s;
+          border-radius: 35px;
+          scale: 1.1;
         }
         &.logo {
           padding: 0;
@@ -33,5 +38,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes scale {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.1;
   }
 }

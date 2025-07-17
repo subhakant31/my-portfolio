@@ -13,10 +13,18 @@
     gap: 32px;
     position: relative;
     flex-direction: column;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
     .iconHeadingWrapper {
       display: flex;
       gap: 32px;
       align-items: center;
+      .advantageTitle {
+        @media screen and (max-width: 768px) {
+          font-size: 24px;
+        }
+      }
       .iconWrapper {
         height: 48px;
         width: 48px;

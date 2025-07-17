@@ -5,15 +5,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
   .textWrapper {
     max-width: 55%;
     padding: 0 16px;
+    @media screen and (max-width: 768px) {
+      max-width: 100%;
+      padding: 0;
+    }
     .textPill {
       margin-bottom: 15px;
     }
     .headingWrapper {
       margin-bottom: 20px;
       position: relative;
+      @media screen and (max-width: 768px) {
+        h1 {
+          font-size: 48px;
+          line-height: normal;
+        }
+      }
       .pillIcon {
         position: absolute;
         left: -61px;
@@ -23,6 +36,9 @@
     }
     .description {
       margin-bottom: 50px;
+      @media screen and (max-width: 768px) {
+        margin-bottom: 16px;
+      }
     }
   }
 

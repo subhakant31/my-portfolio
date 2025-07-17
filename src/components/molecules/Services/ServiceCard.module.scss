@@ -9,7 +9,7 @@
 }
 
 .serviceCardWrapper {
-  flex-basis: 20%;
+  flex-basis: 23%;
   padding: 70px 16px 16px 16px;
   background-color: $glassBgColor;
   min-width: 300px;
@@ -18,6 +18,9 @@
   align-items: center;
   border-radius: 15px;
   position: relative;
+  @media screen and (max-width: 768px) {
+    flex-basis: 100%;
+  }
   .iconWrapper {
     height: 60px;
     width: 60px;

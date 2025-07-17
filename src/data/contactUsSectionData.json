@@ -1,0 +1,59 @@
+{
+  "pageHeading": {
+    "eyeBrowText": "CONTACT US",
+    "title": "Let's Get In Touch",
+    "titleSize": "h1",
+    "textAlign": "left"
+  },
+  "bodycopy": {
+    "html": "<p>I've done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use I've done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use I've done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use.</p>"
+  },
+  "socialShareReference": {
+    "title": "Follow Me",
+    "socialLinks": [
+      {
+        "icon": "instagram",
+        "link": "instagram.com"
+      },
+      {
+        "icon": "telegram",
+        "link": "telegram.com"
+      },
+      {
+        "icon": "twitter",
+        "link": "twitter.com"
+      },
+      {
+        "icon": "facebook",
+        "link": "facebook.com"
+      }
+    ]
+  },
+  "formReference": {
+    "formTitle": "Get In Touch!",
+    "submitBtnText": "Submit",
+    "location": "India",
+    "formFields": [
+      {
+        "name": "Name",
+        "placeHolderText": "Enter your name",
+        "type": "text"
+      },
+      {
+        "name": "Email",
+        "placeHolderText": "Enter your Email",
+        "type": "Email"
+      },
+      {
+        "name": "Phone",
+        "placeHolderText": "Enter your Phone",
+        "type": "number"
+      },
+      {
+        "name": "Address",
+        "placeHolderText": "Enter your Address",
+        "type": "text"
+      }
+    ]
+  }
+}

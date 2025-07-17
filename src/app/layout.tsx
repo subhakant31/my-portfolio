@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
-
 import "@/styles/globalStyles.scss";
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -17,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={urbanist.className}>
-        <main>{children}</main>
+        <main className='page-container'>{children}</main>
       </body>
     </html>
   );
