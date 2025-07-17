@@ -10,8 +10,9 @@ export default function SocialShare(props: SocialShareReference) {
           return (
             <a
               className="social-icon"
-              href={socialLink.iconCode}
+              href={socialLink.link}
               key={socialLink.iconCode}
+              target="_blank"
             >
               {getReactIcon(socialLink.iconCode)}
             </a>
