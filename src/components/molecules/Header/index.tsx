@@ -29,7 +29,6 @@ export const Header = ({ listItems, onLinkClick, activeSection }: Props) => {
                   href={item.linkLocation}
                   className={styles.link}
                   onClick={(e) => {
-                    e.preventDefault();
                     onLinkClick(sectionId);
                   }}
                 >
