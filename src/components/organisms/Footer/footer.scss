@@ -4,6 +4,9 @@ footer {
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    height: fit-content;
+  }
   .footer-container {
     display: flex;
     align-items: flex-start;

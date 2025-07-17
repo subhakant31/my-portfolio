@@ -21,14 +21,16 @@ import Footer from "@/components/organisms/Footer";
 import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
-  const homeRef = useRef(null);
-  const advantagesRef = useRef(null);
-  const servicesRef = useRef(null);
-  const portfolioRef = useRef(null);
-  const contactRef = useRef(null);
+  const homeRef = useRef<HTMLElement>(null);
+  const advantagesRef = useRef<HTMLElement>(null);
+  const servicesRef = useRef<HTMLElement>(null);
+  const portfolioRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
   const [showHeader, setShowHeader] = useState(true);
-
   const [activeSection, setActiveSection] = useState("home");
+
+  // Track if a programmatic scroll is in progress
+  const [isProgrammaticScrolling, setIsProgrammaticScrolling] = useState(false);
 
   useEffect(() => {
     const sectionRefs = [
@@ -69,89 +71,107 @@ export default function Home() {
 
   useEffect(() => {
     let lastScrollTop = 0;
-    const scrollContainer = document.querySelector("main") || window;
+    // Use document.documentElement for consistent body/window scroll behavior
+    const scrollContainer = document.documentElement; // Or document.body if you prefer
 
     const handleScroll = () => {
-      const scrollTop =
-        scrollContainer instanceof Window
-          ? window.pageYOffset
-          : (scrollContainer as HTMLElement).scrollTop;
+      const scrollTop = scrollContainer.scrollTop || window.pageYOffset; // window.pageYOffset for fallback
 
-      if (scrollTop > lastScrollTop + 10) {
-        setShowHeader(false); // scrolling down
-      } else if (scrollTop < lastScrollTop - 10) {
-        setShowHeader(true); // scrolling up
+      // Only update header visibility if not in a programmatic scroll and there's significant movement
+      if (
+        !isProgrammaticScrolling &&
+        Math.abs(scrollTop - lastScrollTop) > 10
+      ) {
+        if (scrollTop > lastScrollTop) {
+          setShowHeader(false); // scrolling down
+        } else {
+          setShowHeader(true); // scrolling up
+        }
       }
 
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     };
 
-    scrollContainer.addEventListener("scroll", handleScroll);
+    // Use a passive listener for better scroll performance, especially on mobile
+    scrollContainer.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       scrollContainer.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isProgrammaticScrolling]); // Re-run effect if programmatic scrolling state changes
 
   const scrollTo = (ref: React.RefObject<HTMLElement>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    if (ref.current) {
+      setIsProgrammaticScrolling(true); // Indicate that a programmatic scroll is starting
+      ref.current.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        setIsProgrammaticScrolling(false);
+      }, 700);
+    }
   };
 
   return (
     <>
+      {/* Ensure the header is fixed and its visibility is controlled by the state */}
       <div className={`header ${showHeader ? "show-header" : "hide-header"}`}>
         <Header
           {...headerData}
           onLinkClick={(id) => {
             if (id === "home") scrollTo(homeRef);
-            if (id === "advantages") scrollTo(advantagesRef);
-            if (id === "services") scrollTo(servicesRef);
-            if (id === "portfolio") scrollTo(portfolioRef);
-            if (id === "contact") scrollTo(contactRef);
+            else if (id === "advantages") scrollTo(advantagesRef);
+            else if (id === "services") scrollTo(servicesRef);
+            else if (id === "portfolio") scrollTo(portfolioRef);
+            else if (id === "contact") scrollTo(contactRef);
           }}
           activeSection={activeSection}
         />
       </div>
 
-      <section className="hero-banner section" id="home" ref={homeRef}>
-        <div className="heading-content-wrapper">
-          <HeroBanner {...heroBannerData} />
-        </div>
-      </section>
+      <main>
+        <section className="hero-banner section" id="home" ref={homeRef}>
+          <div className="heading-content-wrapper">
+            <HeroBanner {...heroBannerData} />
+          </div>
+        </section>
 
-      <section
-        className="advantages section"
-        id="advantages"
-        ref={advantagesRef}
-      >
-        <div className="heading-content-wrapper">
-          <PageHeading {...advantagesPageHeadingData} />
-          <Advantages {...advantagesData} />
-        </div>
-      </section>
+        <section
+          className="advantages section"
+          id="advantages"
+          ref={advantagesRef}
+        >
+          <div className="heading-content-wrapper">
+            <PageHeading {...advantagesPageHeadingData} />
+            <Advantages {...advantagesData} />
+          </div>
+        </section>
 
-      <section className="services section" id="services" ref={servicesRef}>
-        <div className="heading-content-wrapper">
-          <PageHeading {...servicesPageHeadingData} />
-          <Services {...servicesData} />
-        </div>
-      </section>
-      <section className="portfolio section" id="portfolio" ref={portfolioRef}>
-        <div className="heading-content-wrapper">
-          <PageHeading {...portfolioPageHeadingData} />
-          <Portfolio {...portfolioData} />
-        </div>
-      </section>
-      <section className="portfolio section" id="contact" ref={contactRef}>
-        <div className="heading-content-wrapper">
-          <ContactUsSection {...contactUsSectionData} />
-        </div>
-      </section>
-      <section className="footer section" id="footer">
-        <div className="heading-content-wrapper">
-          <Footer {...footerData} />
-        </div>
-      </section>
+        <section className="services section" id="services" ref={servicesRef}>
+          <div className="heading-content-wrapper">
+            <PageHeading {...servicesPageHeadingData} />
+            <Services {...servicesData} />
+          </div>
+        </section>
+        <section
+          className="portfolio section"
+          id="portfolio"
+          ref={portfolioRef}
+        >
+          <div className="heading-content-wrapper">
+            <PageHeading {...portfolioPageHeadingData} />
+            <Portfolio {...portfolioData} />
+          </div>
+        </section>
+        <section className="contact section" id="contact" ref={contactRef}>
+          <div className="heading-content-wrapper">
+            <ContactUsSection {...contactUsSectionData} />
+          </div>
+        </section>
+        <section className="footer section" id="footer">
+          <div className="heading-content-wrapper">
+            <Footer {...footerData} />
+          </div>
+        </section>
+      </main>
     </>
   );
 }
