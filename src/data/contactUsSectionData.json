@@ -1,0 +1,59 @@
+{
+  "pageHeading": {
+    "eyeBrowText": "CONTACT US",
+    "title": "Let's Get In Touch",
+    "titleSize": "h1",
+    "textAlign": "left"
+  },
+  "bodycopy": {
+    "html": "<p>I'm a Senior Associate Full Stack Frontend Developer with 2.5 years of experience, specializing in building high-performance, scalable, and maintainable web applications. My expertise lies in crafting dynamic user interfaces with modern frameworks like React.js and Next.js, seamlessly integrating headless CMS platforms such as AEM and DatoCMS, and optimizing solutions for peak performance. I excel in driving workflow improvements within agile teams and am always open to collaborating on innovative digital products for both business and consumer use.</p>"
+  },
+  "socialShareReference": {
+    "title": "Follow Me",
+    "socialLinks": [
+      {
+        "iconCode": "instagram",
+        "link": "instagram.com"
+      },
+      {
+        "iconCode": "telegram",
+        "link": "telegram.com"
+      },
+      {
+        "iconCode": "twitter",
+        "link": "twitter.com"
+      },
+      {
+        "iconCode": "facebook",
+        "link": "facebook.com"
+      }
+    ]
+  },
+  "formReference": {
+    "formTitle": "Get In Touch!",
+    "submitBtnText": "Submit",
+    "location": "India",
+    "formFields": [
+      {
+        "name": "Name",
+        "placeHolderText": "Enter your name",
+        "type": "text"
+      },
+      {
+        "name": "Email",
+        "placeHolderText": "Enter your Email",
+        "type": "Email"
+      },
+      {
+        "name": "Phone",
+        "placeHolderText": "Enter your Phone",
+        "type": "number"
+      },
+      {
+        "name": "Address",
+        "placeHolderText": "Enter your Address",
+        "type": "text"
+      }
+    ]
+  }
+}

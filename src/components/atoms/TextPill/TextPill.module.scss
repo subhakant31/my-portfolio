@@ -1,0 +1,25 @@
+@import "@/styles/variables";
+
+.textPillWrapper {
+  width: fit-content;
+  position: relative;
+  .text {
+    font-size: $font-size-small;
+    @media screen and (max-width: 768px) {
+      font-size: 0.7rem;
+    }
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: $glassBgColor;
+    border: 1px solid $glassBorderColor;
+  }
+  .pillIcon {
+    position: absolute;
+    right: -29px;
+    top: -34px;
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

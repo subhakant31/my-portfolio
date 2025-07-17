@@ -1,0 +1,61 @@
+@import "@/styles/variables";
+
+.servicesList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 32px;
+  row-gap: 32px;
+}
+
+.serviceCardWrapper {
+  flex-basis: 23%;
+  padding: 70px 16px 16px 16px;
+  background-color: $glassBgColor;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  position: relative;
+  @media screen and (max-width: 768px) {
+    flex-basis: 100%;
+  }
+  .iconWrapper {
+    height: 60px;
+    width: 60px;
+    background-color: #0a0a0c;
+    display: grid;
+    place-content: center;
+    border-radius: 10px;
+    position: absolute;
+    top: -30px;
+    transform: rotate(-45deg);
+    svg {
+      transform: rotate(45deg);
+      font-size: 24px;
+    }
+  }
+  .heading {
+    margin-bottom: 10px;
+  }
+  .separator {
+    margin-bottom: 10px;
+    height: 2px;
+    height: 2px;
+    display: flex;
+    gap: 3px;
+    .separatorLarge {
+      width: 15px;
+      background-color: $accentColor;
+    }
+    .separatorSmall {
+      width: 5px;
+      background-color: $accentColor;
+    }
+  }
+  .description {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "advantages": [
+    {
+      "advantageTitle": "Front-End Development",
+      "advantageIcon": "lock",
+      "confidentPercentage": 95
+    },
+    {
+      "advantageTitle": "Headless CMS & API Integration",
+      "advantageIcon": "settings",
+      "confidentPercentage": 90
+    },
+    {
+      "advantageTitle": "UI/UX & Design Systems",
+      "advantageIcon": "announcement",
+      "confidentPercentage": 85
+    },
+    {
+      "advantageTitle": "Optimization & Tools",
+      "advantageIcon": "network",
+      "confidentPercentage": 80
+    }
+  ]
+}

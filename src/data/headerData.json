@@ -1,0 +1,24 @@
+{
+  "listItems": [
+    {
+      "linkText": "Home",
+      "linkLocation": "#home"
+    },
+    {
+      "linkText": "Skills",
+      "linkLocation": "#advantages"
+    },
+    {
+      "linkText": "Service",
+      "linkLocation": "#services"
+    },
+    {
+      "linkText": "Portfolio",
+      "linkLocation": "#portfolio"
+    },
+    {
+      "linkText": "Contact",
+      "linkLocation": "#contact"
+    }
+  ]
+}

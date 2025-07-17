@@ -1,0 +1,58 @@
+@import "@/styles/variables";
+.form-container {
+  padding: 48px; /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 1s;
+  border-radius: 30px;
+  @media screen and (max-width: 768px) {
+    padding: 32px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    .form-heading {
+      margin-bottom: 32px;
+      @media screen and (max-width: 768px) {
+        font-size: 32px;
+        line-height: normal;
+        margin-bottom: 24px;
+      }
+    }
+    .input-field {
+      background-color: transparent;
+      padding: 24px;
+      padding-left: 0;
+      border: none;
+      border-bottom: 1.5px solid grey;
+      color: white;
+      font-size: large;
+      outline: none;
+      &::placeholder {
+        opacity: 0.5;
+      }
+    }
+    .submit-location-container {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      .submit-btn {
+        margin-top: 48px;
+        width: fit-content;
+        background-color: #22e797;
+        padding: 20px 50px;
+        border-radius: 30px;
+        color: white;
+        font-size: large;
+      }
+      .location {
+        color: #22e797;
+        margin-top: 48px;
+        font-weight: 400;
+      }
+    }
+  }
+}
