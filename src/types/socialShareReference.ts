@@ -1,5 +1,5 @@
 export interface NavLinks {
-  icon: string;
+  iconCode: string;
   link: string;
 }
 

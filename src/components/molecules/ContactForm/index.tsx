@@ -20,9 +20,10 @@ export default function ContactForm(props: ContactFormProps) {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log(formData, "form data");
+
   };
   return (
     <div className="form-container">
@@ -36,6 +37,7 @@ export default function ContactForm(props: ContactFormProps) {
               name={field.name}
               onChange={handleChange}
               className="input-field"
+              key={field.name}
             />
           );
         })}

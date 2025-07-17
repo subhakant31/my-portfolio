@@ -1,30 +1,30 @@
 {
   "services": [
     {
-      "serviceTitle": "Marketing",
+      "serviceTitle": "Front-End Development",
       "serviceDescription": {
-        "html": "<p>SEO, Running ads on social media, you name it I can make it done</p>"
+        "html": "<p>Crafting responsive and interactive user interfaces using modern frameworks like React.js and Next.js, along with TypeScript, HTML5, CSS3, and SCSS, focusing on clean and maintainable code.</p>"
       },
       "iconCode": "announcement"
     },
     {
-      "serviceTitle": "Web Development",
+      "serviceTitle": "Headless CMS Integration",
       "serviceDescription": {
-        "html": "<p>SEO, Running ads on social media, you name it I can make it done</p>"
+        "html": "<p>Expert in seamlessly integrating and developing solutions with Headless CMS platforms such as Adobe Experience Manager (AEM) Frontend, DatoCMS, and Drupal SiteStudio.</p>"
       },
       "iconCode": "code"
     },
     {
-      "serviceTitle": "Marketing",
+      "serviceTitle": "UI Libraries & Design Systems",
       "serviceDescription": {
-        "html": "<p>SEO, Running ads on social media, you name it I can make it done</p>"
+        "html": "<p>Building and maintaining scalable UI libraries and design systems using React Storybook, Material UI (MUI), and Styled Components to ensure consistent and reusable components.</p>"
       },
       "iconCode": "lock"
     },
     {
-      "serviceTitle": "Marketing",
+      "serviceTitle": "API & Performance Optimization",
       "serviceDescription": {
-        "html": "<p>SEO, Running ads on social media, you name it I can make it done</p>"
+        "html": "<p>Developing robust API integrations, consuming REST APIs, and optimizing web applications for high performance and scalability, including Server-Side Rendering (SSR) for improved load times.</p>"
       },
       "iconCode": "network"
     }

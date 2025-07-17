@@ -1,0 +1,123 @@
+footer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  .footer-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+    .footer-info-container {
+      width: 30%;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
+      .footer-logo-heading {
+        margin-bottom: 24px;
+        line-height: normal;
+      }
+      .footer-description {
+        margin-bottom: 32px;
+      }
+      .email-address {
+        font-size: 28px;
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 768px) {
+          word-break: break-all;
+          font-size: 20px;
+        }
+        svg {
+          display: flex;
+          flex-shrink: 0;
+          height: 40px;
+          width: 40px;
+          padding: 5px;
+          border-radius: 50%;
+          background-color: white;
+          color: green;
+          margin-right: 16px;
+        }
+      }
+    }
+    .nav-list-wrapper {
+      display: flex;
+      width: 40%;
+      margin-left: 200px;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 48px;
+      }
+      .navLinks-container {
+        width: 100%;
+        .list {
+          margin-top: 24px;
+          li {
+            margin-bottom: 16px;
+            list-style: none;
+            a {
+              color: white;
+              font-size: 24px;
+              text-decoration: none;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+    .social-share-download-wrapper {
+      width: fit-content;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      .social-share-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 0;
+        @media screen and (max-width: 768px) {
+          width: 100%;
+          margin-top: 48px;
+        }
+      }
+      .resume-download-btn {
+        color: white;
+        margin-top: 48px;
+        font-size: 24px;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+        svg {
+          margin-right: 16px;
+        }
+      }
+    }
+  }
+  .separator {
+    height: 5px;
+    border-radius: 30px;
+    background-color: grey;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 32px;
+    @media screen and (max-width: 768px) {
+      margin-bottom: 16px;
+      margin-top: 24px;
+    }
+  }
+  .copyright-text {
+    font-size: 24px;
+    text-align: center;
+    @media screen and (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}

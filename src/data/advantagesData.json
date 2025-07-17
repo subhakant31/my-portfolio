@@ -1,22 +1,22 @@
 {
   "advantages": [
     {
-      "advantageTitle": "Cybersecurity",
+      "advantageTitle": "Front-End Development",
       "advantageIcon": "lock",
       "confidentPercentage": 95
     },
     {
-      "advantageTitle": "Web Development",
+      "advantageTitle": "Headless CMS & API Integration",
       "advantageIcon": "settings",
       "confidentPercentage": 90
     },
     {
-      "advantageTitle": "Marketing",
+      "advantageTitle": "UI/UX & Design Systems",
       "advantageIcon": "announcement",
       "confidentPercentage": 85
     },
     {
-      "advantageTitle": "Networking",
+      "advantageTitle": "Optimization & Tools",
       "advantageIcon": "network",
       "confidentPercentage": 80
     }

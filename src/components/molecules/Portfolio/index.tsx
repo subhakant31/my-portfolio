@@ -1,5 +1,5 @@
 import { PortfolioProps } from "@/types/portfolioProps";
-import './portfolio.scss';
+import "./portfolio.scss";
 
 export default function Portfolio(props: PortfolioProps) {
   const half = Math.ceil(props.items.length / 2);
@@ -10,14 +10,24 @@ export default function Portfolio(props: PortfolioProps) {
     <div className="website-list-container">
       <div className="first-row website-row">
         {firstHalf.map((item, index) => (
-          <a key={`first-${index}`} href={item.websiteSource} target="_blank" className="website-container">
+          <a
+            key={`first-${index}`}
+            href={item.websiteSource}
+            target="_blank"
+            className="website-container"
+          >
             <img src={item.imageSource} alt="" />
           </a>
         ))}
       </div>
       <div className="second-row website-row">
         {secondHalf.map((item, index) => (
-          <a key={`second-${index}`} href={item.websiteSource} target="_blank" className="website-container">
+          <a
+            key={`second-${index}`}
+            href={item.websiteSource}
+            target="_blank"
+            className="website-container"
+          >
             <img src={item.imageSource} alt="" />
           </a>
         ))}

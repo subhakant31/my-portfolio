@@ -6,25 +6,25 @@
     "textAlign": "left"
   },
   "bodycopy": {
-    "html": "<p>I've done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use I've done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use I've done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use.</p>"
+    "html": "<p>I'm a Senior Associate Full Stack Frontend Developer with 2.5 years of experience, specializing in building high-performance, scalable, and maintainable web applications. My expertise lies in crafting dynamic user interfaces with modern frameworks like React.js and Next.js, seamlessly integrating headless CMS platforms such as AEM and DatoCMS, and optimizing solutions for peak performance. I excel in driving workflow improvements within agile teams and am always open to collaborating on innovative digital products for both business and consumer use.</p>"
   },
   "socialShareReference": {
     "title": "Follow Me",
     "socialLinks": [
       {
-        "icon": "instagram",
+        "iconCode": "instagram",
         "link": "instagram.com"
       },
       {
-        "icon": "telegram",
+        "iconCode": "telegram",
         "link": "telegram.com"
       },
       {
-        "icon": "twitter",
+        "iconCode": "twitter",
         "link": "twitter.com"
       },
       {
-        "icon": "facebook",
+        "iconCode": "facebook",
         "link": "facebook.com"
       }
     ]

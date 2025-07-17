@@ -16,6 +16,8 @@ import Portfolio from "@/components/molecules/Portfolio";
 import portfolioData from "@/data/portfolioData.json";
 import contactUsSectionData from "@/data/contactUsSectionData.json";
 import ContactUsSection from "@/components/organisms/ContactUs";
+import footerData from "@/data/footerData.json";
+import Footer from "@/components/organisms/Footer";
 import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
@@ -104,6 +106,7 @@ export default function Home() {
             if (id === "home") scrollTo(homeRef);
             if (id === "advantages") scrollTo(advantagesRef);
             if (id === "services") scrollTo(servicesRef);
+            if (id === "portfolio") scrollTo(portfolioRef);
             if (id === "contact") scrollTo(contactRef);
           }}
           activeSection={activeSection}
@@ -142,6 +145,11 @@ export default function Home() {
       <section className="portfolio section" id="contact" ref={contactRef}>
         <div className="heading-content-wrapper">
           <ContactUsSection {...contactUsSectionData} />
+        </div>
+      </section>
+      <section className="footer section" id="footer">
+        <div className="heading-content-wrapper">
+          <Footer {...footerData} />
         </div>
       </section>
     </>
