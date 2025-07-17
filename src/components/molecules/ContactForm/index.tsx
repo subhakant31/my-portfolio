@@ -26,12 +26,7 @@ export default function ContactForm(props: ContactFormProps) {
   };
   return (
     <div className="form-container">
-      <form
-        action=""
-        onSubmit={handleSubmit}
-        name="contact-form"
-        data-netlify="true"
-      >
+      <form action="" onSubmit={handleSubmit}>
         <h1 className="form-heading">{props.formTitle}</h1>
         {props.formFields.map((field) => {
           return (
