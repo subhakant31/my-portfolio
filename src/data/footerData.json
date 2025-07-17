@@ -1,5 +1,5 @@
 {
-  "title": "Subhakant",
+  "title": "Subhakanta",
   "bodycopy": {
     "html": "<p>Subhakanta Mishra is a Senior Associate Full Stack Frontend Developer specializing in React, Next.js, and TypeScript. He builds high-performance, scalable web applications and excels in Headless CMS integration and agile development.</p>"
   },
@@ -45,19 +45,19 @@
     "socialLinks": [
       {
         "iconCode": "instagram",
-        "link": "instagram.com"
+        "link": "https://www.instagram.com/subha_kant/"
       },
       {
-        "iconCode": "telegram",
-        "link": "telegram.com"
+        "iconCode": "discord",
+        "link": "https://discord.gg/FNCYtJTuDH"
       },
       {
-        "iconCode": "twitter",
-        "link": "twitter.com"
+        "iconCode": "linkedIn",
+        "link": "https://www.linkedin.com/in/subhakanta-mishra-004828221/"
       },
       {
-        "iconCode": "facebook",
-        "link": "facebook.com"
+        "iconCode": "youtube",
+        "link": "https://www.youtube.com/@purgatorytv6640"
       }
     ]
   },

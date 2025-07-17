@@ -7,7 +7,9 @@ import { FaTwitter } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
-
+import { FaDiscord } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 const iconMap: any = {
   announcement: GrAnnounce,
   code: FaCode,
@@ -20,6 +22,9 @@ const iconMap: any = {
   facebook: FaFacebook,
   email: MdEmail,
   download: FaDownload,
+  discord: FaDiscord,
+  linkedIn: FaLinkedin,
+  youtube: FaYoutube,
   // Add more icons to the map as needed
 };
 

@@ -8,6 +8,8 @@ main {
   @media screen and (max-width: 768px) {
     scroll-snap-type: unset;
   }
+  display: flex;
+  flex-direction: column;
 }
 .main::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
@@ -58,15 +60,13 @@ main {
   //   top: -100px;
   // }
   @media screen and (max-width: 768px) {
-    position: absolute;
-    top: 90%;
+    position: fixed;
+    bottom: 20px;
     overflow-x: scroll;
-  }
-}
-
-.page-container {
-  #home {
-    position: relative;
-    top: 0;
+    height: fit-content;
+    top: unset;
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+    }
   }
 }

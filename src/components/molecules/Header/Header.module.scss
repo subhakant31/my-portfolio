@@ -12,6 +12,9 @@
       align-items: center;
       .listItem {
         padding: 15px 40px;
+        @media screen and (max-width: 768px) {
+          padding: 10px 40px;
+        }
         width: fit-content;
         font-size: $font-size-small;
         &.active {
