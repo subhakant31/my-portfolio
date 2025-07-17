@@ -8,8 +8,10 @@ main {
   @media screen and (max-width: 768px) {
     scroll-snap-type: unset;
   }
-  display: flex;
-  flex-direction: column;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 .main::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
