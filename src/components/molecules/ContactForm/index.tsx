@@ -23,11 +23,15 @@ export default function ContactForm(props: ContactFormProps) {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log(formData, "form data");
-
   };
   return (
     <div className="form-container">
-      <form action="" onSubmit={handleSubmit}>
+      <form
+        action=""
+        onSubmit={handleSubmit}
+        name="contact-form"
+        data-netlify="true"
+      >
         <h1 className="form-heading">{props.formTitle}</h1>
         {props.formFields.map((field) => {
           return (
