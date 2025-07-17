@@ -3,6 +3,7 @@ import { Heading } from "@/components/atoms/Heading";
 import { Service, ServicesProps } from "@/types/servicesProps";
 import { RichText } from "@/components/atoms/RichText";
 import { getReactIcon } from "@/utilities/getReactIcon";
+import React from "react";
 const ServiceCard = (props: Service) => {
   return (
     <div className={`${styles.serviceCardWrapper}`}>
@@ -34,8 +35,12 @@ export const Services = (props: ServicesProps) => {
   };
   return (
     <div className={styles.servicesList} style={servicesStyles}>
-      {props?.services?.map((item, index) => {
-        return <ServiceCard {...item} />;
+      {props?.services?.map((item) => {
+        return (
+          <React.Fragment key={item.iconCode}>
+            <ServiceCard {...item} />
+          </React.Fragment>
+        );
       })}
     </div>
   );
