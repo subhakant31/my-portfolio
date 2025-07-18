@@ -111,8 +111,7 @@ export default function Home() {
   };
 
   return (
-    <>
-      {/* Ensure the header is fixed and its visibility is controlled by the state */}
+    <main>
       <div className={`header ${showHeader ? "show-header" : "hide-header"}`}>
         <Header
           {...headerData}
@@ -126,52 +125,45 @@ export default function Home() {
           activeSection={activeSection}
         />
       </div>
+      <section className='hero-banner section' id='home' ref={homeRef}>
+        <div className='heading-content-wrapper'>
+          <HeroBanner {...heroBannerData} />
+        </div>
+      </section>
 
-      <main>
-        <section className="hero-banner section" id="home" ref={homeRef}>
-          <div className="heading-content-wrapper">
-            <HeroBanner {...heroBannerData} />
-          </div>
-        </section>
+      <section
+        className='advantages section'
+        id='advantages'
+        ref={advantagesRef}
+      >
+        <div className='heading-content-wrapper'>
+          <PageHeading {...advantagesPageHeadingData} />
+          <Advantages {...advantagesData} />
+        </div>
+      </section>
 
-        <section
-          className="advantages section"
-          id="advantages"
-          ref={advantagesRef}
-        >
-          <div className="heading-content-wrapper">
-            <PageHeading {...advantagesPageHeadingData} />
-            <Advantages {...advantagesData} />
-          </div>
-        </section>
-
-        <section className="services section" id="services" ref={servicesRef}>
-          <div className="heading-content-wrapper">
-            <PageHeading {...servicesPageHeadingData} />
-            <Services {...servicesData} />
-          </div>
-        </section>
-        <section
-          className="portfolio section"
-          id="portfolio"
-          ref={portfolioRef}
-        >
-          <div className="heading-content-wrapper">
-            <PageHeading {...portfolioPageHeadingData} />
-            <Portfolio {...portfolioData} />
-          </div>
-        </section>
-        <section className="contact section" id="contact" ref={contactRef}>
-          <div className="heading-content-wrapper">
-            <ContactUsSection {...contactUsSectionData} />
-          </div>
-        </section>
-        <section className="footer section" id="footer">
-          <div className="heading-content-wrapper">
-            <Footer {...footerData} />
-          </div>
-        </section>
-      </main>
-    </>
+      <section className='services section' id='services' ref={servicesRef}>
+        <div className='heading-content-wrapper'>
+          <PageHeading {...servicesPageHeadingData} />
+          <Services {...servicesData} />
+        </div>
+      </section>
+      <section className='portfolio section' id='portfolio' ref={portfolioRef}>
+        <div className='heading-content-wrapper'>
+          <PageHeading {...portfolioPageHeadingData} />
+          <Portfolio {...portfolioData} />
+        </div>
+      </section>
+      <section className='contact section' id='contact' ref={contactRef}>
+        <div className='heading-content-wrapper'>
+          <ContactUsSection {...contactUsSectionData} />
+        </div>
+      </section>
+      <section className='footer section' id='footer'>
+        <div className='heading-content-wrapper'>
+          <Footer {...footerData} />
+        </div>
+      </section>
+    </main>
   );
 }
