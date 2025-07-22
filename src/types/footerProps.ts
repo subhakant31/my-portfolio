@@ -1,13 +1,9 @@
-import { RichTextProps } from "./commonModels";
+import { CtaLink, RichTextProps } from "./commonModels";
 import { SocialShareReference } from "./socialShareReference";
 
-export interface FooterLink {
-  text: string;
-  link: string;
-}
 export interface FooterNavLinks {
   linkTitle: string;
-  links: FooterLink[];
+  links: CtaLink[];
 }
 export interface FooterProps {
   title: string;

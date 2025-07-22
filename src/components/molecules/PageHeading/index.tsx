@@ -12,7 +12,7 @@ const PageHeading = (props: PageHeadingProps) => {
     >
       <TextPill
         className={styles.textPill}
-        text={props?.eyeBrowText}
+        text={props?.eyebrowText}
       ></TextPill>
       <Heading
         className={styles.pageHeading}

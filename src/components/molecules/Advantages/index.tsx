@@ -4,6 +4,8 @@ import styles from "./Advantages.module.scss";
 import { Advantage, AdvantagesProps } from "@/types/advantagesProps";
 import { getReactIcon } from "@/utilities/getReactIcon";
 import { Heading } from "@/components/atoms/Heading";
+import ComponentWrapper from "@/components/ComponentWrapper";
+import PageHeading from "../PageHeading";
 
 const AdvantageCard = ({
   advantageIcon,
@@ -65,13 +67,16 @@ const AdvantageCard = ({
   );
 };
 
-const Advantages = ({ advantages }: AdvantagesProps) => {
+const Advantages = (props: AdvantagesProps) => {
   return (
-    <div className={styles.advantagesWrapper}>
-      {advantages?.map((advantage, index) => (
-        <AdvantageCard key={index} {...advantage} />
-      ))}
-    </div>
+    <ComponentWrapper className='advantages section' id='advantages'>
+      <PageHeading {...props.pageHeading} />
+      <div className={styles.advantagesWrapper}>
+        {props.advantages?.map((advantage) => (
+          <AdvantageCard key={advantage.id} {...advantage} />
+        ))}
+      </div>
+    </ComponentWrapper>
   );
 };
 

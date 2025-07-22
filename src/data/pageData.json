@@ -1,0 +1,357 @@
+{
+  "data": {
+    "allPages": [
+      {
+        "components": [
+          {
+            "__typename": "HeaderRecord",
+            "id": "OAI0urR0R-KoiPY8a3RWrA",
+            "listitems": [
+              {
+                "__typename": "HeaderlinkRecord",
+                "id": "DtI_BDuAR1Srm7bBqGPz4g",
+                "linktext": "Home",
+                "linklocation": "#home"
+              },
+              {
+                "__typename": "HeaderlinkRecord",
+                "id": "QEZdwmMFT6KiOth5j9ViZA",
+                "linktext": "Skills",
+                "linklocation": "#advantages"
+              },
+              {
+                "__typename": "HeaderlinkRecord",
+                "id": "WYNQZXfYTuWUhe4oo5W7EA",
+                "linktext": "Service",
+                "linklocation": "#services"
+              },
+              {
+                "__typename": "HeaderlinkRecord",
+                "id": "GwYMDlCfQ2y_r9akLUrvHQ",
+                "linktext": "Portfolio",
+                "linklocation": "#portfolio"
+              },
+              {
+                "__typename": "HeaderlinkRecord",
+                "id": "Xy-2vwBXT3Wh3dqT1RSqxw",
+                "linktext": "Contact",
+                "linklocation": "#contact"
+              }
+            ]
+          },
+          {
+            "__typename": "HerobannerRecord",
+            "id": "SVZu71Z9ToSTk8rTkkwvjw",
+            "title": "I'm a Full stack Developer Based In India",
+            "titleSize": "h1",
+            "renderPillIcon": true,
+            "bodycopy": "<p>I've done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use.</p>",
+            "borderColor": "#26e989",
+            "enableImageEffects": true,
+            "eyebrowText": "Hello, I'm Subhakanta Mishra. Full stack developer",
+            "imageReference": {
+              "__typename": "ImageRecord",
+              "id": "H8pYTyQaQWmsrZ7wAjUcnQ",
+              "altText": "man sitting on chair not looking at the camera",
+              "imagePath": "/images/profile-picture.jpg"
+            }
+          },
+          {
+            "__typename": "AdvantageRecord",
+            "id": "UpckpRDlQRSpvdg3CWlwxQ",
+            "pageHeading": {
+              "__typename": "PageHeadingRecord",
+              "titleSize": "h1",
+              "title": "My Advantages",
+              "textAlign": "center",
+              "id": "JebHMOC0QJiC8UdCcWHIug",
+              "eyebrowText": "MY SKILLS"
+            },
+            "advantages": [
+              {
+                "__typename": "AdvantageCardRecord",
+                "id": "Be_Ecjj5QaKi8JNzn8s0zg",
+                "confidentPercentage": "80",
+                "advantageTitle": "Optimization & Tools",
+                "advantageIcon": "network"
+              },
+              {
+                "__typename": "AdvantageCardRecord",
+                "id": "TkcmjUQCQ_e1EXZFULvXaA",
+                "confidentPercentage": "85",
+                "advantageTitle": "UI/UX & Design Systems",
+                "advantageIcon": "announcement"
+              },
+              {
+                "__typename": "AdvantageCardRecord",
+                "id": "IEjR-Fp7RvOZaRZoht9HBQ",
+                "confidentPercentage": "90",
+                "advantageTitle": "Headless CMS & API Integration",
+                "advantageIcon": "settings"
+              },
+              {
+                "__typename": "AdvantageCardRecord",
+                "id": "NYo4kkVBT_y4uqBwY02LrA",
+                "confidentPercentage": "95",
+                "advantageTitle": "Front-End Development",
+                "advantageIcon": "lock"
+              }
+            ]
+          },
+          {
+            "__typename": "ServiceRecord",
+            "id": "esaourE1TOmUMLVEDuhZKw",
+            "pageHeading": {
+              "__typename": "PageHeadingRecord",
+              "titleSize": "h1",
+              "title": "What can I Do?",
+              "textAlign": "center",
+              "id": "dD4tllasQrK2g70TbyQd3w",
+              "eyebrowText": "MY SERVICES"
+            },
+            "services": [
+              {
+                "__typename": "ServiceCardRecord",
+                "id": "J3HJoM5eQ4qHVzwdlsP9Dw",
+                "serviceTitle": "API & Performance Optimization",
+                "serviceDescription": "<p>Developing robust API integrations, consuming REST APIs, and optimizing web applications for high performance and scalability, including Server-Side Rendering (SSR) for improved load times.</p>",
+                "iconCode": "network"
+              },
+              {
+                "__typename": "ServiceCardRecord",
+                "id": "MW_bv7UEQO2-KhUcjW3pVQ",
+                "serviceTitle": "UI Libraries & Design Systems",
+                "serviceDescription": "<p>Building and maintaining scalable UI libraries and design systems using React Storybook, Material UI (MUI), and Styled Components to ensure consistent and reusable components.</p>",
+                "iconCode": "lock"
+              },
+              {
+                "__typename": "ServiceCardRecord",
+                "id": "TAjgDxx9TIypTiqlFybVvw",
+                "serviceTitle": "Headless CMS Integration",
+                "serviceDescription": "<p>Expert in seamlessly integrating and developing solutions with Headless CMS platforms such as Adobe Experience Manager (AEM) Frontend, DatoCMS, and Drupal SiteStudio.</p>",
+                "iconCode": "code"
+              },
+              {
+                "__typename": "ServiceCardRecord",
+                "id": "dT0vR6LwTVu1dPGcIrLFlQ",
+                "serviceTitle": "Front-End Development",
+                "serviceDescription": "<p>Crafting responsive and interactive user interfaces using modern frameworks like React.js and Next.js, along with TypeScript, HTML5, CSS3, and SCSS, focusing on clean and maintainable code.</p>",
+                "iconCode": "announcement"
+              }
+            ]
+          },
+          {
+            "__typename": "PortfolioRecord",
+            "id": "EmnoaBHbR3i4M7LfKv_-GQ",
+            "pageHeading": {
+              "__typename": "PageHeadingRecord",
+              "titleSize": "h1",
+              "title": "Helping Digital Brands Scale With Design",
+              "textAlign": "center",
+              "id": "EahUlAfqS9aajVI8pEqQyQ",
+              "eyebrowText": "MY PORTFOLIO"
+            },
+            "items": [
+              {
+                "__typename": "PortfolioWebLinkRecord",
+                "id": "DvtXEH2RQ_KpzLw4mBjoAg",
+                "websiteSource": "https://schedule-conference.netlify.app/",
+                "imageSource": "https://i.ibb.co/YFzgmkCc/image.png"
+              },
+              {
+                "__typename": "PortfolioWebLinkRecord",
+                "id": "Bw5hPugzR7S3Zuaboatweg",
+                "websiteSource": "https://subhakanthackathon.netlify.app/",
+                "imageSource": "https://i.ibb.co/23g9fStf/image.png"
+              },
+              {
+                "__typename": "PortfolioWebLinkRecord",
+                "id": "CD0v48v0SUOb0ZDHjuUuew",
+                "websiteSource": "https://agencywebsite3105.netlify.app/",
+                "imageSource": "https://i.ibb.co/60KsLxyG/image.png"
+              },
+              {
+                "__typename": "PortfolioWebLinkRecord",
+                "id": "Io6hFIOfRai9zUe_DTnvsg",
+                "websiteSource": "https://ecommerce-shop-co.netlify.app/",
+                "imageSource": "https://i.ibb.co/v6HPmdMz/image.png"
+              }
+            ]
+          },
+          {
+            "__typename": "ContactUsSectionRecord",
+            "id": "GDg6IKDeQSa6QFuzOdHrQQ",
+            "pageHeading": {
+              "__typename": "PageHeadingRecord",
+              "id": "eLqkLRKYQzegjUa_ZyLQSQ",
+              "eyebrowText": "CONTACT US",
+              "title": "Let's Get In Touch",
+              "titleSize": "h1",
+              "textAlign": "left"
+            },
+            "bodycopy": "<p>I'm a Senior Associate Full Stack Frontend Developer with 2.5 years of experience, specializing in building high-performance, scalable, and maintainable web applications. My expertise lies in crafting dynamic user interfaces with modern frameworks like React.js and Next.js, seamlessly integrating headless CMS platforms such as AEM and DatoCMS, and optimizing solutions for peak performance. I excel in driving workflow improvements within agile teams and am always open to collaborating on innovative digital products for both business and consumer use.</p>",
+            "socialShareReference": {
+              "__typename": "SocialShareRecord",
+              "id": "AWSILQxUSnCq4ySEZAqlxQ",
+              "title": "Follow Me",
+              "socialLinks": [
+                {
+                  "__typename": "SocialLinkRecord",
+                  "id": "Ev2v8kAQQBOpa6CcSYuQNQ",
+                  "iconCode": "youtube",
+                  "link": "https://www.youtube.com/@purgatorytv6640"
+                },
+                {
+                  "__typename": "SocialLinkRecord",
+                  "id": "DQYpXPTKTn25TAmJJjn9dA",
+                  "iconCode": "linkedIn",
+                  "link": "https://www.linkedin.com/in/subhakanta-mishra-004828221/"
+                },
+                {
+                  "__typename": "SocialLinkRecord",
+                  "id": "bTuJ0QDeQZm6tfw4EcSk6A",
+                  "iconCode": "discord",
+                  "link": "https://discord.gg/FNCYtJTuDH"
+                },
+                {
+                  "__typename": "SocialLinkRecord",
+                  "id": "ZR_Rr0o2QXiF3ReHkeyK1A",
+                  "iconCode": "instagram",
+                  "link": "https://www.instagram.com/subha_kant/"
+                }
+              ]
+            },
+            "formReference": {
+              "__typename": "FormRecord",
+              "id": "RsYsssJuTcqOZwH2C6JJTg",
+              "formTitle": "Get In Touch!",
+              "submitBtnText": "Submit",
+              "location": "India",
+              "formFields": [
+                {
+                  "__typename": "FormFieldRecord",
+                  "id": "VApTQnwaTFuBXC1SXiNeTg",
+                  "name": "Address",
+                  "placeHolderText": "Enter your Address",
+                  "fieldType": "text"
+                },
+                {
+                  "__typename": "FormFieldRecord",
+                  "id": "ObOhPllNQDic6WOq7afTwg",
+                  "name": "Phone",
+                  "placeHolderText": "Enter your Phone",
+                  "fieldType": "number"
+                },
+                {
+                  "__typename": "FormFieldRecord",
+                  "id": "FeYbfcIqQzOMTET1PkufEw",
+                  "name": "Email",
+                  "placeHolderText": "Enter your Email",
+                  "fieldType": "email"
+                },
+                {
+                  "__typename": "FormFieldRecord",
+                  "id": "KoIBcF9JSOK4YEwkldXx8A",
+                  "name": "Name",
+                  "placeHolderText": "Enter your name",
+                  "fieldType": "text"
+                }
+              ]
+            }
+          },
+          {
+            "__typename": "FooterRecord",
+            "id": "DUfzM3YrRB-3Sz7v11wtMg",
+            "title": "Subhakanta",
+            "bodycopy": "<p>Subhakanta Mishra is a Senior Associate Full Stack Frontend Developer specializing in React, Next.js, and TypeScript. He builds high-performance, scalable web applications and excels in Headless CMS integration and agile development.</p>",
+            "emailAddress": "subhakanta.mishra3105@gmail.com",
+            "navLinkReference": [
+              {
+                "__typename": "FooterNavLinkRecord",
+                "linkTitle": "Quick Link",
+                "links": [
+                  {
+                    "__typename": "HeaderlinkRecord",
+                    "id": "DtI_BDuAR1Srm7bBqGPz4g",
+                    "linktext": "Home",
+                    "linklocation": "#home"
+                  },
+                  {
+                    "__typename": "HeaderlinkRecord",
+                    "id": "QEZdwmMFT6KiOth5j9ViZA",
+                    "linktext": "Skills",
+                    "linklocation": "#advantages"
+                  },
+                  {
+                    "__typename": "HeaderlinkRecord",
+                    "id": "WYNQZXfYTuWUhe4oo5W7EA",
+                    "linktext": "Service",
+                    "linklocation": "#services"
+                  },
+                  {
+                    "__typename": "HeaderlinkRecord",
+                    "id": "GwYMDlCfQ2y_r9akLUrvHQ",
+                    "linktext": "Portfolio",
+                    "linklocation": "#portfolio"
+                  }
+                ]
+              },
+              {
+                "__typename": "FooterNavLinkRecord",
+                "linkTitle": "Link",
+                "links": [
+                  {
+                    "__typename": "HeaderlinkRecord",
+                    "id": "L6rMqUA-RPu_suqkuLXGsA",
+                    "linktext": "Privacy policy",
+                    "linklocation": "https://www.google.com"
+                  },
+                  {
+                    "__typename": "HeaderlinkRecord",
+                    "id": "JSP5ZqASReajkFhYBQi2eA",
+                    "linktext": "Terms of use",
+                    "linklocation": "https://www.google.com"
+                  }
+                ]
+              }
+            ],
+            "socialShareReference": {
+              "__typename": "SocialShareRecord",
+              "id": "SXxaoUfzRJyKA3_6EW7koQ",
+              "title": "Social Media",
+              "socialLinks": [
+                {
+                  "__typename": "SocialLinkRecord",
+                  "id": "Ev2v8kAQQBOpa6CcSYuQNQ",
+                  "iconCode": "youtube",
+                  "link": "https://www.youtube.com/@purgatorytv6640"
+                },
+                {
+                  "__typename": "SocialLinkRecord",
+                  "id": "DQYpXPTKTn25TAmJJjn9dA",
+                  "iconCode": "linkedIn",
+                  "link": "https://www.linkedin.com/in/subhakanta-mishra-004828221/"
+                },
+                {
+                  "__typename": "SocialLinkRecord",
+                  "id": "bTuJ0QDeQZm6tfw4EcSk6A",
+                  "iconCode": "discord",
+                  "link": "https://discord.gg/FNCYtJTuDH"
+                },
+                {
+                  "__typename": "SocialLinkRecord",
+                  "id": "ZR_Rr0o2QXiF3ReHkeyK1A",
+                  "iconCode": "instagram",
+                  "link": "https://www.instagram.com/subha_kant/"
+                }
+              ]
+            },
+            "copyrightText": "@ 2025 All rights reserved - Subhakanta",
+            "resumeFileName": "resume_subhakanta_mishra.pdf",
+            "downloadResumeText": "Download Resume"
+          }
+        ]
+      }
+    ]
+  }
+}

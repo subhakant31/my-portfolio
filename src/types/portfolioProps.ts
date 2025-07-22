@@ -1,9 +1,10 @@
+import { PageHeadingProps } from "./pageHeadingProps";
 
 export interface WebsiteLinks {
-    websiteSource: string
-    imageSource: string
-
+  websiteSource: string;
+  imageSource: string;
 }
 export interface PortfolioProps {
-    items: WebsiteLinks[]
+  pageHeading: PageHeadingProps;
+  items: WebsiteLinks[];
 }

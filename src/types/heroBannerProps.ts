@@ -4,7 +4,7 @@ export interface HeroBannerProps {
   title?: string;
   titleSize?: React.ElementType | string;
   bodycopy?: RichTextProps;
-  eyeBrowText?: string;
+  eyebrowText?: string;
   enableImageEffects?: boolean;
   imageReference?: ImageReferenceProps;
   renderPillIcon?: boolean;
