@@ -3,7 +3,9 @@ import { Heading } from "@/components/atoms/Heading";
 import { Service, ServicesProps } from "@/types/servicesProps";
 import { RichText } from "@/components/atoms/RichText";
 import { getReactIcon } from "@/utilities/getReactIcon";
-import React from "react";
+import React, { Component } from "react";
+import ComponentWrapper from "@/components/ComponentWrapper";
+import PageHeading from "../PageHeading";
 const ServiceCard = (props: Service) => {
   return (
     <div className={`${styles.serviceCardWrapper}`}>
@@ -19,10 +21,10 @@ const ServiceCard = (props: Service) => {
         <div className={styles.separatorLarge}></div>
         <div className={styles.separatorSmall}></div>
       </div>
-      {props?.serviceDescription?.html && (
+      {props?.serviceDescription && (
         <RichText
           className={styles.description}
-          html={props?.serviceDescription?.html}
+          html={props?.serviceDescription}
         ></RichText>
       )}
     </div>
@@ -34,14 +36,17 @@ export const Services = (props: ServicesProps) => {
     "--separatorColor": props?.separatorColor,
   };
   return (
-    <div className={styles.servicesList} style={servicesStyles}>
-      {props?.services?.map((item) => {
-        return (
-          <React.Fragment key={item.iconCode}>
-            <ServiceCard {...item} />
-          </React.Fragment>
-        );
-      })}
-    </div>
+    <ComponentWrapper className='services section' id='services'>
+      <PageHeading {...props.pageHeading} />
+      <div className={styles.servicesList} style={servicesStyles}>
+        {props?.services?.map((item) => {
+          return (
+            <React.Fragment key={item.iconCode}>
+              <ServiceCard {...item} />
+            </React.Fragment>
+          );
+        })}
+      </div>
+    </ComponentWrapper>
   );
 };

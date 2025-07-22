@@ -1,5 +1,5 @@
 export interface PageHeadingProps {
-  eyeBrowText?: string;
+  eyebrowText?: string;
   title?: string;
   titleSize?: React.ElementType | string;
   textAlign?: string;

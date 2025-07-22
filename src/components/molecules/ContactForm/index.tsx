@@ -25,9 +25,9 @@ export default function ContactForm(props: ContactFormProps) {
     console.log(formData, "form data");
   };
   return (
-    <div className="form-container">
-      <form action="" onSubmit={handleSubmit}>
-        <h1 className="form-heading">{props.formTitle}</h1>
+    <div className='form-container'>
+      <form action='' onSubmit={handleSubmit}>
+        <h1 className='form-heading'>{props.formTitle}</h1>
         {props.formFields.map((field) => {
           return (
             <input
@@ -35,16 +35,16 @@ export default function ContactForm(props: ContactFormProps) {
               placeholder={field.placeHolderText}
               name={field.name}
               onChange={handleChange}
-              className="input-field"
-              key={field.name}
+              className='input-field'
+              key={field.id}
             />
           );
         })}
-        <div className="submit-location-container">
-          <button type="submit" className="submit-btn">
+        <div className='submit-location-container'>
+          <button type='submit' className='submit-btn'>
             {props.submitBtnText}
           </button>
-          <h3 className="location">{props.location}</h3>
+          <h3 className='location'>{props.location}</h3>
         </div>
       </form>
     </div>

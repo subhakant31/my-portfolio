@@ -45,6 +45,9 @@ body {
   background-color: $body-bg-color;
   color: $default-font-color;
   margin: 0;
+  font-family: "Urbanist", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 main {
@@ -58,4 +61,85 @@ ul {
 
 html {
   overflow: hidden;
+}
+
+main {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 100vh; /* Make sure main takes full viewport height */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  @media screen and (max-width: 768px) {
+    scroll-snap-type: unset;
+  }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.main::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.heading-content-wrapper {
+  max-width: 1500px;
+}
+
+.section {
+  scroll-snap-align: center; /* Aligns each section to the center of the viewport */
+  height: 100vh; /* Each section takes full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 32px;
+  padding-right: 32px;
+  &:nth-child(even) {
+    background-color: #0e0e0e;
+  }
+  @media screen and (max-width: 768px) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+    align-items: flex-start;
+    height: fit-content;
+  }
+}
+
+.header {
+  position: sticky;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 1200px;
+  z-index: 99;
+  border-radius: 50px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 1s;
+  // &.hide-header {
+  //   top: -100px;
+  // }
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    bottom: 20px;
+    overflow-x: scroll;
+    height: fit-content;
+    top: unset;
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+    }
+  }
+}
+
+#footer {
+  @media screen and (max-width: 768px) {
+    padding-bottom: 200px;
+  }
 }

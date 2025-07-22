@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Heading.module.scss";
 import { HeadingProps } from "@/types/HeadingProps";
 
 export const CustomHeading: React.FC<HeadingProps> = ({
