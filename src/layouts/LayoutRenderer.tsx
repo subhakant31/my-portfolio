@@ -1,8 +1,14 @@
 import PageComponentsRenderer from "@/components/PageComponentsRenderer";
 import MainLayout from "./MainLayout";
-const RenderLayout = ({ pageComponentList }: { pageComponentList: any }) => {
+const RenderLayout = ({
+  pageComponentList,
+  pageTitle,
+}: {
+  pageComponentList: any;
+  pageTitle: string;
+}) => {
   return (
-    <MainLayout>
+    <MainLayout pageTitle={pageTitle}>
       <PageComponentsRenderer pageComponentList={pageComponentList} />
     </MainLayout>
   );

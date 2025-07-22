@@ -17,6 +17,10 @@ h1 {
   font-size: $font-size-xlarge;
   line-height: 5rem;
   font-weight: 400;
+  @media screen and (max-width: 768px) {
+    font-size: 40px;
+    line-height: 3rem;
+  }
 }
 
 h2 {
@@ -39,6 +43,10 @@ p {
   font-size: $font-size-small;
   line-height: 2rem;
   margin: 0;
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+    line-height: 1.5rem;
+  }
 }
 
 body {
@@ -60,7 +68,12 @@ ul {
 }
 
 html {
-  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
 }
 
 main {
@@ -129,6 +142,9 @@ main {
   @media screen and (max-width: 768px) {
     position: fixed;
     bottom: 20px;
+    left: 16px;
+    right: 16px;
+
     overflow-x: scroll;
     height: fit-content;
     top: unset;

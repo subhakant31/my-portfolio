@@ -5,7 +5,6 @@ export default function Document() {
   return (
     <Html lang='en'>
       <Head>
-        <title>Subhakanta Mishra | Full Stack Developer Portfolio</title>
         <link rel='preconnect' href='https://fonts.googleapis.com'></link>
         <link
           rel='preconnect'

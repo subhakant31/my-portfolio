@@ -1,19 +1,12 @@
 import { HeaderProps } from "@/types/HeaderProps";
 import styles from "./Header.module.scss";
 import { Jost } from "next/font/google";
-import { CtaLink } from "@/types/commonModels";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 
 const jost = Jost({ subsets: ["latin"] });
 
-type Props = HeaderProps & {
-  onLinkClick?: (id: string) => void;
-  activeSection?: string;
-  listitems: CtaLink[];
-};
-
-export const Header = ({ listitems, onLinkClick }: Props) => {
+export const Header = (props: HeaderProps) => {
   const [activeSection, setActiveSection] = useState<string>("");
   const navListRef = useRef<HTMLUListElement>(null);
 
@@ -39,7 +32,7 @@ export const Header = ({ listitems, onLinkClick }: Props) => {
       threshold: 0,
     });
 
-    const sectionIds = listitems.map((item) =>
+    const sectionIds = props.listitems.map((item) =>
       item.linklocation.replace("#", "")
     );
 
@@ -49,14 +42,14 @@ export const Header = ({ listitems, onLinkClick }: Props) => {
     });
 
     return () => observer.disconnect();
-  }, [listitems]);
+  }, [props.listitems]);
 
   return (
     <div className='header show-header'>
       <header className={`${styles.header} ${jost.className}`}>
         <nav className={styles.navigation}>
           <ul className={styles.navList} ref={navListRef}>
-            {listitems?.map((item, index) => {
+            {props.listitems?.map((item, index) => {
               const sectionId = item.linklocation.replace("#", "");
               const isActive = activeSection === sectionId;
 
@@ -67,13 +60,7 @@ export const Header = ({ listitems, onLinkClick }: Props) => {
                     isActive ? styles.active : ""
                   }`}
                 >
-                  <Link
-                    href={item.linklocation}
-                    className={styles.link}
-                    onClick={(e) => {
-                      if (onLinkClick) onLinkClick(sectionId);
-                    }}
-                  >
+                  <Link href={item.linklocation} className={styles.link}>
                     {item.linktext}
                   </Link>
                 </li>

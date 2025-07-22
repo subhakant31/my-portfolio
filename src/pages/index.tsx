@@ -4,13 +4,20 @@ const IndexPage = ({
   pageComponentList,
   errorCode,
   errorMessage,
+  pageTitle,
 }: {
   pageComponentList: any;
   errorCode: number;
   errorMessage: string;
+  pageTitle: string;
 }) => {
   if (errorCode) return <h1>{errorMessage}</h1>;
-  return <RenderLayout pageComponentList={pageComponentList}></RenderLayout>;
+  return (
+    <RenderLayout
+      pageComponentList={pageComponentList}
+      pageTitle={pageTitle}
+    ></RenderLayout>
+  );
 };
 
 export const getServerSideProps = async () => {
@@ -47,6 +54,7 @@ export const getServerSideProps = async () => {
         headerData: responseData.data.allPages[0].components.find(
           (component: any) => component.__typename === "HeaderRecord"
         ),
+        pageTitle: responseData.data.allPages[0].pageTitle || "My Portfolio",
       },
     };
   } catch (error) {
