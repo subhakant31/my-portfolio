@@ -1,23 +1,24 @@
 import PageHeading from "@/components/molecules/PageHeading";
 import { ContactUsSectionProps } from "@/types/contactUsSectionProps";
 import { RichText } from "@/components/atoms/RichText";
-import "./ContactUs.scss";
+import styles from "./ContactUsSection.module.scss";
 import SocialShare from "@/components/molecules/SocialShare";
 import ContactForm from "@/components/molecules/ContactForm";
 import ComponentWrapper from "@/components/ComponentWrapper";
+
 export default function ContactUsSection(props: ContactUsSectionProps) {
   return (
     <ComponentWrapper className='contact section' id='contact'>
-      <div className='contact-us-section'>
-        <div className='left-container'>
+      <div className={styles.contactUsSection}>
+        <div className={styles.leftContainer}>
           <PageHeading {...props.pageHeading} />
           {props.bodycopy && (
-            <RichText className='description' html={props.bodycopy}></RichText>
+            <RichText className={styles.description} html={props.bodycopy} />
           )}
-          <div className='separator'></div>
+          <div className={styles.separator}></div>
           <SocialShare {...props.socialShareReference} />
         </div>
-        <div className='right-container'>
+        <div className={styles.rightContainer}>
           <ContactForm {...props.formReference} />
         </div>
       </div>

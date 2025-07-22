@@ -1,50 +1,45 @@
 import { FooterProps } from "@/types/footerProps";
 import { RichText } from "@/components/atoms/RichText";
 import SocialShare from "@/components/molecules/SocialShare";
-import "./footer.scss";
 import { getReactIcon } from "@/utilities/getReactIcon";
 import ComponentWrapper from "@/components/ComponentWrapper";
+import styles from "./Footer.module.scss";
+
 export default function Footer(props: FooterProps) {
   return (
     <ComponentWrapper className='footer section' id='footer'>
-      <footer>
-        <div className='footer-container'>
-          <div className='footer-info-container'>
-            <h2 className='footer-logo-heading'>{props.title}</h2>
+      <footer className={styles.footer}>
+        <div className={styles.footerContainer}>
+          <div className={styles.footerInfoContainer}>
+            <h2 className={styles.footerLogoHeading}>{props.title}</h2>
             <RichText
               html={props.bodycopy}
-              className='footer-description'
-            ></RichText>
-            <p className='email-address'>
+              className={styles.footerDescription}
+            />
+            <p className={styles.emailAddress}>
               {getReactIcon("email")}
               {props.emailAddress}
             </p>
           </div>
-          <div className='nav-list-wrapper'>
-            {props.navLinkReference.map((navLink) => {
-              return (
-                <div className='navLinks-container' key={navLink.linkTitle}>
-                  <h3>{navLink.linkTitle}</h3>
-                  <ul className='list'>
-                    {navLink.links.map((linkItem) => {
-                      return (
-                        <li key={linkItem.linktext}>
-                          <a href={linkItem.linklocation}>
-                            {linkItem.linktext}
-                          </a>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              );
-            })}
+          <div className={styles.navListWrapper}>
+            {props.navLinkReference.map((navLink) => (
+              <div className={styles.navLinksContainer} key={navLink.linkTitle}>
+                <h3>{navLink.linkTitle}</h3>
+                <ul className={styles.list}>
+                  {navLink.links.map((linkItem) => (
+                    <li key={linkItem.linktext}>
+                      <a href={linkItem.linklocation}>{linkItem.linktext}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-          <div className='social-share-download-wrapper'>
+          <div className={styles.socialShareDownloadWrapper}>
             <SocialShare {...props.socialShareReference} />
             <a
-              href={"/pdf/resume.pdf"}
-              className='resume-download-btn'
+              href='/pdf/resume.pdf'
+              className={styles.resumeDownloadBtn}
               download={props.resumeFileName}
             >
               {getReactIcon("download")}
@@ -52,8 +47,8 @@ export default function Footer(props: FooterProps) {
             </a>
           </div>
         </div>
-        <div className='separator'></div>
-        <p className='copyright-text'>{props.copyrightText}</p>
+        <div className={styles.separator}></div>
+        <p className={styles.copyrightText}>{props.copyrightText}</p>
       </footer>
     </ComponentWrapper>
   );

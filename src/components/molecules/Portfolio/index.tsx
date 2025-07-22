@@ -1,7 +1,8 @@
 import { PortfolioProps } from "@/types/portfolioProps";
-import "./portfolio.scss";
 import ComponentWrapper from "@/components/ComponentWrapper";
 import PageHeading from "../PageHeading";
+import styles from "./Portfolio.module.scss";
+
 export default function Portfolio(props: PortfolioProps) {
   const half = Math.ceil(props.items.length / 2);
   const firstHalf = props.items.slice(0, half);
@@ -10,26 +11,26 @@ export default function Portfolio(props: PortfolioProps) {
   return (
     <ComponentWrapper className='portfolio section' id='portfolio'>
       <PageHeading {...props.pageHeading} />
-      <div className='website-list-container'>
-        <div className='first-row website-row'>
+      <div className={styles.websiteListContainer}>
+        <div className={`${styles.websiteRow}`}>
           {firstHalf.map((item, index) => (
             <a
               key={`first-${index}`}
               href={item.websiteSource}
               target='_blank'
-              className='website-container'
+              className={styles.websiteContainer}
             >
               <img src={item.imageSource} alt='' />
             </a>
           ))}
         </div>
-        <div className='second-row website-row'>
+        <div className={`${styles.websiteRow} ${styles.secondRow}`}>
           {secondHalf.map((item, index) => (
             <a
               key={`second-${index}`}
               href={item.websiteSource}
               target='_blank'
-              className='website-container'
+              className={styles.websiteContainer}
             >
               <img src={item.imageSource} alt='' />
             </a>
