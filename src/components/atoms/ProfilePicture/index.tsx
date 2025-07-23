@@ -24,7 +24,7 @@ export const ProfilePicture = (props: ProfilePictureProps) => {
 
       return () => clearInterval(interval);
     }
-  }, []);
+  }, [props.enableImageEffects]);
 
   const borderColor: any = {
     "--borderColor": props?.borderColor || "none",

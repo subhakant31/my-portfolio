@@ -1,15 +1,20 @@
 import { GrAnnounce } from "react-icons/gr";
-import { FaCode, FaLock } from "react-icons/fa";
-import { IoMdGitNetwork, IoMdSettings } from "react-icons/io";
-import { FaInstagram } from "react-icons/fa";
-import { FaTelegram } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
+import {
+  FaCode,
+  FaLock,
+  FaInstagram,
+  FaTelegram,
+  FaTwitter,
+  FaFacebook,
+  FaDownload,
+  FaDiscord,
+  FaLinkedin,
+  FaYoutube,
+  FaGithub,
+} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { FaDownload } from "react-icons/fa";
-import { FaDiscord } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
+import { IoMdGitNetwork, IoMdSettings } from "react-icons/io";
+
 const iconMap: any = {
   announcement: GrAnnounce,
   code: FaCode,
@@ -25,6 +30,7 @@ const iconMap: any = {
   discord: FaDiscord,
   linkedIn: FaLinkedin,
   youtube: FaYoutube,
+  github: FaGithub,
   // Add more icons to the map as needed
 };
 
