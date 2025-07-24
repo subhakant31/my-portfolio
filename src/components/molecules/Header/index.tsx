@@ -7,8 +7,11 @@ import Link from "next/link";
 const jost = Jost({ subsets: ["latin"] });
 
 export const Header = (props: HeaderProps) => {
-  const [activeSection, setActiveSection] = useState<string>("");
+  const [activeSection, setActiveSection] = useState<string>(
+    props.listitems[0].linklocation.replace("#", "")
+  );
   const navListRef = useRef<HTMLUListElement>(null);
+  const activeElementRef = useRef<HTMLDivElement>(null);
 
   /*
    * Intersection Observer to detect which section is currently active
@@ -44,28 +47,51 @@ export const Header = (props: HeaderProps) => {
     return () => observer.disconnect();
   }, [props.listitems]);
 
+  /*
+   * Move the active element to align with the currently active nav link
+   */
+  useEffect(() => {
+    const navList = navListRef.current;
+    const activeElement = activeElementRef.current;
+
+    if (!navList || !activeElement || !activeSection) return;
+
+    const listItems = navList.querySelectorAll(".listItem");
+
+    listItems.forEach((listItem) => {
+      const link = listItem.querySelector(".navLink");
+      const href = link
+        ?.getAttribute("href")
+        ?.replace("#", "")
+        ?.replace("/", "");
+
+      if (href === activeSection) {
+        const offsetLeft = (listItem as HTMLElement).offsetLeft;
+
+        activeElement.style.transform = `translateX(${offsetLeft}px)`;
+      }
+    });
+  }, [activeSection]);
+
   return (
     <div className='header show-header'>
       <header className={`${styles.header} ${jost.className}`}>
         <nav className={styles.navigation}>
           <ul className={styles.navList} ref={navListRef}>
-            {props.listitems?.map((item, index) => {
-              const sectionId = item.linklocation.replace("#", "");
-              const isActive = activeSection === sectionId;
-
-              return (
-                <li
-                  key={item.linklocation + index}
-                  className={`${styles.listItem} ${
-                    isActive ? styles.active : ""
-                  }`}
+            <div className={styles.activeElement} ref={activeElementRef}></div>
+            {props.listitems?.map((item, index) => (
+              <li
+                key={item.linklocation + index}
+                className={`${styles.listItem} listItem`}
+              >
+                <Link
+                  href={item.linklocation}
+                  className={`${styles.link} navLink`}
                 >
-                  <Link href={item.linklocation} className={styles.link}>
-                    {item.linktext}
-                  </Link>
-                </li>
-              );
-            })}
+                  {item.linktext}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </header>
