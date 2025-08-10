@@ -2,7 +2,7 @@
   "data": {
     "allPages": [
       {
-        "pageTitle": "Subhakanta Mishra - Full Stack Developer",
+        "pageTitle": "Subhakanta Mishra | Full Stack Developer",
         "components": [
           {
             "__typename": "HeaderRecord",
@@ -43,13 +43,13 @@
           {
             "__typename": "HerobannerRecord",
             "id": "SVZu71Z9ToSTk8rTkkwvjw",
-            "title": "I'm a Full stack Developer Based In India",
+            "title": "I'm a Full stack Web Developer Based In India",
             "titleSize": "h1",
             "renderPillIcon": true,
-            "bodycopy": "<p>I've done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use.</p>",
+            "bodycopy": "<p>I specialize in crafting high-performance, secure, and accessible web applications using the latest tech stacks, including Next.js and various CMS platforms. My goal is to build digital experiences that are not only visually appealing but also user-friendly, easily authorable, and optimized for speed and security, ensuring a robust online presence.</p>",
             "borderColor": "#26e989",
             "enableImageEffects": true,
-            "eyebrowText": "Hello, I'm Subhakanta Mishra. Full stack developer",
+            "eyebrowText": "Hello, I'm Subhakanta Mishra. Full stack Web developer",
             "imageReference": {
               "__typename": "ImageRecord",
               "id": "H8pYTyQaQWmsrZ7wAjUcnQ",
@@ -176,6 +176,12 @@
                 "id": "Io6hFIOfRai9zUe_DTnvsg",
                 "websiteSource": "https://ecommerce-shop-co.netlify.app/",
                 "imageSource": "https://i.ibb.co/v6HPmdMz/image.png"
+              },
+              {
+                "__typename": "PortfolioWebLinkRecord",
+                "id": "ACF9v64rRcmrWKLu9rgp5Q",
+                "websiteSource": "https://www.humanafoundation.org/",
+                "imageSource": "https://i.ibb.co/hJn5CR2r/image.png"
               }
             ]
           },
@@ -211,8 +217,8 @@
                 {
                   "__typename": "SocialLinkRecord",
                   "id": "bTuJ0QDeQZm6tfw4EcSk6A",
-                  "iconCode": "discord",
-                  "link": "https://discord.gg/FNCYtJTuDH"
+                  "iconCode": "github",
+                  "link": "https://github.com/subhakant31"
                 },
                 {
                   "__typename": "SocialLinkRecord",
@@ -228,34 +234,58 @@
               "formTitle": "Get In Touch!",
               "submitBtnText": "Submit",
               "location": "India",
+              "modalReference": {
+                "__typename": "ModalRecord",
+                "successTitle": "Thank You!",
+                "successDescription": "Your message has been sent successfully",
+                "id": "fgJpiQCqSt-ENuJH_zRF4A",
+                "failureTitle": "Sorry",
+                "failureDescription": "Your message couldn't be delivered. Please try after sometime. If problem persists, contact +919114176213",
+                "closeText": "Close"
+              },
+              "contactForm": {
+                "__typename": "ContactFormRecord",
+                "to": "subhakanta.mishra3105@gmail.com",
+                "subject": "Contact Form Submission",
+                "id": "K-5MKzahQge5CpbsxD1M6w",
+                "cc": "rockingsubha666@gmail.com"
+              },
               "formFields": [
                 {
                   "__typename": "FormFieldRecord",
                   "id": "VApTQnwaTFuBXC1SXiNeTg",
                   "name": "Address",
                   "placeHolderText": "Enter your Address",
-                  "fieldType": "text"
+                  "fieldType": "text",
+                  "isRequired": true,
+                  "validation": ""
                 },
                 {
                   "__typename": "FormFieldRecord",
                   "id": "ObOhPllNQDic6WOq7afTwg",
                   "name": "Phone",
                   "placeHolderText": "Enter your Phone",
-                  "fieldType": "number"
+                  "fieldType": "number",
+                  "isRequired": true,
+                  "validation": "phoneNumber"
                 },
                 {
                   "__typename": "FormFieldRecord",
                   "id": "FeYbfcIqQzOMTET1PkufEw",
                   "name": "Email",
                   "placeHolderText": "Enter your Email",
-                  "fieldType": "email"
+                  "fieldType": "email",
+                  "isRequired": true,
+                  "validation": "email"
                 },
                 {
                   "__typename": "FormFieldRecord",
                   "id": "KoIBcF9JSOK4YEwkldXx8A",
                   "name": "Name",
                   "placeHolderText": "Enter your name",
-                  "fieldType": "text"
+                  "fieldType": "text",
+                  "isRequired": true,
+                  "validation": "text"
                 }
               ]
             }
@@ -336,8 +366,8 @@
                 {
                   "__typename": "SocialLinkRecord",
                   "id": "bTuJ0QDeQZm6tfw4EcSk6A",
-                  "iconCode": "discord",
-                  "link": "https://discord.gg/FNCYtJTuDH"
+                  "iconCode": "github",
+                  "link": "https://github.com/subhakant31"
                 },
                 {
                   "__typename": "SocialLinkRecord",

@@ -6,8 +6,6 @@
   padding: 48px;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5.8px);
-  -webkit-backdrop-filter: blur(5.8px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   transition: all 1s;
   border-radius: 30px;
@@ -32,18 +30,56 @@
   }
 }
 
-.inputField {
-  background-color: transparent;
-  padding: 24px;
-  padding-left: 0;
-  border: none;
-  border-bottom: 1.5px solid grey;
-  color: white;
-  font-size: large;
-  outline: none;
+.inputWrapper {
+  .inputField {
+    background-color: transparent;
+    padding: 24px;
+    padding-left: 0;
+    border: none;
+    border-bottom: 1.5px solid grey;
+    color: white;
+    font-size: large;
+    outline: none;
+    width: 100%;
+    &:hover {
+      border-bottom: 1.5px solid #22e797;
+      color: #22e797;
+      cursor: pointer;
+    }
+    &::placeholder {
+      opacity: 0.5;
+    }
+    &.error {
+      border-bottom: 1.5px solid #ff4d4d;
+      color: #ff4d4d;
+      &:focus {
+        border-bottom: 1.5px solid #ff4d4d;
+        color: #ff4d4d;
+      }
+    }
+    &:focus {
+      border-bottom: 1.5px solid #22e797;
+      color: #22e797;
+    }
+  }
+}
 
-  &::placeholder {
-    opacity: 0.5;
+.errorList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #ff4d4d;
+  font-size: 16px;
+  margin-top: 20px;
+  li {
+    margin-bottom: 8px;
+    width: fit-content;
+    cursor: pointer;
+    &:hover {
+      color: #ff4d4d;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   }
 }
 
@@ -54,18 +90,74 @@
 }
 
 .submitBtn {
-  margin-top: 48px;
-  width: fit-content;
   background-color: #22e797;
-  padding: 20px 50px;
-  border-radius: 30px;
   color: white;
-  font-size: large;
+  font-size: 20px;
   border: none;
+  cursor: pointer;
+  padding: 16px 32px;
+  border-radius: 30px;
+  transition: all 0.3s;
+  margin-top: 48px;
+  &:hover {
+    background-color: rgba(34, 231, 151, 0.1);
+  }
 }
 
 .location {
   color: #22e797;
   margin-top: 48px;
   font-weight: 400;
+}
+
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  .modal {
+    background: black;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 32px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+
+    .modalTitle {
+      margin-bottom: 48px;
+      font-size: 32px;
+      line-height: normal;
+      font-weight: 800;
+    }
+
+    .modalMessage {
+      margin-bottom: 24px;
+      font-size: 24px;
+      max-width: 750px;
+      @media screen and (max-width: 768px) {
+        font-size: 20px;
+      }
+    }
+    .closeModalBtn {
+      margin-top: 24px;
+      background-color: transparent;
+      color: #22e797;
+      font-size: 20px;
+      border: none;
+      cursor: pointer;
+      padding: 12px 24px;
+      border-radius: 30px;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: rgba(34, 231, 151, 0.1);
+      }
+    }
+  }
 }
