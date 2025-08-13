@@ -1,7 +1,7 @@
 import { ContactFormProps } from "@/types/contactFormProps";
 import { useState } from "react";
 import styles from "./ContactForm.module.scss";
-import validateFormData from "@/utilities/validateFormData"; // Assuming you have a validation function
+import validateFormData from "@/utilities/validateFormData";
 
 export default function ContactForm(props: ContactFormProps) {
   const [formData, setFormData] = useState(() => {
@@ -14,6 +14,8 @@ export default function ContactForm(props: ContactFormProps) {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [isFormSuccess, setIsFormSuccess] = useState(false);
   const [isValid, setIsValid] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false); // ✅ New state
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -27,15 +29,14 @@ export default function ContactForm(props: ContactFormProps) {
 
     const { isValid, errors } = validateFormData(formData, props.formFields);
 
-    if (isValid) {
-      setIsValid(true);
-    }
-
     if (!isValid) {
       console.error("Validation errors:", errors);
       setIsValid(false);
       return;
     }
+
+    setIsSubmitting(true);
+    setIsValid(true);
 
     try {
       const response = await fetch("/api/emailSubmitter", {
@@ -64,6 +65,9 @@ export default function ContactForm(props: ContactFormProps) {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      setIsFormSuccess(false);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -118,19 +122,28 @@ export default function ContactForm(props: ContactFormProps) {
           </>
         )}
         <div className={styles.submitLocationContainer}>
-          <button type='submit' className={styles.submitBtn}>
-            {props.submitBtnText}
+          <button
+            type='submit'
+            className={styles.submitBtn}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <span className={styles.loader}></span>
+            ) : (
+              props.submitBtnText
+            )}
           </button>
           <h3 className={styles.location}>{props.location}</h3>
         </div>
       </form>
+
       {isFormSubmitted && (
         <div className={styles.modalWrapper}>
           <div className={styles.modal}>
             <h1 className={styles.modalTitle}>
               {isFormSuccess
                 ? props.modalReference.successTitle
-                : props.modalReference.failureTitle}{" "}
+                : props.modalReference.failureTitle}
             </h1>
             <p className={styles.modalMessage}>
               {isFormSuccess
