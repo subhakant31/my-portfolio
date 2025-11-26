@@ -154,6 +154,13 @@ main {
   }
 }
 
+.profileImageWrapper {
+  width: fit-content;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
 #footer {
   @media screen and (max-width: 768px) {
     padding-bottom: 200px;
