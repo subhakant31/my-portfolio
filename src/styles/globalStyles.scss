@@ -144,7 +144,7 @@ main {
     bottom: 20px;
     left: 16px;
     right: 16px;
-
+    transform: translateY(0px) !important;
     overflow-x: scroll;
     height: fit-content;
     top: unset;

@@ -5,22 +5,36 @@ import styles from "./ContactUsSection.module.scss";
 import SocialShare from "@/components/molecules/SocialShare";
 import ContactForm from "@/components/molecules/ContactForm";
 import ComponentWrapper from "@/components/ComponentWrapper";
-
+import MotionContainer from "@/components/atoms/MotionContainer";
+import { motion } from "motion/react";
 export default function ContactUsSection(props: ContactUsSectionProps) {
   return (
     <ComponentWrapper className='contact section' id='contact'>
       <div className={styles.contactUsSection}>
         <div className={styles.leftContainer}>
-          <PageHeading {...props.pageHeading} />
+          <MotionContainer animationType='leftToRight' index={0}>
+            <PageHeading {...props.pageHeading} />
+          </MotionContainer>
+
           {props.bodycopy && (
-            <RichText className={styles.description} html={props.bodycopy} />
+            <MotionContainer animationType='leftToRight' index={1}>
+              <RichText className={styles.description} html={props.bodycopy} />
+            </MotionContainer>
           )}
           <div className={styles.separator}></div>
-          <SocialShare {...props.socialShareReference} />
+          <MotionContainer animationType='leftToRight' index={2}>
+            <SocialShare {...props.socialShareReference} />
+          </MotionContainer>
         </div>
-        <div className={styles.rightContainer}>
+        <motion.div
+          className={styles.rightContainer}
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <ContactForm {...props.formReference} />
-        </div>
+        </motion.div>
       </div>
     </ComponentWrapper>
   );

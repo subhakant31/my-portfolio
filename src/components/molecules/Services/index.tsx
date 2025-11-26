@@ -6,9 +6,18 @@ import { getReactIcon } from "@/utilities/getReactIcon";
 import React, { Component } from "react";
 import ComponentWrapper from "@/components/ComponentWrapper";
 import PageHeading from "../PageHeading";
-const ServiceCard = (props: Service) => {
+import { motion } from "motion/react";
+type ServiceCardProps = Service & { index: number };
+const ServiceCard = (props: ServiceCardProps) => {
+  const delayValue = props.index * 0.5;
   return (
-    <div className={`${styles.serviceCardWrapper}`}>
+    <motion.div
+      className={styles.serviceCardWrapper}
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut", delay: delayValue }}
+      viewport={{ once: true }}
+    >
       <div className={styles.iconWrapper}>
         {props?.iconCode && getReactIcon(props?.iconCode)}
       </div>
@@ -27,7 +36,7 @@ const ServiceCard = (props: Service) => {
           html={props?.serviceDescription}
         ></RichText>
       )}
-    </div>
+    </motion.div>
   );
 };
 
@@ -39,10 +48,10 @@ export const Services = (props: ServicesProps) => {
     <ComponentWrapper className='services section' id='services'>
       <PageHeading {...props.pageHeading} />
       <div className={styles.servicesList} style={servicesStyles}>
-        {props?.services?.map((item) => {
+        {props?.services?.map((item, index) => {
           return (
             <React.Fragment key={item.iconCode}>
-              <ServiceCard {...item} />
+              <ServiceCard {...item} index={index} />
             </React.Fragment>
           );
         })}

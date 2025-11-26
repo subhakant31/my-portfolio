@@ -6,16 +6,18 @@ import { getReactIcon } from "@/utilities/getReactIcon";
 import { Heading } from "@/components/atoms/Heading";
 import ComponentWrapper from "@/components/ComponentWrapper";
 import PageHeading from "../PageHeading";
+import { motion } from "motion/react";
 
 const AdvantageCard = ({
   advantageIcon,
   advantageTitle,
   confidentPercentage,
+  index,
 }: Advantage) => {
   const [currentWidth, setCurrentWidth] = useState("0%");
   const cardRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-
+  const delayValue = index * 0.5;
   // Observe visibility of the card
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,7 +44,14 @@ const AdvantageCard = ({
   }, [isVisible, confidentPercentage]);
 
   return (
-    <div ref={cardRef} className={styles.advantageCardWrapper}>
+    <motion.div
+      ref={cardRef}
+      className={styles.advantageCardWrapper}
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut", delay: delayValue }}
+      viewport={{ once: true }}
+    >
       <div className={styles.iconHeadingWrapper}>
         <div className={styles.iconWrapper}>
           {advantageIcon && getReactIcon(advantageIcon)}
@@ -63,7 +72,7 @@ const AdvantageCard = ({
           }}
         ></div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -72,8 +81,8 @@ const Advantages = (props: AdvantagesProps) => {
     <ComponentWrapper className='advantages section' id='advantages'>
       <PageHeading {...props.pageHeading} />
       <div className={styles.advantagesWrapper}>
-        {props.advantages?.map((advantage) => (
-          <AdvantageCard key={advantage.id} {...advantage} />
+        {props.advantages?.map((advantage, index) => (
+          <AdvantageCard key={advantage.id} {...advantage} index={index} />
         ))}
       </div>
     </ComponentWrapper>

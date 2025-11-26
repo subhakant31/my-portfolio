@@ -5,6 +5,7 @@ export interface Advantage {
   advantageIcon?: string;
   confidentPercentage?: number;
   id: string;
+  index: number;
 }
 
 export interface AdvantagesProps {

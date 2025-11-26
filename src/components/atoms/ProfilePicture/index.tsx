@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./ProfilePicture.module.scss";
 import { useEffect } from "react";
 import { ProfilePictureProps } from "@/types/ProfilePictureProps";
+import { motion } from "motion/react";
 export const ProfilePicture = (props: ProfilePictureProps) => {
   /* For creating dynamic shape border around hero image */
   useEffect(() => {
@@ -31,11 +32,26 @@ export const ProfilePicture = (props: ProfilePictureProps) => {
   };
 
   return (
-    <div
-      className={`${styles.imageWrapper} ${props?.className}`}
-      style={borderColor}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      style={{ width: "100%" }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
     >
-      <Image src={props.src} alt={props?.altText} className='profile-picture' />
-    </div>
+      <div
+        className={`${styles.imageWrapper} ${props?.className}`}
+        style={borderColor}
+      >
+        <Image
+          src={props.src}
+          alt={props?.altText}
+          className='profile-picture'
+        />
+      </div>
+    </motion.div>
   );
 };

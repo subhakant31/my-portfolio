@@ -3,6 +3,7 @@ import styles from "./Header.module.scss";
 import { Jost } from "next/font/google";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 const jost = Jost({ subsets: ["latin"] });
 
@@ -74,7 +75,12 @@ export const Header = (props: HeaderProps) => {
   }, [activeSection]);
 
   return (
-    <div className='header show-header'>
+    <motion.div
+      initial={{ y: 100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className='header show-header'
+    >
       <header className={`${styles.header} ${jost.className}`}>
         <nav className={styles.navigation}>
           <ul className={styles.navList} ref={navListRef}>
@@ -95,6 +101,6 @@ export const Header = (props: HeaderProps) => {
           </ul>
         </nav>
       </header>
-    </div>
+    </motion.div>
   );
 };

@@ -5,6 +5,7 @@ import profilePicture from "../../../assets/images/profile-picture.jpg";
 import { ProfilePicture } from "@/components/atoms/ProfilePicture";
 import { HeroBannerProps } from "@/types/heroBannerProps";
 import { RichText } from "@/components/atoms/RichText";
+import MotionContainer from "@/components/atoms/MotionContainer";
 export const HeroBanner = (props: HeroBannerProps) => {
   return (
     <section className='hero-banner section' id='home'>
@@ -12,31 +13,37 @@ export const HeroBanner = (props: HeroBannerProps) => {
         <div className={styles.heroBanner}>
           <div className={styles.textWrapper}>
             {props?.eyebrowText && (
-              <TextPill
-                text={props?.eyebrowText}
-                className={styles.textPill}
-              ></TextPill>
+              <MotionContainer animationType='leftToRight' index={0}>
+                <TextPill
+                  text={props?.eyebrowText}
+                  className={styles.textPill}
+                ></TextPill>
+              </MotionContainer>
             )}
-            <div className={styles.headingWrapper}>
-              {props?.title && (
-                <Heading
-                  tagName={props?.titleSize}
-                  content={props?.title}
-                  className={styles.heading}
-                ></Heading>
-              )}
+            <MotionContainer animationType='leftToRight' index={1}>
+              <div className={styles.headingWrapper}>
+                {props?.title && (
+                  <Heading
+                    tagName={props?.titleSize}
+                    content={props?.title}
+                    className={styles.heading}
+                  ></Heading>
+                )}
 
-              {props?.renderPillIcon && (
-                <div className={styles.pillIcon}>
-                  {renderPillIcon({ size: 100 })}
-                </div>
-              )}
-            </div>
+                {props?.renderPillIcon && (
+                  <div className={styles.pillIcon}>
+                    {renderPillIcon({ size: 100 })}
+                  </div>
+                )}
+              </div>
+            </MotionContainer>
             {props.bodycopy && (
-              <RichText
-                className={styles.description}
-                html={props.bodycopy}
-              ></RichText>
+              <MotionContainer animationType='leftToRight' index={2}>
+                <RichText
+                  className={styles.description}
+                  html={props.bodycopy}
+                ></RichText>
+              </MotionContainer>
             )}
           </div>
           <ProfilePicture
