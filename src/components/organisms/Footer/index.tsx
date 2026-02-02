@@ -38,11 +38,11 @@ export default function Footer(props: FooterProps) {
           <div className={styles.socialShareDownloadWrapper}>
             <SocialShare {...props.socialShareReference} />
             <a
-              href='/pdf/resume.pdf'
+              href={props.resumeCv.url}
               className={styles.resumeDownloadBtn}
-              download={props.resumeFileName}
+              target="_blank"
             >
-              {getReactIcon("download")}
+              {getReactIcon("eye")}
               {props.downloadResumeText}
             </a>
           </div>

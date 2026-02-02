@@ -14,4 +14,8 @@ export interface FooterProps {
   copyrightText: string;
   downloadResumeText: string;
   resumeFileName: string;
+  resumeCv: {
+    url: string;
+    filename: string;
+  };
 }

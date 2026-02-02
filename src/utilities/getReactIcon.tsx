@@ -12,6 +12,7 @@ import {
   FaYoutube,
   FaGithub,
 } from "react-icons/fa";
+import { IoEyeSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { IoMdGitNetwork, IoMdSettings } from "react-icons/io";
 
@@ -31,6 +32,7 @@ const iconMap: any = {
   linkedIn: FaLinkedin,
   youtube: FaYoutube,
   github: FaGithub,
+  eye: IoEyeSharp,
   // Add more icons to the map as needed
 };
 
