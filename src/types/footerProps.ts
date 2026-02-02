@@ -12,6 +12,7 @@ export interface FooterProps {
   navLinkReference: FooterNavLinks[];
   socialShareReference: SocialShareReference;
   copyrightText: string;
+  viewResumeText: string;
   downloadResumeText: string;
   resumeFileName: string;
   resumeCv: {

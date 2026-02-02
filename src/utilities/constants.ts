@@ -173,6 +173,7 @@ export const pageQuery = `query getPageByPath {
           }
         }
         copyrightText
+        viewResumeText
         downloadResumeText
       }
     }

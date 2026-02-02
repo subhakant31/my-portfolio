@@ -6,6 +6,31 @@ import ComponentWrapper from "@/components/ComponentWrapper";
 import styles from "./Footer.module.scss";
 
 export default function Footer(props: FooterProps) {
+  const handleDownload = async (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    resumeFileName: string,
+  ) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(props.resumeCv.url);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = resumeFileName || "resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+
+      // Clean up
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download failed:", error);
+      // Fallback: just open in new tab if fetch fails
+      window.open(props.resumeCv.url, "_blank");
+    }
+  };
+
   return (
     <ComponentWrapper className='footer section' id='footer'>
       <footer className={styles.footer}>
@@ -43,6 +68,14 @@ export default function Footer(props: FooterProps) {
               target="_blank"
             >
               {getReactIcon("eye")}
+              {props.viewResumeText}
+            </a>
+            <a
+              href={props.resumeCv.url}
+              className={styles.resumeDownloadBtn}
+              onClick={(e) => handleDownload(e, props.resumeCv.filename)}
+            >
+              {getReactIcon("download")}
               {props.downloadResumeText}
             </a>
           </div>
