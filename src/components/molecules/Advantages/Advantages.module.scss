@@ -8,9 +8,16 @@
     gap: 12px;
   }
 
+  .tiltWrapper {
+    width: 49%;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
   .advantageCardWrapper {
     padding: 16px;
-    width: 49%;
+    width: 100%;
     border-radius: 20px;
     background-color: var(--card-bg);
     border: 1px solid var(--glass-border-color);

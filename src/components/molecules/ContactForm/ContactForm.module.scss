@@ -9,7 +9,8 @@
   border-radius: 30px;
 
   @media screen and (max-width: 768px) {
-    padding: 32px 16px;
+    padding: 20px 16px;
+    border-radius: 20px;
   }
 }
 
@@ -23,9 +24,9 @@
   color: var(--text-primary);
 
   @media screen and (max-width: 768px) {
-    font-size: 32px;
+    font-size: 22px;
     line-height: normal;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
   }
 }
 
@@ -42,6 +43,11 @@
     width: 100%;
     font-family: inherit;
     transition: border-color 0.2s ease, color 0.2s ease;
+
+    @media screen and (max-width: 768px) {
+      padding: 14px 0;
+      font-size: 14px;
+    }
 
     &:hover {
       border-bottom: 1.5px solid var(--accent-color);
@@ -75,9 +81,15 @@
   margin: 0;
   color: var(--error-color);
   font-size: 16px;
-  margin-top: 20px;
+  margin-top: 12px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
   li {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     width: fit-content;
     cursor: pointer;
     &:hover {
@@ -92,6 +104,10 @@
   display: flex;
   gap: 32px;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    gap: 16px;
+  }
 }
 
 .submitBtn {
@@ -106,6 +122,12 @@
     box-shadow 0.2s ease;
   margin-top: 48px;
   font-family: inherit;
+
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+    padding: 12px 24px;
+    margin-top: 20px;
+  }
 
   &:hover {
     background-color: var(--accent-hover);
@@ -139,6 +161,11 @@
   color: var(--accent-color);
   margin-top: 48px;
   font-weight: 400;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 20px;
+    font-size: 14px;
+  }
 }
 
 .modalWrapper {
@@ -161,11 +188,21 @@
     text-align: center;
     color: var(--text-primary);
 
+    @media screen and (max-width: 768px) {
+      padding: 24px 16px;
+      margin: 0 16px;
+    }
+
     .modalTitle {
       margin-bottom: 48px;
       font-size: 32px;
       line-height: normal;
       font-weight: 800;
+
+      @media screen and (max-width: 768px) {
+        font-size: 22px;
+        margin-bottom: 16px;
+      }
     }
 
     .modalMessage {
@@ -174,7 +211,8 @@
       max-width: 750px;
       color: var(--text-secondary);
       @media screen and (max-width: 768px) {
-        font-size: 20px;
+        font-size: 15px;
+        margin-bottom: 16px;
       }
     }
 
@@ -189,6 +227,11 @@
       border-radius: 30px;
       transition: background-color 0.3s ease;
       font-family: inherit;
+
+      @media screen and (max-width: 768px) {
+        font-size: 16px;
+        margin-top: 12px;
+      }
 
       &:hover {
         background-color: rgba(var(--accent-color-rgb), 0.1);

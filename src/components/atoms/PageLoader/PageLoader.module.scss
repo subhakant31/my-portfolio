@@ -1,0 +1,111 @@
+.loaderOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--body-bg-color);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.exit {
+  opacity: 0;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+.loaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.nameWrapper {
+  display: flex;
+  align-items: baseline;
+}
+
+.firstName {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -1px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 32px;
+  }
+}
+
+.dot {
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--accent-color);
+  line-height: 1;
+
+  @media screen and (max-width: 768px) {
+    font-size: 40px;
+  }
+}
+
+.tagline {
+  font-size: 16px;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: fadeIn 0.5s ease 0.4s forwards;
+  opacity: 0;
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+}
+
+.progressLine {
+  width: 120px;
+  height: 2px;
+  background: var(--glass-border-color);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0;
+  background: var(--accent-color);
+  border-radius: 2px;
+  animation: loadProgress 1.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes loadProgress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

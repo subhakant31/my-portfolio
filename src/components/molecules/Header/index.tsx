@@ -4,7 +4,6 @@ import { Jost } from "next/font/google";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ThemeToggle } from "@/components/atoms/ThemeToggle";
 
 const jost = Jost({ subsets: ["latin"] });
 
@@ -120,9 +119,6 @@ export const Header = (props: HeaderProps) => {
                 </Link>
               </li>
             ))}
-            <li className={styles.themeToggleItem}>
-              <ThemeToggle />
-            </li>
           </ul>
         </nav>
       </header>

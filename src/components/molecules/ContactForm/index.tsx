@@ -2,6 +2,7 @@ import { ContactFormProps } from "@/types/contactFormProps";
 import { useState } from "react";
 import styles from "./ContactForm.module.scss";
 import validateFormData from "@/utilities/validateFormData";
+import { MagneticButton } from "@/components/atoms/MagneticButton";
 
 export default function ContactForm(props: ContactFormProps) {
   const [formData, setFormData] = useState(() => {
@@ -122,17 +123,19 @@ export default function ContactForm(props: ContactFormProps) {
           </>
         )}
         <div className={styles.submitLocationContainer}>
-          <button
-            type='submit'
-            className={styles.submitBtn}
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <span className={styles.loader}></span>
-            ) : (
-              props.submitBtnText
-            )}
-          </button>
+          <MagneticButton strength={0.25}>
+            <button
+              type='submit'
+              className={styles.submitBtn}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <span className={styles.loader}></span>
+              ) : (
+                props.submitBtnText
+              )}
+            </button>
+          </MagneticButton>
           <h3 className={styles.location}>{props.location}</h3>
         </div>
       </form>

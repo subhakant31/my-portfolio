@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FooterProps } from "@/types/footerProps";
 import { RichText } from "@/components/atoms/RichText";
 import SocialShare from "@/components/molecules/SocialShare";
@@ -6,9 +7,11 @@ import ComponentWrapper from "@/components/ComponentWrapper";
 import styles from "./Footer.module.scss";
 
 export default function Footer(props: FooterProps) {
+  const [showResumeModal, setShowResumeModal] = useState(false);
+
   const handleDownload = async (
     e: React.MouseEvent<HTMLAnchorElement>,
-    resumeFileName: string,
+    resumeFileName: string
   ) => {
     e.preventDefault();
     try {
@@ -20,15 +23,17 @@ export default function Footer(props: FooterProps) {
       link.download = resumeFileName || "resume.pdf";
       document.body.appendChild(link);
       link.click();
-
-      // Clean up
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Download failed:", error);
-      // Fallback: just open in new tab if fetch fails
       window.open(props.resumeCv.url, "_blank");
     }
+  };
+
+  const handleViewResume = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setShowResumeModal(true);
   };
 
   return (
@@ -65,10 +70,10 @@ export default function Footer(props: FooterProps) {
             <a
               href={props.resumeCv.url}
               className={styles.resumeDownloadBtn}
-              target="_blank"
+              onClick={handleViewResume}
             >
               {getReactIcon("eye")}
-              {props.viewResumeText}
+              View Resume
             </a>
             <a
               href={props.resumeCv.url}
@@ -83,6 +88,34 @@ export default function Footer(props: FooterProps) {
         <div className={styles.separator}></div>
         <p className={styles.copyrightText}>{props.copyrightText}</p>
       </footer>
+
+      {showResumeModal && (
+        <div
+          className={styles.resumeModalOverlay}
+          onClick={() => setShowResumeModal(false)}
+        >
+          <div
+            className={styles.resumeModal}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={styles.resumeModalHeader}>
+              <h3 className={styles.resumeModalTitle}>Resume</h3>
+              <button
+                className={styles.resumeModalClose}
+                onClick={() => setShowResumeModal(false)}
+                aria-label="Close resume viewer"
+              >
+                &times;
+              </button>
+            </div>
+            <iframe
+              src={props.resumeCv.url}
+              className={styles.resumeIframe}
+              title="Resume PDF Viewer"
+            />
+          </div>
+        </div>
+      )}
     </ComponentWrapper>
   );
 }
