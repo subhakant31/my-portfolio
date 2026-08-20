@@ -1,0 +1,237 @@
+.carouselWrapper {
+  width: 100%;
+  max-width: 700px;
+  margin: 0px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 24px;
+    gap: 16px;
+  }
+}
+
+.carouselContent {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  min-height: 340px;
+
+  @media screen and (max-width: 768px) {
+    min-height: 380px;
+  }
+}
+
+.projectCard {
+  padding: 32px;
+  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border-color);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: var(--glass-inset-shadow);
+
+  @media screen and (max-width: 768px) {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 16px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+}
+
+.titleGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.projectTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+
+  @media screen and (max-width: 768px) {
+    font-size: 22px;
+  }
+}
+
+.company {
+  font-size: 14px;
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+
+  @media screen and (max-width: 768px) {
+    align-items: flex-start;
+  }
+}
+
+.role {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.duration {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: 768px) {
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+}
+
+.techPill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--glass-bg-color);
+  border: 1px solid var(--glass-border-color);
+  color: var(--accent-color);
+
+  @media screen and (max-width: 768px) {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+}
+
+.highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media screen and (max-width: 768px) {
+    gap: 6px;
+  }
+}
+
+.highlightItem {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.5;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-color);
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+// Controls
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border-color);
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-primary);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.15);
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--text-muted);
+  opacity: 0.4;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.activeDot {
+  background: var(--accent-color);
+  opacity: 1;
+  transform: scale(1.3);
+}

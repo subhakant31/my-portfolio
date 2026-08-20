@@ -5,6 +5,7 @@ import styles from "./Portfolio.module.scss";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
+import { ProjectCarousel } from "@/components/molecules/ProjectCarousel";
 
 function PortfolioCard({ item, index, direction }: { item: any; index: number; direction: "left" | "right" }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -63,17 +64,28 @@ export default function Portfolio(props: PortfolioProps) {
 
   return (
     <ComponentWrapper className='portfolio section' id='portfolio'>
-      <PageHeading {...props.pageHeading} />
-      <div className={styles.websiteListContainer}>
-        <div className={`${styles.websiteRow}`}>
-          {firstHalf.map((item, index) => (
-            <PortfolioCard key={`first-${index}`} item={item} index={index} direction="left" />
-          ))}
-        </div>
-        <div className={`${styles.websiteRow} ${styles.secondRow}`}>
-          {secondHalf.map((item, index) => (
-            <PortfolioCard key={`second-${index}`} item={item} index={index} direction="right" />
-          ))}
+      {/* Professional Work */}
+      <div className={styles.subsection}>
+        <h2 className={styles.subsectionTitle}>Professional Work</h2>
+        <p className={styles.subsectionDesc}>Enterprise projects I&apos;ve contributed to at Credera</p>
+        <ProjectCarousel />
+      </div>
+
+      {/* Personal Projects */}
+      <div className={styles.subsection}>
+        <h2 className={styles.subsectionTitle}>Personal Projects</h2>
+        <p className={styles.subsectionDesc}>Side projects I&apos;ve built in my free time</p>
+        <div className={styles.websiteListContainer}>
+          <div className={`${styles.websiteRow}`}>
+            {firstHalf.map((item, index) => (
+              <PortfolioCard key={`first-${index}`} item={item} index={index} direction="left" />
+            ))}
+          </div>
+          <div className={`${styles.websiteRow} ${styles.secondRow}`}>
+            {secondHalf.map((item, index) => (
+              <PortfolioCard key={`second-${index}`} item={item} index={index} direction="right" />
+            ))}
+          </div>
         </div>
       </div>
     </ComponentWrapper>
