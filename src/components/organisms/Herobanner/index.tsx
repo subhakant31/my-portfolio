@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import styles from "./HeroBanner.module.scss";
 import { TextPill, renderPillIcon } from "@/components/atoms/TextPill";
 import { TypewriterHeading } from "@/components/atoms/TypewriterHeading";
@@ -8,16 +8,32 @@ import { HeroBannerProps } from "@/types/heroBannerProps";
 import { RichText } from "@/components/atoms/RichText";
 import { motion } from "motion/react";
 import MotionContainer from "@/components/atoms/MotionContainer";
+import { AvailabilityBadge } from "@/components/atoms/AvailabilityBadge";
 
 export const HeroBanner = (props: HeroBannerProps) => {
   const [typingDone, setTypingDone] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const handleTypingComplete = useCallback(() => {
     setTypingDone(true);
   }, []);
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    sectionRef.current.style.setProperty("--spotlight-x", `${x}px`);
+    sectionRef.current.style.setProperty("--spotlight-y", `${y}px`);
+  };
+
   return (
-    <section className='hero-banner section' id='home'>
+    <section
+      ref={sectionRef}
+      className={`hero-banner section ${styles.heroSection}`}
+      id='home'
+      onMouseMove={handleMouseMove}
+    >
       <div className='heading-content-wrapper'>
         <div className={styles.heroBanner}>
           <div className={styles.textWrapper}>
@@ -61,6 +77,7 @@ export const HeroBanner = (props: HeroBannerProps) => {
                   className={styles.description}
                   html={props.bodycopy}
                 ></RichText>
+                <AvailabilityBadge />
               </motion.div>
             )}
           </div>

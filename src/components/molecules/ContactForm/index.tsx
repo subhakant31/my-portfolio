@@ -1,8 +1,11 @@
 import { ContactFormProps } from "@/types/contactFormProps";
 import { useState } from "react";
+import { createPortal } from "react-dom";
+import confetti from "canvas-confetti";
 import styles from "./ContactForm.module.scss";
 import validateFormData from "@/utilities/validateFormData";
 import { MagneticButton } from "@/components/atoms/MagneticButton";
+import { RippleButton } from "@/components/atoms/RippleButton";
 
 export default function ContactForm(props: ContactFormProps) {
   const [formData, setFormData] = useState(() => {
@@ -54,6 +57,12 @@ export default function ContactForm(props: ContactFormProps) {
       if (response.ok) {
         setIsFormSubmitted(true);
         setIsFormSuccess(true);
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ["#26e989", "#1fd47c", "#ffffff"],
+        });
         setFormData(() =>
           props.formFields.reduce((acc, field) => {
             acc[field.name] = "";
@@ -124,7 +133,7 @@ export default function ContactForm(props: ContactFormProps) {
         )}
         <div className={styles.submitLocationContainer}>
           <MagneticButton strength={0.25}>
-            <button
+            <RippleButton
               type='submit'
               className={styles.submitBtn}
               disabled={isSubmitting}
@@ -134,33 +143,36 @@ export default function ContactForm(props: ContactFormProps) {
               ) : (
                 props.submitBtnText
               )}
-            </button>
+            </RippleButton>
           </MagneticButton>
           <h3 className={styles.location}>{props.location}</h3>
         </div>
       </form>
 
       {isFormSubmitted && (
-        <div className={styles.modalWrapper}>
-          <div className={styles.modal}>
-            <h1 className={styles.modalTitle}>
-              {isFormSuccess
-                ? props.modalReference.successTitle
-                : props.modalReference.failureTitle}
-            </h1>
-            <p className={styles.modalMessage}>
-              {isFormSuccess
-                ? props.modalReference.successDescription
-                : props.modalReference.failureDescription}
-            </p>
-            <button
-              className={styles.closeModalBtn}
-              onClick={() => setIsFormSubmitted(false)}
-            >
-              {props.modalReference.closeText}
-            </button>
-          </div>
-        </div>
+        createPortal(
+          <div className={styles.modalWrapper}>
+            <div className={styles.modal}>
+              <h1 className={styles.modalTitle}>
+                {isFormSuccess
+                  ? props.modalReference.successTitle
+                  : props.modalReference.failureTitle}
+              </h1>
+              <p className={styles.modalMessage}>
+                {isFormSuccess
+                  ? props.modalReference.successDescription
+                  : props.modalReference.failureDescription}
+              </p>
+              <button
+                className={styles.closeModalBtn}
+                onClick={() => setIsFormSubmitted(false)}
+              >
+                {props.modalReference.closeText}
+              </button>
+            </div>
+          </div>,
+          document.body
+        )
       )}
     </div>
   );

@@ -112,8 +112,9 @@
 
 .submitBtn {
   background-color: var(--accent-color);
-  color: #ffffff;
+  color: #000000;
   font-size: 20px;
+  font-weight: 700;
   border: none;
   cursor: pointer;
   padding: 16px 32px;
@@ -172,70 +173,106 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 9999;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--modal-overlay);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: modalFadeIn 0.3s ease;
 
   .modal {
     background: var(--modal-bg);
-    border: 1px solid var(--glass-border);
-    padding: 32px;
-    border-radius: 20px;
+    border: 1px solid var(--glass-border-color);
+    padding: 48px 40px;
+    border-radius: 24px;
     text-align: center;
     color: var(--text-primary);
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+    animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     @media screen and (max-width: 768px) {
-      padding: 24px 16px;
-      margin: 0 16px;
+      padding: 32px 20px;
+      border-radius: 20px;
     }
 
     .modalTitle {
-      margin-bottom: 48px;
-      font-size: 32px;
+      margin-bottom: 16px;
+      font-size: 28px;
       line-height: normal;
-      font-weight: 800;
+      font-weight: 700;
+      color: var(--accent-color);
 
       @media screen and (max-width: 768px) {
         font-size: 22px;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
       }
     }
 
     .modalMessage {
-      margin-bottom: 24px;
-      font-size: 24px;
-      max-width: 750px;
+      margin-bottom: 32px;
+      font-size: 16px;
+      line-height: 1.6;
       color: var(--text-secondary);
+
       @media screen and (max-width: 768px) {
-        font-size: 15px;
-        margin-bottom: 16px;
+        font-size: 14px;
+        margin-bottom: 24px;
       }
     }
 
     .closeModalBtn {
-      margin-top: 24px;
-      background-color: transparent;
-      color: var(--accent-color);
-      font-size: 20px;
+      background-color: var(--accent-color);
+      color: #ffffff;
+      font-size: 16px;
       border: none;
       cursor: pointer;
-      padding: 12px 24px;
+      padding: 12px 32px;
       border-radius: 30px;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease,
+        box-shadow 0.2s ease;
       font-family: inherit;
+      font-weight: 500;
 
       @media screen and (max-width: 768px) {
-        font-size: 16px;
-        margin-top: 12px;
+        font-size: 14px;
+        padding: 10px 24px;
       }
 
       &:hover {
-        background-color: rgba(var(--accent-color-rgb), 0.1);
+        background-color: var(--accent-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(var(--accent-color-rgb), 0.3);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }

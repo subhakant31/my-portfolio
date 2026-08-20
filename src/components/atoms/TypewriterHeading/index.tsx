@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { HeadingProps } from "@/types/HeadingProps";
 import { useLoader } from "@/context/LoaderContext";
 
@@ -17,15 +17,27 @@ export const TypewriterHeading: React.FC<TypewriterHeadingProps> = ({
   const { loaderDone } = useLoader();
   const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [minHeight, setMinHeight] = useState<number | undefined>(undefined);
-  const placeholderRef = useRef<HTMLSpanElement>(null);
+  const [minHeight, setMinHeight] = useState<string>("auto");
+  const measureRef = useRef<HTMLElement>(null);
 
-  // Measure the full text height once on mount to reserve space
+  // Measure full content height on mount
   useEffect(() => {
-    if (placeholderRef.current) {
-      setMinHeight(placeholderRef.current.offsetHeight);
+    if (measureRef.current) {
+      const height = measureRef.current.scrollHeight;
+      setMinHeight(`${height}px`);
     }
   }, [content]);
+
+  // Remeasure on resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (measureRef.current) {
+        setMinHeight(`${measureRef.current.scrollHeight}px`);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (!loaderDone) return;
@@ -44,16 +56,23 @@ export const TypewriterHeading: React.FC<TypewriterHeadingProps> = ({
 
   return (
     <>
-      {/* Hidden measurer to get the full height */}
+      {/* Hidden element for height measurement — same tag and class for identical styling */}
       <Tag
+        ref={measureRef as any}
         className={className}
-        style={{ position: "absolute", visibility: "hidden", pointerEvents: "none" }}
         aria-hidden="true"
+        style={{
+          position: "absolute",
+          visibility: "hidden",
+          pointerEvents: "none",
+          width: "100%",
+          left: 0,
+        }}
       >
-        <span ref={placeholderRef}>{content}</span>
+        {content}
       </Tag>
-      {/* Visible typewriter with reserved min-height */}
-      <Tag className={className} style={{ minHeight: minHeight ? `${minHeight}px` : undefined }}>
+      {/* Visible typewriter */}
+      <Tag className={className} style={{ minHeight }}>
         {displayedText}
         {loaderDone && currentIndex < content.length && (
           <span className="typewriter-cursor">|</span>

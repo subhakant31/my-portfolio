@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FooterProps } from "@/types/footerProps";
 import { RichText } from "@/components/atoms/RichText";
 import SocialShare from "@/components/molecules/SocialShare";
 import { getReactIcon } from "@/utilities/getReactIcon";
 import ComponentWrapper from "@/components/ComponentWrapper";
+import { Toast } from "@/components/atoms/Toast";
+import { WaveDivider } from "@/components/atoms/WaveDivider";
 import styles from "./Footer.module.scss";
 
 export default function Footer(props: FooterProps) {
   const [showResumeModal, setShowResumeModal] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(props.emailAddress).then(() => {
+      setShowToast(true);
+    });
+  };
+
+  const handleCloseToast = useCallback(() => setShowToast(false), []);
 
   const handleDownload = async (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -38,6 +49,7 @@ export default function Footer(props: FooterProps) {
 
   return (
     <ComponentWrapper className='footer section' id='footer'>
+      <WaveDivider />
       <footer className={styles.footer}>
         <div className={styles.footerContainer}>
           <div className={styles.footerInfoContainer}>
@@ -46,7 +58,7 @@ export default function Footer(props: FooterProps) {
               html={props.bodycopy}
               className={styles.footerDescription}
             />
-            <p className={styles.emailAddress}>
+            <p className={styles.emailAddress} onClick={handleCopyEmail} title="Click to copy email" style={{ cursor: "pointer" }}>
               {getReactIcon("email")}
               {props.emailAddress}
             </p>
@@ -116,6 +128,8 @@ export default function Footer(props: FooterProps) {
           </div>
         </div>
       )}
+
+      <Toast message="Email copied to clipboard!" visible={showToast} onClose={handleCloseToast} />
     </ComponentWrapper>
   );
 }

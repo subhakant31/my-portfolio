@@ -4,8 +4,8 @@ import styles from "./ProfilePicture.module.scss";
 import { useEffect } from "react";
 import { ProfilePictureProps } from "@/types/ProfilePictureProps";
 import { motion } from "motion/react";
+
 export const ProfilePicture = (props: ProfilePictureProps) => {
-  /* For creating dynamic shape border around hero image */
   useEffect(() => {
     const image = document.querySelector(".profile-picture") as HTMLElement;
     if (image && props?.enableImageEffects) {
@@ -20,9 +20,7 @@ export const ProfilePicture = (props: ProfilePictureProps) => {
       };
 
       updateBorderRadius();
-
       const interval = setInterval(updateBorderRadius, 1000);
-
       return () => clearInterval(interval);
     }
   }, [props.enableImageEffects]);
@@ -46,6 +44,7 @@ export const ProfilePicture = (props: ProfilePictureProps) => {
         className={`${styles.imageWrapper} ${props?.className}`}
         style={borderColor}
       >
+        <div className={styles.morphBlob} />
         <Image
           src={props.src}
           alt={props?.altText}

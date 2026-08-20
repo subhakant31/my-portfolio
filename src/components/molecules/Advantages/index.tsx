@@ -78,6 +78,8 @@ const AdvantageCard = ({
   );
 };
 
+import { TechStack } from "@/components/molecules/TechStack";
+
 const Advantages = (props: AdvantagesProps) => {
   return (
     <ComponentWrapper className='advantages section' id='advantages'>
@@ -87,6 +89,7 @@ const Advantages = (props: AdvantagesProps) => {
           <AdvantageCard key={advantage.id} {...advantage} index={index} />
         ))}
       </div>
+      <TechStack />
     </ComponentWrapper>
   );
 };

@@ -8,6 +8,7 @@ import ComponentWrapper from "@/components/ComponentWrapper";
 import PageHeading from "../PageHeading";
 import { motion } from "motion/react";
 import { TiltCard } from "@/components/atoms/TiltCard";
+import { CodingAnimation } from "@/components/atoms/CodingAnimation";
 
 type ServiceCardProps = Service & { index: number };
 
@@ -51,6 +52,7 @@ export const Services = (props: ServicesProps) => {
   };
   return (
     <ComponentWrapper className='services section' id='services'>
+      <CodingAnimation />
       <PageHeading {...props.pageHeading} />
       <div className={styles.servicesList} style={servicesStyles}>
         {props?.services?.map((item, index) => {

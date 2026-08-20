@@ -14,10 +14,39 @@
   color: var(--text-primary);
   scale: 1;
   transition: all 0.3s ease;
+  position: relative;
 
   &:hover {
     scale: 1.2;
     color: var(--accent-color);
+  }
+
+  // Frosted glass tooltip
+  &::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--text-primary);
+    background: var(--header-bg);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid var(--glass-border-color);
+    box-shadow: 0 4px 16px var(--glass-shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 
   svg {
