@@ -6,8 +6,10 @@ import { getReactIcon } from "@/utilities/getReactIcon";
 import { Heading } from "@/components/atoms/Heading";
 import ComponentWrapper from "@/components/ComponentWrapper";
 import PageHeading from "../PageHeading";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { TiltCard } from "@/components/atoms/TiltCard";
+import { TechStack } from "@/components/molecules/TechStack";
+import { SkillsAnimation } from "@/components/atoms/SkillsAnimation";
 
 const AdvantageCard = ({
   advantageIcon,
@@ -18,7 +20,13 @@ const AdvantageCard = ({
   const [currentWidth, setCurrentWidth] = useState("0%");
   const cardRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const delayValue = index * 0.15;
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["0 1", "0.5 1"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -48,10 +56,7 @@ const AdvantageCard = ({
       <motion.div
         ref={cardRef}
         className={styles.advantageCardWrapper}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: delayValue }}
-        viewport={{ once: true, margin: "-30px" }}
+        style={{ opacity, y }}
       >
         <div className={styles.iconHeadingWrapper}>
           <div className={styles.iconWrapper}>
@@ -78,11 +83,10 @@ const AdvantageCard = ({
   );
 };
 
-import { TechStack } from "@/components/molecules/TechStack";
-
 const Advantages = (props: AdvantagesProps) => {
   return (
     <ComponentWrapper className='advantages section' id='advantages'>
+      <SkillsAnimation />
       <PageHeading {...props.pageHeading} />
       <div className={styles.advantagesWrapper}>
         {props.advantages?.map((advantage, index) => (

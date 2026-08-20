@@ -9,6 +9,7 @@ import { RichText } from "@/components/atoms/RichText";
 import { motion } from "motion/react";
 import MotionContainer from "@/components/atoms/MotionContainer";
 import { AvailabilityBadge } from "@/components/atoms/AvailabilityBadge";
+import { AnimatedCounters } from "@/components/molecules/AnimatedCounters";
 
 export const HeroBanner = (props: HeroBannerProps) => {
   const [typingDone, setTypingDone] = useState(false);
@@ -77,6 +78,7 @@ export const HeroBanner = (props: HeroBannerProps) => {
                   className={styles.description}
                   html={props.bodycopy}
                 ></RichText>
+                <AnimatedCounters />
                 <AvailabilityBadge />
               </motion.div>
             )}

@@ -17,11 +17,13 @@
 .form {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
 .formHeading {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   color: var(--text-primary);
+  font-weight: 700;
 
   @media screen and (max-width: 768px) {
     font-size: 22px;
@@ -73,6 +75,32 @@
       color: var(--accent-color);
     }
   }
+
+  .textareaField {
+    resize: vertical;
+    min-height: 100px;
+    border: 1.5px solid var(--input-border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 8px;
+
+    @media screen and (max-width: 768px) {
+      min-height: 80px;
+      padding: 12px;
+    }
+
+    &:hover {
+      border: 1.5px solid var(--accent-color);
+    }
+
+    &:focus {
+      border: 1.5px solid var(--accent-color);
+    }
+
+    &.error {
+      border: 1.5px solid var(--error-color);
+    }
+  }
 }
 
 .errorList {
@@ -112,7 +140,7 @@
 
 .submitBtn {
   background-color: var(--accent-color);
-  color: #000000;
+  color: #ffffff;
   font-size: 20px;
   font-weight: 700;
   border: none;

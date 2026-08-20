@@ -20,7 +20,7 @@ export default function ContactForm(props: ContactFormProps) {
   const [isValid, setIsValid] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false); // ✅ New state
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -90,21 +90,37 @@ export default function ContactForm(props: ContactFormProps) {
           const hasError = !isValid && errors[field.name];
           return (
             <div key={field.id} className={styles.inputWrapper}>
-              <input
-                type={field.fieldType}
-                placeholder={field.placeHolderText}
-                name={field.name}
-                value={formData[field.name]}
-                onChange={handleChange}
-                className={`${styles.inputField} ${
-                  hasError ? styles.error : ""
-                }`}
-                minLength={field.validation === "phoneNumber" ? 10 : undefined}
-                maxLength={field.validation === "phoneNumber" ? 10 : undefined}
-                required={field.isRequired}
-                aria-invalid={!!hasError}
-                aria-describedby={hasError ? `${field.name}-error` : undefined}
-              />
+              {field.fieldType === "textarea" ? (
+                <textarea
+                  placeholder={field.placeHolderText}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange}
+                  className={`${styles.inputField} ${styles.textareaField} ${
+                    hasError ? styles.error : ""
+                  }`}
+                  required={field.isRequired}
+                  rows={4}
+                  aria-invalid={!!hasError}
+                  aria-describedby={hasError ? `${field.name}-error` : undefined}
+                />
+              ) : (
+                <input
+                  type={field.fieldType}
+                  placeholder={field.placeHolderText}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange}
+                  className={`${styles.inputField} ${
+                    hasError ? styles.error : ""
+                  }`}
+                  minLength={field.validation === "phoneNumber" ? 10 : undefined}
+                  maxLength={field.validation === "phoneNumber" ? 10 : undefined}
+                  required={field.isRequired}
+                  aria-invalid={!!hasError}
+                  aria-describedby={hasError ? `${field.name}-error` : undefined}
+                />
+              )}
             </div>
           );
         })}

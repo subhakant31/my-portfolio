@@ -249,34 +249,34 @@
                   "__typename": "FormFieldRecord",
                   "id": "KoIBcF9JSOK4YEwkldXx8A",
                   "name": "Name",
-                  "placeHolderText": "Enter your name",
+                  "placeHolderText": "Your name",
                   "fieldType": "text",
                   "isRequired": true,
                   "validation": "text"
                 },
                 {
                   "__typename": "FormFieldRecord",
-                  "id": "ObOhPllNQDic6WOq7afTwg",
-                  "name": "Phone",
-                  "placeHolderText": "Enter your Phone",
-                  "fieldType": "number",
-                  "isRequired": true,
-                  "validation": "phoneNumber"
-                },
-                {
-                  "__typename": "FormFieldRecord",
                   "id": "FeYbfcIqQzOMTET1PkufEw",
                   "name": "Email",
-                  "placeHolderText": "Enter your Email",
+                  "placeHolderText": "Your email address",
                   "fieldType": "email",
                   "isRequired": true,
                   "validation": "email"
                 },
                 {
                   "__typename": "FormFieldRecord",
+                  "id": "ObOhPllNQDic6WOq7afTwg",
+                  "name": "Phone",
+                  "placeHolderText": "Your phone (optional)",
+                  "fieldType": "number",
+                  "isRequired": false,
+                  "validation": "phoneNumber"
+                },
+                {
+                  "__typename": "FormFieldRecord",
                   "id": "VApTQnwaTFuBXC1SXiNeTg",
                   "name": "Address",
-                  "placeHolderText": "Enter your Address",
+                  "placeHolderText": "Your address",
                   "fieldType": "text",
                   "isRequired": true,
                   "validation": ""

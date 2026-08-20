@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./AnimatedCounters.module.scss";
 import { motion } from "motion/react";
+import { useLoader } from "@/context/LoaderContext";
 
 interface CounterItem {
   value: number;
@@ -16,41 +17,36 @@ const counters: CounterItem[] = [
 ];
 
 function Counter({ value, suffix, label }: CounterItem) {
+  const { loaderDone } = useLoader();
   const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.5 }
-    );
+    if (!loaderDone || hasAnimated) return;
 
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+    // Small delay after loader to let the hero content appear first
+    const delay = setTimeout(() => {
+      let start = 0;
+      const duration = 2000;
+      const increment = value / (duration / 16);
 
-  useEffect(() => {
-    if (!isVisible) return;
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= value) {
+          setCount(value);
+          clearInterval(timer);
+          setHasAnimated(true);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, 16);
 
-    let start = 0;
-    const duration = 2000;
-    const increment = value / (duration / 16);
+      return () => clearInterval(timer);
+    }, 800);
 
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-
-    return () => clearInterval(timer);
-  }, [isVisible, value]);
+    return () => clearTimeout(delay);
+  }, [loaderDone, hasAnimated, value]);
 
   return (
     <div ref={ref} className={styles.counterItem}>
@@ -65,16 +61,10 @@ function Counter({ value, suffix, label }: CounterItem) {
 
 export const AnimatedCounters = () => {
   return (
-    <motion.div
-      className={styles.countersWrapper}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      viewport={{ once: true, margin: "-40px" }}
-    >
+    <div className={styles.countersWrapper}>
       {counters.map((item) => (
         <Counter key={item.label} {...item} />
       ))}
-    </motion.div>
+    </div>
   );
 };

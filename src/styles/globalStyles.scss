@@ -88,19 +88,10 @@ html {
 }
 
 main {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+  overflow-y: auto;
   scroll-behavior: smooth;
-  height: 100vh;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  @media screen and (max-width: 768px) {
-    scroll-snap-type: unset;
-  }
-  @media screen and (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-  }
 }
 .main::-webkit-scrollbar {
   display: none;
@@ -111,31 +102,54 @@ main {
 }
 
 .section {
-  scroll-snap-align: center;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding: 80px 32px;
   transition: background-color 0.3s ease;
+  position: relative;
+  scroll-margin-top: 80px;
 
-  &:nth-child(even) {
-    background-color: var(--section-alt-bg);
+  // Soft gradient fade at top and bottom of each section
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, var(--body-bg-color), transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &:first-child::before {
+    display: none;
   }
 
   @media screen and (max-width: 768px) {
-    padding-top: 32px;
-    padding-bottom: 32px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 48px 16px;
     align-items: flex-start;
-    height: fit-content;
+
+    &::before {
+      height: 50px;
+    }
+  }
+}
+
+.hero-banner {
+  height: 100vh;
+  padding-top: 100px;
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 48px;
   }
 }
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 20px;
   left: 0;
   right: 0;
@@ -152,6 +166,7 @@ main {
 
   @media screen and (max-width: 768px) {
     position: fixed;
+    top: unset;
     bottom: 20px;
     left: 16px;
     right: 16px;
@@ -159,7 +174,6 @@ main {
     overflow-x: scroll;
     overflow-y: hidden;
     height: fit-content;
-    top: unset;
     scrollbar-width: none;
     -ms-overflow-style: none;
     &::-webkit-scrollbar {
