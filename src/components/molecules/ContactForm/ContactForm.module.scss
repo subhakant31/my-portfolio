@@ -1,13 +1,11 @@
-/* ContactForm.module.scss */
-
-@import "@/styles/variables";
-
 .formContainer {
   padding: 48px;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  transition: all 1s;
+  background: var(--card-bg);
+  box-shadow: 0 8px 32px var(--glass-shadow), var(--glass-inset-shadow);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid var(--glass-border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   border-radius: 30px;
 
   @media screen and (max-width: 768px) {
@@ -22,6 +20,7 @@
 
 .formHeading {
   margin-bottom: 32px;
+  color: var(--text-primary);
 
   @media screen and (max-width: 768px) {
     font-size: 32px;
@@ -36,30 +35,36 @@
     padding: 24px;
     padding-left: 0;
     border: none;
-    border-bottom: 1.5px solid grey;
-    color: white;
+    border-bottom: 1.5px solid var(--input-border);
+    color: var(--text-primary);
     font-size: large;
     outline: none;
     width: 100%;
+    font-family: inherit;
+    transition: border-color 0.2s ease, color 0.2s ease;
+
     &:hover {
-      border-bottom: 1.5px solid #22e797;
-      color: #22e797;
+      border-bottom: 1.5px solid var(--accent-color);
       cursor: pointer;
     }
+
     &::placeholder {
       opacity: 0.5;
+      color: var(--text-muted);
     }
+
     &.error {
-      border-bottom: 1.5px solid #ff4d4d;
-      color: #ff4d4d;
+      border-bottom: 1.5px solid var(--error-color);
+      color: var(--error-color);
       &:focus {
-        border-bottom: 1.5px solid #ff4d4d;
-        color: #ff4d4d;
+        border-bottom: 1.5px solid var(--error-color);
+        color: var(--error-color);
       }
     }
+
     &:focus {
-      border-bottom: 1.5px solid #22e797;
-      color: #22e797;
+      border-bottom: 1.5px solid var(--accent-color);
+      color: var(--accent-color);
     }
   }
 }
@@ -68,7 +73,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  color: #ff4d4d;
+  color: var(--error-color);
   font-size: 16px;
   margin-top: 20px;
   li {
@@ -76,7 +81,7 @@
     width: fit-content;
     cursor: pointer;
     &:hover {
-      color: #ff4d4d;
+      color: var(--error-color);
       text-decoration: underline;
       text-underline-offset: 3px;
     }
@@ -90,18 +95,28 @@
 }
 
 .submitBtn {
-  background-color: #22e797;
-  color: white;
+  background-color: var(--accent-color);
+  color: #ffffff;
   font-size: 20px;
   border: none;
   cursor: pointer;
   padding: 16px 32px;
   border-radius: 30px;
-  transition: all 0.3s;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
   margin-top: 48px;
+  font-family: inherit;
+
   &:hover {
-    background-color: rgba(34, 231, 151, 0.1);
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(var(--accent-color-rgb), 0.3);
   }
+
+  &:active {
+    transform: translateY(0);
+  }
+
   .loader {
     width: 18px;
     height: 18px;
@@ -121,7 +136,7 @@
 }
 
 .location {
-  color: #22e797;
+  color: var(--accent-color);
   margin-top: 48px;
   font-weight: 400;
 }
@@ -136,14 +151,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--modal-overlay);
+
   .modal {
-    background: black;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: var(--modal-bg);
+    border: 1px solid var(--glass-border);
     padding: 32px;
     border-radius: 20px;
     text-align: center;
-    color: white;
+    color: var(--text-primary);
 
     .modalTitle {
       margin-bottom: 48px;
@@ -156,23 +172,26 @@
       margin-bottom: 24px;
       font-size: 24px;
       max-width: 750px;
+      color: var(--text-secondary);
       @media screen and (max-width: 768px) {
         font-size: 20px;
       }
     }
+
     .closeModalBtn {
       margin-top: 24px;
       background-color: transparent;
-      color: #22e797;
+      color: var(--accent-color);
       font-size: 20px;
       border: none;
       cursor: pointer;
       padding: 12px 24px;
       border-radius: 30px;
-      transition: all 0.3s;
+      transition: background-color 0.3s ease;
+      font-family: inherit;
 
       &:hover {
-        background-color: rgba(34, 231, 151, 0.1);
+        background-color: rgba(var(--accent-color-rgb), 0.1);
       }
     }
   }

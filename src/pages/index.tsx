@@ -1,5 +1,6 @@
 import RenderLayout from "@/layouts/LayoutRenderer";
-import { dataocmsApiUrl, pageQuery } from "@/utilities/constants";
+import localPageData from "@/data/pageData.json";
+
 const IndexPage = ({
   pageComponentList,
   errorCode,
@@ -7,8 +8,8 @@ const IndexPage = ({
   pageTitle,
 }: {
   pageComponentList: any;
-  errorCode: number;
-  errorMessage: string;
+  errorCode?: number;
+  errorMessage?: string;
   pageTitle: string;
 }) => {
   if (errorCode) return <h1>{errorMessage}</h1>;
@@ -21,6 +22,20 @@ const IndexPage = ({
 };
 
 export const getServerSideProps = async () => {
+  const useLocalData = process.env.USE_LOCAL_DATA === "true";
+
+  if (useLocalData) {
+    const pageData = localPageData.data.allPages[0];
+    return {
+      props: {
+        pageComponentList: pageData.components,
+        pageTitle: pageData.pageTitle || "My Portfolio",
+      },
+    };
+  }
+
+  // DatoCMS fetch (production)
+  const { dataocmsApiUrl, pageQuery } = await import("@/utilities/constants");
   const token = process.env.DATOCMS_API_TOKEN;
 
   try {
@@ -32,7 +47,7 @@ export const getServerSideProps = async () => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        query: pageQuery, // Pass the extracted GraphQL query string
+        query: pageQuery,
       }),
     });
 
@@ -51,9 +66,6 @@ export const getServerSideProps = async () => {
     return {
       props: {
         pageComponentList: responseData.data.allPages[0].components,
-        headerData: responseData.data.allPages[0].components.find(
-          (component: any) => component.__typename === "HeaderRecord"
-        ),
         pageTitle: responseData.data.allPages[0].pageTitle || "My Portfolio",
       },
     };

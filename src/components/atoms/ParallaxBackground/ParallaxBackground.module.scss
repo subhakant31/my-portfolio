@@ -1,0 +1,124 @@
+.parallaxWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.parallaxLayer {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  will-change: transform;
+}
+
+.parallaxLayerSlow {
+  position: absolute;
+  top: -30%;
+  left: 0;
+  width: 100%;
+  height: 160%;
+  will-change: transform;
+}
+
+.parallaxLayerFastest {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  will-change: transform;
+}
+
+.doodleSvg {
+  width: 100%;
+  height: 100%;
+}
+
+// Dark theme doodle colors
+:global([data-theme="dark"]) {
+  .doodleText {
+    fill: rgba(255, 255, 255, 0.05);
+    font-family: "Courier New", monospace;
+  }
+
+  .doodleTextFaint {
+    fill: rgba(255, 255, 255, 0.03);
+    font-family: "Courier New", monospace;
+  }
+
+  .doodleTextAccent {
+    fill: rgba(38, 233, 137, 0.04);
+    font-family: "Courier New", monospace;
+  }
+
+  .doodleDot {
+    fill: rgba(38, 233, 137, 0.07);
+  }
+
+  .doodleShape {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 1.5;
+  }
+
+  .doodleShapeFaint {
+    fill: none;
+    stroke: rgba(38, 233, 137, 0.04);
+    stroke-width: 1.5;
+  }
+
+  .doodleLineFaint {
+    stroke: rgba(255, 255, 255, 0.04);
+    stroke-width: 1.5;
+  }
+}
+
+// Light theme doodle colors
+:global([data-theme="light"]) {
+  .doodleText {
+    fill: rgba(0, 0, 0, 0.05);
+    font-family: "Courier New", monospace;
+  }
+
+  .doodleTextFaint {
+    fill: rgba(0, 0, 0, 0.03);
+    font-family: "Courier New", monospace;
+  }
+
+  .doodleTextAccent {
+    fill: rgba(29, 185, 111, 0.05);
+    font-family: "Courier New", monospace;
+  }
+
+  .doodleDot {
+    fill: rgba(29, 185, 111, 0.07);
+  }
+
+  .doodleShape {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.05);
+    stroke-width: 1.5;
+  }
+
+  .doodleShapeFaint {
+    fill: none;
+    stroke: rgba(29, 185, 111, 0.04);
+    stroke-width: 1.5;
+  }
+
+  .doodleLineFaint {
+    stroke: rgba(0, 0, 0, 0.04);
+    stroke-width: 1.5;
+  }
+}

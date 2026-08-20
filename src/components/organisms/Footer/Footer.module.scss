@@ -1,5 +1,3 @@
-/* Footer.module.scss */
-
 .footer {
   height: 100vh;
   display: flex;
@@ -33,6 +31,7 @@
 .footerLogoHeading {
   margin-bottom: 24px;
   line-height: normal;
+  color: var(--text-primary);
   @media screen and (max-width: 768px) {
     font-size: 32px;
   }
@@ -40,12 +39,14 @@
 
 .footerDescription {
   margin-bottom: 32px;
+  color: var(--text-secondary);
 }
 
 .emailAddress {
   font-size: 28px;
   display: flex;
   align-items: center;
+  color: var(--text-primary);
 
   @media screen and (max-width: 768px) {
     word-break: break-word;
@@ -59,8 +60,8 @@
     width: 40px;
     padding: 5px;
     border-radius: 50%;
-    background-color: white;
-    color: green;
+    background-color: var(--accent-color);
+    color: var(--body-bg-color);
     margin-right: 16px;
   }
 }
@@ -84,17 +85,47 @@
 .list {
   margin-top: 24px;
 
+  @media screen and (max-width: 768px) {
+    margin-top: 16px;
+  }
+
   li {
     margin-bottom: 16px;
     list-style: none;
 
+    @media screen and (max-width: 768px) {
+      margin-bottom: 12px;
+    }
+
     a {
-      color: white;
+      color: var(--text-primary);
       font-size: 24px;
       text-decoration: none;
+      transition: color 0.2s ease;
+      position: relative;
+      display: inline-block;
+
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--accent-color);
+        transition: width 0.3s ease;
+      }
 
       &:hover {
-        text-decoration: underline;
+        color: var(--accent-color);
+
+        &::after {
+          width: 100%;
+        }
       }
     }
   }
@@ -122,14 +153,37 @@
   &:nth-child(3) {
     margin-top: 24px;
   }
-  color: white;
+  color: var(--text-primary);
   margin-top: 48px;
   font-size: 24px;
   text-decoration: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  position: relative;
+  transition: color 0.2s ease;
+
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+    margin-top: 32px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+  }
+
   &:hover {
-    text-decoration: underline;
+    color: var(--accent-color);
+
+    &::after {
+      width: 100%;
+    }
   }
 
   svg {
@@ -140,7 +194,7 @@
 .separator {
   height: 5px;
   border-radius: 30px;
-  background-color: grey;
+  background-color: var(--separator-color);
   width: 100%;
   margin-top: 100px;
   margin-bottom: 32px;
@@ -154,6 +208,7 @@
 .copyrightText {
   font-size: 24px;
   text-align: center;
+  color: var(--text-muted);
 
   @media screen and (max-width: 768px) {
     font-size: 16px;

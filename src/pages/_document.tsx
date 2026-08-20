@@ -1,7 +1,19 @@
-// pages/_document.tsx
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
+  // Inline script to set theme before paint, preventing flash of wrong theme
+  const themeScript = `
+    (function() {
+      try {
+        var theme = localStorage.getItem('theme');
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {}
+    })();
+  `;
+
   return (
     <Html lang='en'>
       <Head>
@@ -17,6 +29,7 @@ export default function Document() {
         ></link>
       </Head>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Main />
         <NextScript />
       </body>

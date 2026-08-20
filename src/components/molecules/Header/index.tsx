@@ -4,6 +4,7 @@ import { Jost } from "next/font/google";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { ThemeToggle } from "@/components/atoms/ThemeToggle";
 
 const jost = Jost({ subsets: ["latin"] });
 
@@ -11,6 +12,7 @@ export const Header = (props: HeaderProps) => {
   const [activeSection, setActiveSection] = useState<string>(
     props.listitems[0].linklocation.replace("#", "")
   );
+  const headerWrapperRef = useRef<HTMLDivElement>(null);
   const navListRef = useRef<HTMLUListElement>(null);
   const activeElementRef = useRef<HTMLDivElement>(null);
 
@@ -50,10 +52,12 @@ export const Header = (props: HeaderProps) => {
 
   /*
    * Move the active element to align with the currently active nav link
+   * and scroll the header wrapper to keep the active item visible on mobile
    */
   useEffect(() => {
     const navList = navListRef.current;
     const activeElement = activeElementRef.current;
+    const scrollContainer = headerWrapperRef.current;
 
     if (!navList || !activeElement || !activeSection) return;
 
@@ -67,15 +71,33 @@ export const Header = (props: HeaderProps) => {
         ?.replace("/", "");
 
       if (href === activeSection) {
-        const offsetLeft = (listItem as HTMLElement).offsetLeft;
+        const item = listItem as HTMLElement;
+        const offsetLeft = item.offsetLeft;
 
         activeElement.style.transform = `translateX(${offsetLeft}px)`;
+
+        // Re-trigger the fluid animation on section change
+        activeElement.style.animation = "none";
+        activeElement.offsetHeight; // force reflow
+        activeElement.style.animation = "";
+
+        // Scroll the header wrapper to center the active item (mobile)
+        if (scrollContainer) {
+          const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+          const scrollTarget = itemCenter - scrollContainer.clientWidth / 2;
+
+          scrollContainer.scrollTo({
+            left: scrollTarget,
+            behavior: "smooth",
+          });
+        }
       }
     });
   }, [activeSection]);
 
   return (
     <motion.div
+      ref={headerWrapperRef}
       initial={{ y: 100, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -98,6 +120,9 @@ export const Header = (props: HeaderProps) => {
                 </Link>
               </li>
             ))}
+            <li className={styles.themeToggleItem}>
+              <ThemeToggle />
+            </li>
           </ul>
         </nav>
       </header>

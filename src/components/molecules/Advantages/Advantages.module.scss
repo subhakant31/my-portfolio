@@ -4,54 +4,98 @@
   gap: 16px;
   flex-wrap: wrap;
 
+  @media screen and (max-width: 768px) {
+    gap: 12px;
+  }
+
   .advantageCardWrapper {
     padding: 16px;
     width: 49%;
-    border-radius: 15px;
-    background-color: #1f1f1f;
+    border-radius: 20px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--glass-border-color);
+    box-shadow: var(--glass-inset-shadow);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
     display: flex;
     gap: 32px;
     position: relative;
     flex-direction: column;
+    transition: background-color 0.3s ease, border-color 0.3s ease,
+      transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      background-color: var(--card-bg-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--glass-shadow);
+    }
+
     @media screen and (max-width: 768px) {
       width: 100%;
+      padding: 12px;
+      gap: 16px;
+      border-radius: 14px;
     }
+
     .iconHeadingWrapper {
       display: flex;
       gap: 32px;
       align-items: center;
+
+      @media screen and (max-width: 768px) {
+        gap: 16px;
+      }
+
       .advantageTitle {
+        color: var(--text-primary);
         @media screen and (max-width: 768px) {
-          font-size: 20px;
+          font-size: 16px;
           width: 60%;
         }
       }
       .iconWrapper {
         height: 48px;
         width: 48px;
+
+        @media screen and (max-width: 768px) {
+          height: 36px;
+          width: 36px;
+        }
+
         svg {
           height: 100%;
           width: 100%;
+          color: var(--accent-color);
         }
       }
     }
+
     .confidentPercentage {
       position: absolute;
       right: 16px;
       top: 16px;
       padding: 5px 15px;
       border-radius: 10px;
-      background-color: #272727;
-      border: 1px solid #545454;
+      background-color: var(--glass-bg-color);
+      border: 1px solid var(--glass-border-color);
+      color: var(--text-primary);
+
+      @media screen and (max-width: 768px) {
+        right: 12px;
+        top: 12px;
+        padding: 3px 10px;
+        font-size: 12px;
+      }
     }
+
     .percentageBarWrapper {
       width: 100%;
       height: 10px;
-      background-color: #272727;
+      background-color: var(--glass-bg-color);
       border-radius: 10px;
       .percentageBar {
         height: 100%;
-        background-color: #26e989;
+        background-color: var(--accent-color);
         border-radius: 10px;
         transition: width 0.5s ease-in-out;
       }

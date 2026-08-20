@@ -1,0 +1,101 @@
+// =============================================
+// CSS Custom Properties for Runtime Theming
+// Only import in global styles, NOT in CSS modules
+// =============================================
+
+:root,
+[data-theme="dark"] {
+  // Background colors
+  --body-bg-color: #0a0a0c;
+  --section-alt-bg: #0e0e0e;
+  --glass-bg-color: #1f1f1f;
+  --glass-border-color: rgba(255, 255, 255, 0.12);
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-bg-hover: rgba(255, 255, 255, 0.08);
+
+  // Text colors
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #7a7a7a;
+
+  // Accent
+  --accent-color: #26e989;
+  --accent-color-rgb: 38, 233, 137;
+  --accent-hover: #1fd47c;
+
+  // Glass effects — liquid glass iOS style
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-shadow: rgba(0, 0, 0, 0.4);
+  --glass-highlight: rgba(255, 255, 255, 0.08);
+  --glass-inset-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06);
+  --glass-blur: 24px;
+
+  // Input / Form
+  --input-border: rgba(255, 255, 255, 0.15);
+  --input-focus-border: var(--accent-color);
+  --error-color: #ff4d4d;
+
+  // Header — liquid glass
+  --header-bg: rgba(40, 40, 40, 0.55);
+  --header-border: rgba(255, 255, 255, 0.12);
+  --header-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --header-active-bg: rgba(255, 255, 255, 0.1);
+  --header-active-border: rgba(255, 255, 255, 0.2);
+  --header-active-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  // Misc
+  --separator-color: rgba(255, 255, 255, 0.08);
+  --icon-bg: rgba(255, 255, 255, 0.06);
+  --modal-overlay: rgba(0, 0, 0, 0.7);
+  --modal-bg: rgba(30, 30, 30, 0.85);
+  --scrollbar-thumb: #333333;
+}
+
+[data-theme="light"] {
+  // Background colors
+  --body-bg-color: #f2f2f7;
+  --section-alt-bg: #ffffff;
+  --glass-bg-color: rgba(255, 255, 255, 0.6);
+  --glass-border-color: rgba(0, 0, 0, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-bg-hover: rgba(255, 255, 255, 0.95);
+
+  // Text colors
+  --text-primary: #1c1c1e;
+  --text-secondary: #3c3c43;
+  --text-muted: #8e8e93;
+
+  // Accent
+  --accent-color: #1db96f;
+  --accent-color-rgb: 29, 185, 111;
+  --accent-hover: #17a060;
+
+  // Glass effects — liquid glass iOS style
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-shadow: rgba(0, 0, 0, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.6);
+  --glass-inset-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 4px 16px rgba(0, 0, 0, 0.06);
+  --glass-blur: 24px;
+
+  // Input / Form
+  --input-border: rgba(0, 0, 0, 0.12);
+  --input-focus-border: var(--accent-color);
+  --error-color: #e53e3e;
+
+  // Header — liquid glass
+  --header-bg: rgba(255, 255, 255, 0.45);
+  --header-border: rgba(255, 255, 255, 0.7);
+  --header-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --header-active-bg: rgba(0, 0, 0, 0.07);
+  --header-active-border: rgba(0, 0, 0, 0.1);
+  --header-active-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  // Misc
+  --separator-color: rgba(0, 0, 0, 0.06);
+  --icon-bg: rgba(255, 255, 255, 0.6);
+  --modal-overlay: rgba(0, 0, 0, 0.3);
+  --modal-bg: rgba(255, 255, 255, 0.75);
+  --scrollbar-thumb: #cccccc;
+}

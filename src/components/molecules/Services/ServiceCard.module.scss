@@ -1,61 +1,104 @@
-@import "@/styles/variables";
-
 .servicesList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   column-gap: 32px;
   row-gap: 32px;
+
+  @media screen and (max-width: 768px) {
+    column-gap: 16px;
+    row-gap: 24px;
+  }
 }
 
 .serviceCardWrapper {
   flex-basis: 23%;
   padding: 70px 16px 16px 16px;
-  background-color: $glassBgColor;
+  background-color: var(--card-bg);
+  border: 1px solid var(--glass-border-color);
+  box-shadow: var(--glass-inset-shadow);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
   min-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 20px;
   position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    background-color: var(--card-bg-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px var(--glass-shadow);
+  }
+
   @media screen and (max-width: 768px) {
     flex-basis: 100%;
+    min-width: unset;
+    padding: 16px;
+    padding-top: 16px;
+    border-radius: 16px;
   }
+
   .iconWrapper {
     height: 60px;
     width: 60px;
-    background-color: #0a0a0c;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(50px) saturate(200%);
+    -webkit-backdrop-filter: blur(50px) saturate(200%);
     display: grid;
     place-content: center;
     border-radius: 10px;
     position: absolute;
     top: -30px;
     transform: rotate(-45deg);
+    border: 1px solid var(--glass-border-color);
+    transition: background-color 0.3s ease;
+
+    @media screen and (max-width: 768px) {
+      position: static;
+      height: 44px;
+      width: 44px;
+      transform: rotate(-45deg);
+      margin-bottom: 8px;
+    }
+
     svg {
       transform: rotate(45deg);
       font-size: 24px;
+      color: var(--accent-color);
+
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+      }
     }
   }
+
   .heading {
     margin-bottom: 10px;
+    color: var(--text-primary);
   }
+
   .separator {
     margin-bottom: 10px;
-    height: 2px;
     height: 2px;
     display: flex;
     gap: 3px;
     .separatorLarge {
       width: 15px;
-      background-color: $accentColor;
+      background-color: var(--accent-color);
     }
     .separatorSmall {
       width: 5px;
-      background-color: $accentColor;
+      background-color: var(--accent-color);
     }
   }
+
   .description {
     margin-bottom: 10px;
     text-align: center;
+    color: var(--text-secondary);
   }
 }
