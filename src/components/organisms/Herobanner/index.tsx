@@ -10,10 +10,15 @@ import { motion } from "motion/react";
 import MotionContainer from "@/components/atoms/MotionContainer";
 import { AvailabilityBadge } from "@/components/atoms/AvailabilityBadge";
 import { AnimatedCounters } from "@/components/molecules/AnimatedCounters";
+import { HiEye, HiDownload } from "react-icons/hi";
 
 export const HeroBanner = (props: HeroBannerProps) => {
   const [typingDone, setTypingDone] = useState(false);
+  const [showResumeModal, setShowResumeModal] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const resumeUrl = props.resumeReference?.resumeCv?.url || "";
+  const resumeFilename = props.resumeReference?.resumeFileName || "resume.pdf";
 
   const handleTypingComplete = useCallback(() => {
     setTypingDone(true);
@@ -26,6 +31,27 @@ export const HeroBanner = (props: HeroBannerProps) => {
     const y = e.clientY - rect.top;
     sectionRef.current.style.setProperty("--spotlight-x", `${x}px`);
     sectionRef.current.style.setProperty("--spotlight-y", `${y}px`);
+  };
+
+  const handleViewResume = () => {
+    setShowResumeModal(true);
+  };
+
+  const handleDownloadResume = async () => {
+    try {
+      const response = await fetch(resumeUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = resumeFilename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch {
+      window.open(resumeUrl, "_blank");
+    }
   };
 
   return (
@@ -79,6 +105,16 @@ export const HeroBanner = (props: HeroBannerProps) => {
                   html={props.bodycopy}
                 ></RichText>
                 <AnimatedCounters />
+                <div className={styles.resumeActions}>
+                  <button className={styles.viewResumeBtn} onClick={handleViewResume}>
+                    <HiEye />
+                    {props.resumeReference?.viewResumeText || "View Resume"}
+                  </button>
+                  <button className={styles.downloadResumeBtn} onClick={handleDownloadResume}>
+                    <HiDownload />
+                    {props.resumeReference?.downloadResumeText || "Download"}
+                  </button>
+                </div>
                 <AvailabilityBadge />
               </motion.div>
             )}
@@ -98,6 +134,24 @@ export const HeroBanner = (props: HeroBannerProps) => {
           </motion.div>
         </div>
       </div>
+
+      {showResumeModal && (
+        <div className={styles.resumeModalOverlay} onClick={() => setShowResumeModal(false)}>
+          <div className={styles.resumeModal} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.resumeModalHeader}>
+              <h3 className={styles.resumeModalTitle}>Resume</h3>
+              <button
+                className={styles.resumeModalClose}
+                onClick={() => setShowResumeModal(false)}
+                aria-label="Close"
+              >
+                &times;
+              </button>
+            </div>
+            <iframe src={resumeUrl} className={styles.resumeIframe} title="Resume" />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

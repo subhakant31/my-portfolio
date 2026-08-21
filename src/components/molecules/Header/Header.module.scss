@@ -54,6 +54,38 @@
         }
       }
 
+      .logoItem {
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        @media screen and (max-width: 768px) {
+          padding: 6px 12px;
+        }
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: var(--accent-color);
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: 1.3rem;
+        }
+      }
+
+      .logoDot {
+        color: var(--accent-color);
+      }
+
       .listItem {
         padding: 15px 40px;
         width: 165px;

@@ -1,5 +1,5 @@
 import RenderLayout from "@/layouts/LayoutRenderer";
-import localPageData from "@/data/pageData.json";
+import { fetchAllSlugs, fetchPageBySlug } from "@/utilities/datocms";
 
 const IndexPage = ({
   pageComponentList,
@@ -22,60 +22,38 @@ const IndexPage = ({
 };
 
 export const getServerSideProps = async () => {
-  const useLocalData = process.env.USE_LOCAL_DATA === "true";
+  try {
+    // Step 1: Get all slugs to find the homepage
+    const allPages = await fetchAllSlugs();
 
-  if (useLocalData) {
-    const pageData = localPageData.data.allPages[0];
+    if (!allPages || allPages.length === 0) {
+      return {
+        props: { errorCode: 404, errorMessage: "No pages found", pageComponentList: null, pageTitle: "" },
+      };
+    }
+
+    // Use page with slug "home", or fall back to first page
+    const homepage = allPages.find((p) => p.slug === "home") || allPages[0];
+
+    // Step 2: Fetch full page data for the homepage
+    const pageData = await fetchPageBySlug(homepage.slug);
+
+    if (!pageData) {
+      return {
+        props: { errorCode: 404, errorMessage: "Homepage not found", pageComponentList: null, pageTitle: "" },
+      };
+    }
+
     return {
       props: {
         pageComponentList: pageData.components,
         pageTitle: pageData.pageTitle || "My Portfolio",
       },
     };
-  }
-
-  // DatoCMS fetch (production)
-  const { dataocmsApiUrl, pageQuery } = await import("@/utilities/constants");
-  const token = process.env.DATOCMS_API_TOKEN;
-
-  try {
-    const response = await fetch(dataocmsApiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        query: pageQuery,
-      }),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error("DatoCMS API Error:", errorData.data[0].attributes);
-      return {
-        props: {
-          errorCode: response.status,
-          errorMessage: errorData.error || "Failed to fetch data from DatoCMS",
-        },
-      };
-    }
-    const responseData = await response.json();
-
+  } catch (error: any) {
+    console.error("Error fetching page data:", error.message);
     return {
-      props: {
-        pageComponentList: responseData.data.allPages[0].components,
-        pageTitle: responseData.data.allPages[0].pageTitle || "My Portfolio",
-      },
-    };
-  } catch (error) {
-    console.error("Error in fetching the page data:", error);
-    return {
-      props: {
-        errorCode: 500,
-        errorMessage: "Failed to fetch data from DatoCMS",
-      },
+      props: { errorCode: 500, errorMessage: "Failed to fetch data", pageComponentList: null, pageTitle: "" },
     };
   }
 };

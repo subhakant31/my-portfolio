@@ -9,4 +9,10 @@ export interface HeroBannerProps {
   imageReference?: ImageReferenceProps;
   renderPillIcon?: boolean;
   borderColor?: string;
+  resumeReference?: {
+    viewResumeText: string;
+    downloadResumeText: string;
+    resumeFileName: string;
+    resumeCv: { url: string };
+  };
 }

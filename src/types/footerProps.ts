@@ -1,10 +1,20 @@
 import { CtaLink, RichTextProps } from "./commonModels";
 import { SocialShareReference } from "./socialShareReference";
 
+export interface ResumeReference {
+  viewResumeText: string;
+  downloadResumeText: string;
+  resumeFileName: string;
+  resumeCv: {
+    url: string;
+  };
+}
+
 export interface FooterNavLinks {
   linkTitle: string;
   links: CtaLink[];
 }
+
 export interface FooterProps {
   title: string;
   bodycopy: RichTextProps;
@@ -12,11 +22,5 @@ export interface FooterProps {
   navLinkReference: FooterNavLinks[];
   socialShareReference: SocialShareReference;
   copyrightText: string;
-  viewResumeText: string;
-  downloadResumeText: string;
-  resumeFileName: string;
-  resumeCv: {
-    url: string;
-    filename: string;
-  };
+  resumeReference: ResumeReference;
 }

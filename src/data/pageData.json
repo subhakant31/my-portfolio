@@ -3,6 +3,7 @@
     "allPages": [
       {
         "pageTitle": "Subhakanta Mishra | Full Stack Developer",
+        "slug": "home",
         "components": [
           {
             "__typename": "HeaderRecord",
@@ -50,6 +51,16 @@
             "borderColor": "#26e989",
             "enableImageEffects": true,
             "eyebrowText": "Hello, I'm Subhakanta Mishra. Full stack Web developer",
+            "resumeReference": {
+              "viewResumeText": "View Resume",
+              "downloadResumeText": "Download Resume",
+              "resumeFileName": "subhakanta_mishra_fullstack_frontend_developer.pdf",
+              "__typename": "ResumeCvRecord",
+              "id": "TPq_FaEwRHmtKt8gakNk2Q",
+              "resumeCv": {
+                "url": "https://www.datocms-assets.com/164201/1787233276-subhakanta_mishra_fullstack_developer.pdf"
+              }
+            },
             "imageReference": {
               "__typename": "ImageRecord",
               "id": "H8pYTyQaQWmsrZ7wAjUcnQ",
@@ -249,34 +260,34 @@
                   "__typename": "FormFieldRecord",
                   "id": "KoIBcF9JSOK4YEwkldXx8A",
                   "name": "Name",
-                  "placeHolderText": "Your name",
+                  "placeHolderText": "Enter your name",
                   "fieldType": "text",
                   "isRequired": true,
                   "validation": "text"
                 },
                 {
                   "__typename": "FormFieldRecord",
+                  "id": "ObOhPllNQDic6WOq7afTwg",
+                  "name": "Phone",
+                  "placeHolderText": "Enter your Phone",
+                  "fieldType": "number",
+                  "isRequired": true,
+                  "validation": "phoneNumber"
+                },
+                {
+                  "__typename": "FormFieldRecord",
                   "id": "FeYbfcIqQzOMTET1PkufEw",
                   "name": "Email",
-                  "placeHolderText": "Your email address",
+                  "placeHolderText": "Enter your Email",
                   "fieldType": "email",
                   "isRequired": true,
                   "validation": "email"
                 },
                 {
                   "__typename": "FormFieldRecord",
-                  "id": "ObOhPllNQDic6WOq7afTwg",
-                  "name": "Phone",
-                  "placeHolderText": "Your phone (optional)",
-                  "fieldType": "number",
-                  "isRequired": false,
-                  "validation": "phoneNumber"
-                },
-                {
-                  "__typename": "FormFieldRecord",
                   "id": "VApTQnwaTFuBXC1SXiNeTg",
                   "name": "Address",
-                  "placeHolderText": "Your address",
+                  "placeHolderText": "Enter your Address",
                   "fieldType": "text",
                   "isRequired": true,
                   "validation": ""
@@ -340,9 +351,15 @@
                 ]
               }
             ],
-            "resumeCv": {
-              "url": "https://www.datocms-assets.com/164201/1770025796-subhakanta_mishra_fullstack_frontend_developer.pdf",
-              "filename": "subhakanta_mishra_fullstack_frontend_developer.pdf"
+            "resumeReference": {
+              "viewResumeText": "View Resume",
+              "downloadResumeText": "Download Resume",
+              "resumeFileName": "subhakanta_mishra_fullstack_frontend_developer.pdf",
+              "__typename": "ResumeCvRecord",
+              "id": "TPq_FaEwRHmtKt8gakNk2Q",
+              "resumeCv": {
+                "url": "https://www.datocms-assets.com/164201/1787233276-subhakanta_mishra_fullstack_developer.pdf"
+              }
             },
             "socialShareReference": {
               "__typename": "SocialShareRecord",
@@ -375,9 +392,7 @@
                 }
               ]
             },
-            "copyrightText": "@ 2025 All rights reserved - Subhakanta",
-            "viewResumeText": "View Resume",
-            "downloadResumeText": "Download Resume"
+            "copyrightText": "@ 2025 All rights reserved - Subhakanta"
           }
         ]
       }

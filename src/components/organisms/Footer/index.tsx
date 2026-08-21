@@ -26,7 +26,7 @@ export default function Footer(props: FooterProps) {
   ) => {
     e.preventDefault();
     try {
-      const response = await fetch(props.resumeCv.url);
+      const response = await fetch(props.resumeReference.resumeCv.url);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
@@ -38,7 +38,7 @@ export default function Footer(props: FooterProps) {
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Download failed:", error);
-      window.open(props.resumeCv.url, "_blank");
+      window.open(props.resumeReference.resumeCv.url, "_blank");
     }
   };
 
@@ -80,20 +80,20 @@ export default function Footer(props: FooterProps) {
           <div className={styles.socialShareDownloadWrapper}>
             <SocialShare {...props.socialShareReference} />
             <a
-              href={props.resumeCv.url}
+              href={props.resumeReference.resumeCv.url}
               className={styles.resumeDownloadBtn}
               onClick={handleViewResume}
             >
               {getReactIcon("eye")}
-              View Resume
+              {props.resumeReference.viewResumeText}
             </a>
             <a
-              href={props.resumeCv.url}
+              href={props.resumeReference.resumeCv.url}
               className={styles.resumeDownloadBtn}
-              onClick={(e) => handleDownload(e, props.resumeCv.filename)}
+              onClick={(e) => handleDownload(e, props.resumeReference.resumeFileName)}
             >
               {getReactIcon("download")}
-              {props.downloadResumeText}
+              {props.resumeReference.downloadResumeText}
             </a>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function Footer(props: FooterProps) {
               </button>
             </div>
             <iframe
-              src={props.resumeCv.url}
+              src={props.resumeReference.resumeCv.url}
               className={styles.resumeIframe}
               title="Resume PDF Viewer"
             />
