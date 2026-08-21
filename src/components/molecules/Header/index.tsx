@@ -52,73 +52,43 @@ export const Header = (props: HeaderProps) => {
   }, [props.listitems]);
 
   useEffect(() => {
-    const updateActiveElement = () => {
-      const navList = navListRef.current;
-      const activeElement = activeElementRef.current;
-      const scrollContainer = headerWrapperRef.current;
+    const navList = navListRef.current;
+    const activeElement = activeElementRef.current;
+    const scrollContainer = headerWrapperRef.current;
 
-      if (!navList || !activeElement || !activeSection) return;
+    if (!navList || !activeElement || !activeSection) return;
 
-      const listItems = navList.querySelectorAll(".listItem");
+    const listItems = navList.querySelectorAll(".listItem");
 
-      listItems.forEach((listItem) => {
-        const link = listItem.querySelector(".navLink");
-        const href = link
-          ?.getAttribute("href")
-          ?.replace("#", "")
-          ?.replace("/", "");
+    listItems.forEach((listItem) => {
+      const link = listItem.querySelector(".navLink");
+      const href = link
+        ?.getAttribute("href")
+        ?.replace("#", "")
+        ?.replace("/", "");
 
-        if (href === activeSection) {
-          const item = listItem as HTMLElement;
-          const navListRect = navList.getBoundingClientRect();
-          const itemRect = item.getBoundingClientRect();
-          const offsetLeft = itemRect.left - navListRect.left;
+      if (href === activeSection) {
+        const item = listItem as HTMLElement;
+        const offsetLeft = item.offsetLeft;
 
-          // Only update if we got valid measurements
-          if (itemRect.width > 10) {
-            activeElement.style.transform = `translateX(${offsetLeft}px)`;
-            activeElement.style.width = `${itemRect.width}px`;
-            activeElement.style.height = `${itemRect.height}px`;
+        activeElement.style.transform = `translateX(${offsetLeft}px)`;
+        activeElement.style.width = `${item.offsetWidth}px`;
 
-            activeElement.style.animation = "none";
-            activeElement.offsetHeight;
-            activeElement.style.animation = "";
-          }
+        activeElement.style.animation = "none";
+        activeElement.offsetHeight;
+        activeElement.style.animation = "";
 
-          if (scrollContainer) {
-            const itemCenter = itemRect.left - navListRect.left + itemRect.width / 2;
-            const scrollTarget = itemCenter - scrollContainer.clientWidth / 2;
+        if (scrollContainer) {
+          const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+          const scrollTarget = itemCenter - scrollContainer.clientWidth / 2;
 
-            scrollContainer.scrollTo({
-              left: scrollTarget,
-              behavior: "smooth",
-            });
-          }
+          scrollContainer.scrollTo({
+            left: scrollTarget,
+            behavior: "smooth",
+          });
         }
-      });
-    };
-
-    // Multiple attempts to ensure correct measurement after fonts + animations settle
-    const timers = [
-      setTimeout(updateActiveElement, 100),
-      setTimeout(updateActiveElement, 500),
-      setTimeout(updateActiveElement, 1000),
-    ];
-
-    // Also try after fonts load
-    if (document.fonts?.ready) {
-      document.fonts.ready.then(() => {
-        setTimeout(updateActiveElement, 50);
-      });
-    }
-
-    // Re-measure on resize
-    window.addEventListener("resize", updateActiveElement);
-
-    return () => {
-      timers.forEach(clearTimeout);
-      window.removeEventListener("resize", updateActiveElement);
-    };
+      }
+    });
   }, [activeSection]);
 
   return (

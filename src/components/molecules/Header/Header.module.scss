@@ -57,13 +57,14 @@
         position: absolute;
         bottom: 0;
         left: 0;
+        height: 100%;
         pointer-events: none;
         background: var(--header-active-bg);
         border: 1px solid var(--header-active-border);
         box-shadow: var(--header-active-shadow);
         border-radius: 35px;
         transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-          width 0.3s ease, height 0.3s ease;
+          width 0.3s ease;
         animation: fluidSlide 0.4s ease-out;
 
         @media screen and (max-width: 768px) {

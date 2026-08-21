@@ -1,6 +1,5 @@
 import { AppProps } from "next/app";
 import dynamic from "next/dynamic";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LoaderProvider, useLoader } from "@/context/LoaderContext";
 import { ScrollProgress } from "@/components/atoms/ScrollProgress";
@@ -56,7 +55,6 @@ export default function App(props: AppProps) {
     <ThemeProvider>
       <LoaderProvider>
         <AppContent {...props} />
-        <SpeedInsights />
       </LoaderProvider>
     </ThemeProvider>
   );
