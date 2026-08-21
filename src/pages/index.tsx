@@ -21,26 +21,24 @@ const IndexPage = ({
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
-    // Step 1: Get all slugs to find the homepage
     const allPages = await fetchAllSlugs();
 
     if (!allPages || allPages.length === 0) {
       return {
         props: { errorCode: 404, errorMessage: "No pages found", pageComponentList: null, pageTitle: "" },
+        revalidate: 60,
       };
     }
 
-    // Use page with slug "home", or fall back to first page
     const homepage = allPages.find((p) => p.slug === "home") || allPages[0];
-
-    // Step 2: Fetch full page data for the homepage
     const pageData = await fetchPageBySlug(homepage.slug);
 
     if (!pageData) {
       return {
         props: { errorCode: 404, errorMessage: "Homepage not found", pageComponentList: null, pageTitle: "" },
+        revalidate: 60,
       };
     }
 
@@ -49,11 +47,13 @@ export const getServerSideProps = async () => {
         pageComponentList: pageData.components,
         pageTitle: pageData.pageTitle || "My Portfolio",
       },
+      revalidate: 60, // ISR: regenerate every 60 seconds
     };
   } catch (error: any) {
     console.error("Error fetching page data:", error.message);
     return {
       props: { errorCode: 500, errorMessage: "Failed to fetch data", pageComponentList: null, pageTitle: "" },
+      revalidate: 30,
     };
   }
 };

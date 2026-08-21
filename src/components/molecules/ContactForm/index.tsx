@@ -1,7 +1,6 @@
 import { ContactFormProps } from "@/types/contactFormProps";
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import confetti from "canvas-confetti";
 import styles from "./ContactForm.module.scss";
 import validateFormData from "@/utilities/validateFormData";
 import { MagneticButton } from "@/components/atoms/MagneticButton";
@@ -57,11 +56,14 @@ export default function ContactForm(props: ContactFormProps) {
       if (response.ok) {
         setIsFormSubmitted(true);
         setIsFormSuccess(true);
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ["#26e989", "#1fd47c", "#ffffff"],
+        // Dynamically import confetti only on success
+        import("canvas-confetti").then((mod) => {
+          mod.default({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ["#26e989", "#1fd47c", "#ffffff"],
+          });
         });
         setFormData(() =>
           props.formFields.reduce((acc, field) => {

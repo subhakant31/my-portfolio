@@ -109,7 +109,7 @@ export const Header = (props: HeaderProps) => {
       <motion.div
         ref={headerWrapperRef}
         initial={{ y: 100, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className='header show-header'
       >

@@ -51,6 +51,7 @@ export const ProfilePicture = (props: ProfilePictureProps) => {
           className='profile-picture'
           width={500}
           height={500}
+          priority
         />
       </div>
     </motion.div>

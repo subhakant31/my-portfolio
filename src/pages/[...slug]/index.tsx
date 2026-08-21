@@ -1,6 +1,6 @@
 import RenderLayout from "@/layouts/LayoutRenderer";
-import { fetchPageBySlug } from "@/utilities/datocms";
-import { GetServerSidePropsContext } from "next";
+import { fetchAllSlugs, fetchPageBySlug } from "@/utilities/datocms";
+import { GetStaticPropsContext } from "next";
 
 const SlugPage = ({
   pageComponentList,
@@ -22,7 +22,28 @@ const SlugPage = ({
   );
 };
 
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+export const getStaticPaths = async () => {
+  try {
+    const allPages = await fetchAllSlugs();
+    const paths = allPages
+      .filter((p) => p.slug && p.slug !== "home")
+      .map((p) => ({
+        params: { slug: p.slug.split("/") },
+      }));
+
+    return {
+      paths,
+      fallback: "blocking",
+    };
+  } catch {
+    return {
+      paths: [],
+      fallback: "blocking",
+    };
+  }
+};
+
+export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { slug } = context.params || {};
   const pageSlug = Array.isArray(slug) ? slug.join("/") : slug;
 
@@ -42,6 +63,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
         pageComponentList: pageData.components,
         pageTitle: pageData.pageTitle || "My Portfolio",
       },
+      revalidate: 60,
     };
   } catch (error: any) {
     console.error(`Error fetching page "${pageSlug}":`, error.message);

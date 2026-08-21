@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./HeroBanner.module.scss";
 import { TextPill, renderPillIcon } from "@/components/atoms/TextPill";
 import { TypewriterHeading } from "@/components/atoms/TypewriterHeading";
@@ -13,11 +13,16 @@ import { HiEye, HiDownload } from "react-icons/hi";
 
 export const HeroBanner = (props: HeroBannerProps) => {
   const [typingDone, setTypingDone] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [showResumeModal, setShowResumeModal] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const resumeUrl = props.resumeReference?.resumeCv?.url || "";
   const resumeFilename = props.resumeReference?.resumeFileName || "resume.pdf";
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
 
   const handleTypingComplete = useCallback(() => {
     setTypingDone(true);
@@ -86,7 +91,7 @@ export const HeroBanner = (props: HeroBannerProps) => {
                 <motion.div
                   className={styles.pillIcon}
                   initial={{ opacity: 0, scale: 0.5 }}
-                  animate={typingDone ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+                  animate={(typingDone || isMobile) ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                 >
                   {renderPillIcon({ size: 100 })}
@@ -96,7 +101,7 @@ export const HeroBanner = (props: HeroBannerProps) => {
             {props.bodycopy && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                animate={typingDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                animate={(typingDone || isMobile) ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
               >
                 <RichText
