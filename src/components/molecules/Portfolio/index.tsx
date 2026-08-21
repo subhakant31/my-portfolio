@@ -43,8 +43,8 @@ function PortfolioCard({ item, index, direction }: { item: any; index: number; d
     >
       <a href={item.websiteSource} onClick={(e) => handleLinkClick(e, item.websiteSource)} rel='noopener noreferrer'>
         <Image
-          src={item.imageSource}
-          alt={`Portfolio project ${index + 1}`}
+          src={item.imagereference?.url || item.imageSource || ""}
+          alt={item.imagereference?.alt || `Portfolio project ${index + 1}`}
           width={400}
           height={200}
           placeholder="blur"

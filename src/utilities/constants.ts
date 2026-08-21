@@ -43,8 +43,9 @@ const componentFragments = `
     imageReference {
       __typename
       id
-      altText
-      imagePath
+      url
+      title
+      alt
     }
   }
   ... on AdvantageRecord {
@@ -100,7 +101,13 @@ const componentFragments = `
       __typename
       id
       websiteSource
-      imageSource
+      imagereference {
+        __typename
+        id
+        url
+        title
+        alt
+      }
     }
   }
   ... on ContactUsSectionRecord {

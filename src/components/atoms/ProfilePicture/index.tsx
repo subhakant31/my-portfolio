@@ -49,6 +49,8 @@ export const ProfilePicture = (props: ProfilePictureProps) => {
           src={props.src}
           alt={props?.altText}
           className='profile-picture'
+          width={500}
+          height={500}
         />
       </div>
     </motion.div>

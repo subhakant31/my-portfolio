@@ -2,7 +2,6 @@ import { useCallback, useRef, useState } from "react";
 import styles from "./HeroBanner.module.scss";
 import { TextPill, renderPillIcon } from "@/components/atoms/TextPill";
 import { TypewriterHeading } from "@/components/atoms/TypewriterHeading";
-import profilePicture from "../../../assets/images/profile-picture.jpg";
 import { ProfilePicture } from "@/components/atoms/ProfilePicture";
 import { HeroBannerProps } from "@/types/heroBannerProps";
 import { RichText } from "@/components/atoms/RichText";
@@ -125,8 +124,8 @@ export const HeroBanner = (props: HeroBannerProps) => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <ProfilePicture
-              src={profilePicture}
-              altText={props?.imageReference?.altText ?? ""}
+              src={props?.imageReference?.url || ""}
+              altText={props?.imageReference?.alt ?? ""}
               enableImageEffects={props?.enableImageEffects}
               className={styles.imageWrapper}
               borderColor={props?.borderColor}

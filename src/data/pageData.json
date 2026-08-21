@@ -62,10 +62,11 @@
               }
             },
             "imageReference": {
-              "__typename": "ImageRecord",
-              "id": "H8pYTyQaQWmsrZ7wAjUcnQ",
-              "altText": "man sitting on chair not looking at the camera",
-              "imagePath": ""
+              "__typename": "FileField",
+              "id": "Rh7iPw-ZSbaMU0vOV9pLTQ",
+              "url": "https://www.datocms-assets.com/164201/1757309144-profile-picture.jpg",
+              "title": "developer image",
+              "alt": "developer sitting on a sofa with one leg kep on the other"
             }
           },
           {
@@ -168,25 +169,49 @@
                 "__typename": "PortfolioWebLinkRecord",
                 "id": "DvtXEH2RQ_KpzLw4mBjoAg",
                 "websiteSource": "https://schedule-conference.netlify.app/",
-                "imageSource": "https://i.ibb.co/YFzgmkCc/image.png"
+                "imagereference": {
+                  "__typename": "FileField",
+                  "id": "AiLWNokaSTCjD5oRCU2ZBw",
+                  "url": "https://www.datocms-assets.com/164201/1787289582-conference.png",
+                  "title": null,
+                  "alt": null
+                }
               },
               {
                 "__typename": "PortfolioWebLinkRecord",
                 "id": "Bw5hPugzR7S3Zuaboatweg",
                 "websiteSource": "https://subhakanthackathon.netlify.app/",
-                "imageSource": "https://i.ibb.co/23g9fStf/image.png"
+                "imagereference": {
+                  "__typename": "FileField",
+                  "id": "Jqdcz_97RyKfivyLnx8HfQ",
+                  "url": "https://www.datocms-assets.com/164201/1787289616-hackathon.png",
+                  "title": null,
+                  "alt": null
+                }
               },
               {
                 "__typename": "PortfolioWebLinkRecord",
                 "id": "CD0v48v0SUOb0ZDHjuUuew",
                 "websiteSource": "https://agencywebsite3105.netlify.app/",
-                "imageSource": "https://i.ibb.co/60KsLxyG/image.png"
+                "imagereference": {
+                  "__typename": "FileField",
+                  "id": "AbIjqEzxTv-AzzaY28HIMA",
+                  "url": "https://www.datocms-assets.com/164201/1787289661-agency.png",
+                  "title": null,
+                  "alt": null
+                }
               },
               {
                 "__typename": "PortfolioWebLinkRecord",
                 "id": "Io6hFIOfRai9zUe_DTnvsg",
                 "websiteSource": "https://ecommerce-shop-co.netlify.app/",
-                "imageSource": "https://i.ibb.co/v6HPmdMz/image.png"
+                "imagereference": {
+                  "__typename": "FileField",
+                  "id": "VrGv7D5BQACX_Sn00fVeGA",
+                  "url": "https://www.datocms-assets.com/164201/1787289715-ecommerce.png",
+                  "title": null,
+                  "alt": null
+                }
               }
             ]
           },

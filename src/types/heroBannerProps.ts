@@ -1,12 +1,16 @@
-import { ImageReferenceProps } from "./commonModels";
 import { RichTextProps } from "./commonModels";
+
 export interface HeroBannerProps {
   title?: string;
   titleSize?: React.ElementType | string;
   bodycopy?: RichTextProps;
   eyebrowText?: string;
   enableImageEffects?: boolean;
-  imageReference?: ImageReferenceProps;
+  imageReference?: {
+    url: string;
+    alt?: string | null;
+    title?: string | null;
+  };
   renderPillIcon?: boolean;
   borderColor?: string;
   resumeReference?: {

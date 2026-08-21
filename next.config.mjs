@@ -8,8 +8,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "i.ibb.co",
-        pathname: "/**",
+        hostname: "www.datocms-assets.com",
       },
     ],
   },
