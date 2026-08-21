@@ -1,20 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./AnimatedCounters.module.scss";
-import { motion } from "motion/react";
 import { useLoader } from "@/context/LoaderContext";
 
 interface CounterItem {
   value: number;
   suffix: string;
   label: string;
+  id?: string;
 }
 
-const counters: CounterItem[] = [
-  { value: 3, suffix: "+", label: "Years Experience" },
-  { value: 5, suffix: "+", label: "Projects Delivered" },
-  { value: 40, suffix: "%", label: "Faster Publishing" },
-  { value: 30, suffix: "%", label: "Faster Dev Cycles" },
-];
+interface AnimatedCountersProps {
+  counters: CounterItem[];
+}
 
 function Counter({ value, suffix, label }: CounterItem) {
   const { loaderDone } = useLoader();
@@ -25,7 +22,6 @@ function Counter({ value, suffix, label }: CounterItem) {
   useEffect(() => {
     if (!loaderDone || hasAnimated) return;
 
-    // Small delay after loader to let the hero content appear first
     const delay = setTimeout(() => {
       let start = 0;
       const duration = 2000;
@@ -59,11 +55,13 @@ function Counter({ value, suffix, label }: CounterItem) {
   );
 }
 
-export const AnimatedCounters = () => {
+export const AnimatedCounters = ({ counters }: AnimatedCountersProps) => {
+  if (!counters || counters.length === 0) return null;
+
   return (
     <div className={styles.countersWrapper}>
       {counters.map((item) => (
-        <Counter key={item.label} {...item} />
+        <Counter key={item.id || item.label} {...item} />
       ))}
     </div>
   );

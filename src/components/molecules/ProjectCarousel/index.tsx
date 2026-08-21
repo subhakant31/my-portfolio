@@ -9,46 +9,33 @@ interface Project {
   role: string;
   duration: string;
   description: string;
-  techStack: string[];
-  highlights: string[];
+  techstack: string;
+  highlights: string;
 }
 
-const projects: Project[] = [
-  {
-    title: "Humana",
-    company: "Credera",
-    role: "Senior Frontend Developer",
-    duration: "August 2024 - September 2025",
-    description:
-      "Built a high-performance healthcare platform using Server-Side Rendering for improved SEO and page load times. Developed reusable component architecture integrated with AEM Content Fragments via GraphQL.",
-    techStack: ["Next.js", "TypeScript", "GraphQL", "AEM", "Content Fragments"],
-    highlights: [
-      "Implemented SSR for improved page load times and SEO",
-      "Optimized layouts minimizing repetitive component authoring",
-      "Integrated Apache .htaccess-like rewrite rules in Next.js",
-      "Built reusable components with AEM Content/Experience Fragments",
-    ],
-  },
-  {
-    title: "AARP",
-    company: "Credera",
-    role: "Senior Frontend Developer",
-    duration: "September 2025 - Present",
-    description:
-      "Developing responsive, accessible UI components within Adobe Experience Manager for one of America's largest nonprofit organizations. Focused on performance optimization and scalable front-end architecture.",
-    techStack: ["React.js", "jQuery", "HTML", "SCSS", "AEM", "REST APIs"],
-    highlights: [
-      "Developed responsive and accessible UI and React components",
-      "Enhanced performance by optimizing DOM manipulation",
-      "Built reusable front-end modules and templates",
-      "Integrated RESTful APIs for dynamic content rendering",
-    ],
-  },
-];
+interface ProjectCarouselProps {
+  projects: Project[];
+}
 
-export const ProjectCarousel = () => {
+// Parse HTML list into array of strings
+function parseHtmlList(html: string): string[] {
+  if (!html) return [];
+  const matches = html.match(/<li>(.*?)<\/li>/g);
+  if (!matches) return [];
+  return matches.map((m) => m.replace(/<\/?li>/g, "").trim());
+}
+
+// Parse HTML paragraph to plain text
+function parseHtmlText(html: string): string {
+  if (!html) return "";
+  return html.replace(/<\/?p>/g, "").trim();
+}
+
+export const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
+
+  if (!projects || projects.length === 0) return null;
 
   const next = () => {
     setDirection(1);
@@ -61,6 +48,9 @@ export const ProjectCarousel = () => {
   };
 
   const project = projects[current];
+  const techItems = parseHtmlList(project.techstack);
+  const highlightItems = parseHtmlList(project.highlights);
+  const descriptionText = parseHtmlText(project.description);
 
   const variants = {
     enter: (dir: number) => ({
@@ -102,10 +92,10 @@ export const ProjectCarousel = () => {
               </div>
             </div>
 
-            <p className={styles.description}>{project.description}</p>
+            <p className={styles.description}>{descriptionText}</p>
 
             <div className={styles.techStack}>
-              {project.techStack.map((tech) => (
+              {techItems.map((tech) => (
                 <span key={tech} className={styles.techPill}>
                   {tech}
                 </span>
@@ -113,7 +103,7 @@ export const ProjectCarousel = () => {
             </div>
 
             <ul className={styles.highlights}>
-              {project.highlights.map((item, i) => (
+              {highlightItems.map((item, i) => (
                 <li key={i} className={styles.highlightItem}>
                   {item}
                 </li>

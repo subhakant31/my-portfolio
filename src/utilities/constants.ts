@@ -30,6 +30,13 @@ const componentFragments = `
     borderColor
     enableImageEffects
     eyebrowText
+    animatedCounterReference {
+      __typename
+      value
+      suffix
+      label
+      id
+    }    
     resumeReference {
       viewResumeText
       downloadResumeText
@@ -58,6 +65,13 @@ const componentFragments = `
       textAlign
       id
       eyebrowText
+    }
+    technologyReference {
+      title
+      technologyNameReference {
+        name
+        icon
+      }
     }
     advantages {
       __typename
@@ -97,6 +111,19 @@ const componentFragments = `
       id
       eyebrowText
     }
+    professionalWorkHeading
+    professionalWorkDescription
+    professionalProjectReference {
+      title
+      techstack
+      role
+      duration
+      highlights
+      description
+      company
+    }
+    personalProjectHeading
+    personalProjectDescription
     items {
       __typename
       id

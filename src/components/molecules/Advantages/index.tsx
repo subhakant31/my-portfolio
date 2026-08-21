@@ -93,7 +93,7 @@ const Advantages = (props: AdvantagesProps) => {
           <AdvantageCard key={advantage.id} {...advantage} index={index} />
         ))}
       </div>
-      <TechStack />
+      <TechStack categories={props.technologyReference || []} />
     </ComponentWrapper>
   );
 };

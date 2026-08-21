@@ -66,15 +66,15 @@ export default function Portfolio(props: PortfolioProps) {
     <ComponentWrapper className='portfolio section' id='portfolio'>
       {/* Professional Work */}
       <div className={styles.subsection}>
-        <h2 className={styles.subsectionTitle}>Professional Work</h2>
-        <p className={styles.subsectionDesc}>Enterprise projects I&apos;ve contributed to at Credera</p>
-        <ProjectCarousel />
+        <h2 className={styles.subsectionTitle}>{props.professionalWorkHeading || "Professional Work"}</h2>
+        <p className={styles.subsectionDesc}>{props.professionalWorkDescription || ""}</p>
+        <ProjectCarousel projects={props.professionalProjectReference || []} />
       </div>
 
       {/* Personal Projects */}
       <div className={styles.subsection}>
-        <h2 className={styles.subsectionTitle}>Personal Projects</h2>
-        <p className={styles.subsectionDesc}>Side projects I&apos;ve built in my free time</p>
+        <h2 className={styles.subsectionTitle}>{props.personalProjectHeading || "Personal Projects"}</h2>
+        <p className={styles.subsectionDesc}>{props.personalProjectDescription || ""}</p>
         <div className={styles.websiteListContainer}>
           <div className={`${styles.websiteRow}`}>
             {firstHalf.map((item, index) => (

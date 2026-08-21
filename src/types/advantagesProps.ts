@@ -8,7 +8,18 @@ export interface Advantage {
   index: number;
 }
 
+export interface TechItem {
+  name: string;
+  icon: string;
+}
+
+export interface TechCategory {
+  title: string;
+  technologyNameReference: TechItem[];
+}
+
 export interface AdvantagesProps {
   pageHeading: PageHeadingProps;
   advantages?: Advantage[];
+  technologyReference?: TechCategory[];
 }

@@ -51,6 +51,36 @@
             "borderColor": "#26e989",
             "enableImageEffects": true,
             "eyebrowText": "Hello, I'm Subhakanta Mishra. Full stack Web developer",
+            "animatedCounterReference": [
+              {
+                "__typename": "AnimatedCounterRecord",
+                "value": 30,
+                "suffix": "%",
+                "label": "Faster Dev Cycles",
+                "id": "IMy4EiQhSJyFX5jV071T2g"
+              },
+              {
+                "__typename": "AnimatedCounterRecord",
+                "value": 40,
+                "suffix": "%",
+                "label": "Faster Publishing",
+                "id": "FN6lyizpROWjRmFZoI_OWg"
+              },
+              {
+                "__typename": "AnimatedCounterRecord",
+                "value": 5,
+                "suffix": "+",
+                "label": "Projects Delivered",
+                "id": "HDLxKez5R9KpoTjoR--4dA"
+              },
+              {
+                "__typename": "AnimatedCounterRecord",
+                "value": 3,
+                "suffix": "+",
+                "label": "Years Experience",
+                "id": "SCxzv1WWRm6_WB17NMMY0Q"
+              }
+            ],
             "resumeReference": {
               "viewResumeText": "View Resume",
               "downloadResumeText": "Download Resume",
@@ -75,11 +105,101 @@
             "pageHeading": {
               "__typename": "PageHeadingRecord",
               "titleSize": "h1",
-              "title": "My Advantages",
+              "title": "Things I'm good at",
               "textAlign": "center",
               "id": "JebHMOC0QJiC8UdCcWHIug",
               "eyebrowText": "MY SKILLS"
             },
+            "technologyReference": [
+              {
+                "title": "Core Web Tech",
+                "technologyNameReference": [
+                  {
+                    "name": "TypeScript",
+                    "icon": "SiTypescript"
+                  },
+                  {
+                    "name": "JavaScript (ES6+)",
+                    "icon": "SiJavascript"
+                  },
+                  {
+                    "name": "SCSS",
+                    "icon": "SiSass"
+                  },
+                  {
+                    "name": "CSS3",
+                    "icon": "SiCss3"
+                  },
+                  {
+                    "name": "HTML5",
+                    "icon": "SiHtml5"
+                  }
+                ]
+              },
+              {
+                "title": "Frontend & Libraries",
+                "technologyNameReference": [
+                  {
+                    "name": "ReactJS",
+                    "icon": "SiReact"
+                  },
+                  {
+                    "name": "Next.js",
+                    "icon": "SiNextdotjs"
+                  },
+                  {
+                    "name": "jQuery",
+                    "icon": "SiJquery"
+                  },
+                  {
+                    "name": "Playwright",
+                    "icon": "FaVial"
+                  },
+                  {
+                    "name": "Node.js",
+                    "icon": "SiNodedotjs"
+                  }
+                ]
+              },
+              {
+                "title": "UI Libraries & Design Systems",
+                "technologyNameReference": [
+                  {
+                    "name": "Material UI",
+                    "icon": "SiMui"
+                  },
+                  {
+                    "name": "React Storybook",
+                    "icon": "SiStorybook"
+                  },
+                  {
+                    "name": "Styled Components",
+                    "icon": "SiStyledcomponents"
+                  }
+                ]
+              },
+              {
+                "title": "CMS & Content",
+                "technologyNameReference": [
+                  {
+                    "name": "AEM Frontend",
+                    "icon": "FaCode"
+                  },
+                  {
+                    "name": "DatoCMS",
+                    "icon": "FaDatabase"
+                  },
+                  {
+                    "name": "Drupal SiteStudio",
+                    "icon": "FaCogs"
+                  },
+                  {
+                    "name": "WordPress",
+                    "icon": "SiWordpress"
+                  }
+                ]
+              }
+            ],
             "advantages": [
               {
                 "__typename": "AdvantageCardRecord",
@@ -125,6 +245,13 @@
             "services": [
               {
                 "__typename": "ServiceCardRecord",
+                "id": "e-QeZm_sQzOueAuESJgZog",
+                "serviceTitle": "AI-Powered Web Experiences",
+                "serviceDescription": "<p>Integrating LLM APIs, AI chatbots, and intelligent features into web applications — from OpenAI/Gemini-powered assistants to smart content generation and real-time AI-driven user interactions.</p>",
+                "iconCode": "zap"
+              },
+              {
+                "__typename": "ServiceCardRecord",
                 "id": "J3HJoM5eQ4qHVzwdlsP9Dw",
                 "serviceTitle": "API & Performance Optimization",
                 "serviceDescription": "<p>Developing robust API integrations, consuming REST APIs, and optimizing web applications for high performance and scalability, including Server-Side Rendering (SSR) for improved load times.</p>",
@@ -150,6 +277,13 @@
                 "serviceTitle": "Front-End Development",
                 "serviceDescription": "<p>Crafting responsive and interactive user interfaces using modern frameworks like React.js and Next.js, along with TypeScript, HTML5, CSS3, and SCSS, focusing on clean and maintainable code.</p>",
                 "iconCode": "announcement"
+              },
+              {
+                "__typename": "ServiceCardRecord",
+                "id": "UWFsii20Q_uVlLwhDiB9lw",
+                "serviceTitle": "Legacy Modernization & Migration",
+                "serviceDescription": "<p>Migrating and modernizing legacy applications from jQuery and SiteStudio to modern TypeScript/React architectures — ensuring backward compatibility while delivering superior UX.</p>",
+                "iconCode": "tools"
               }
             ]
           },
@@ -164,11 +298,35 @@
               "id": "EahUlAfqS9aajVI8pEqQyQ",
               "eyebrowText": "MY PORTFOLIO"
             },
+            "professionalWorkHeading": "Professional Work",
+            "professionalWorkDescription": "Enterprise projects I've contributed to at Credera",
+            "professionalProjectReference": [
+              {
+                "title": "Humana",
+                "techstack": "<ul>\n  <li>Next.js</li>\n  <li>TypeScript</li>\n  <li>GraphQL</li>\n  <li>AEM</li>\n  <li>Content Fragments</li>\n</ul>",
+                "role": "Senior Frontend Developer",
+                "duration": "August 2024 - September 2025",
+                "highlights": "<ul>\n  <li>Implemented SSR for improved page load times and SEO</li>\n  <li>Optimized layouts minimizing repetitive component authoring</li>\n  <li>Integrated Apache .htaccess-like rewrite rules in Next.js</li>\n  <li>Built reusable components with AEM Content/Experience Fragments</li>\n</ul>",
+                "description": "<p>Built a high-performance healthcare platform using Server-Side Rendering for improved SEO and page load times. Developed reusable component architecture integrated with AEM Content Fragments via GraphQL.</p>",
+                "company": "Credera"
+              },
+              {
+                "title": "AARP",
+                "techstack": "<ul>\n  <li>React.js</li>\n  <li>jQuery</li>\n  <li>HTML</li>\n  <li>SCSS</li>\n  <li>AEM</li>\n  <li>REST APIs</li>\n</ul>",
+                "role": "Senior Frontend Developer",
+                "duration": "September 2025 - Present",
+                "highlights": "<ul>\n  <li>Developed responsive and accessible UI and React components</li>\n  <li>Enhanced performance by optimizing DOM manipulation</li>\n  <li>Built reusable front-end modules and templates</li>\n  <li>Integrated RESTful APIs for dynamic content rendering</li>\n</ul>",
+                "description": "<p>Developing responsive, accessible UI components within Adobe Experience Manager for one of America's largest nonprofit organizations. Focused on performance optimization and scalable front-end architecture.</p>",
+                "company": "Credera"
+              }
+            ],
+            "personalProjectHeading": "Personal Projects",
+            "personalProjectDescription": "Side projects I've built in my free time",
             "items": [
               {
                 "__typename": "PortfolioWebLinkRecord",
                 "id": "DvtXEH2RQ_KpzLw4mBjoAg",
-                "websiteSource": "https://schedule-conference.netlify.app/",
+                "websiteSource": "https://github.com/subhakant31/conference-scheduler",
                 "imagereference": {
                   "__typename": "FileField",
                   "id": "AiLWNokaSTCjD5oRCU2ZBw",
@@ -209,6 +367,54 @@
                   "__typename": "FileField",
                   "id": "VrGv7D5BQACX_Sn00fVeGA",
                   "url": "https://www.datocms-assets.com/164201/1787289715-ecommerce.png",
+                  "title": null,
+                  "alt": null
+                }
+              },
+              {
+                "__typename": "PortfolioWebLinkRecord",
+                "id": "MM2Ndd1ZSFCmUI_990L7Rg",
+                "websiteSource": "https://suswadeswedding.netlify.app/",
+                "imagereference": {
+                  "__typename": "FileField",
+                  "id": "RheMEymvRe6ojtPnD5JZ6A",
+                  "url": "https://www.datocms-assets.com/164201/1787291688-suswadeswedding.png",
+                  "title": null,
+                  "alt": null
+                }
+              },
+              {
+                "__typename": "PortfolioWebLinkRecord",
+                "id": "cnwOFSLkRnGPBrmyJUgjeQ",
+                "websiteSource": "https://github.com/subhakant31/apple-ipad-air-website",
+                "imagereference": {
+                  "__typename": "FileField",
+                  "id": "aiKslWo4RvGA-z13zpZNCA",
+                  "url": "https://www.datocms-assets.com/164201/1787292161-ipad.png",
+                  "title": null,
+                  "alt": null
+                }
+              },
+              {
+                "__typename": "PortfolioWebLinkRecord",
+                "id": "M-2Nc7-CT62x0_p9iKMuOw",
+                "websiteSource": "https://github.com/subhakant31/News-App",
+                "imagereference": {
+                  "__typename": "FileField",
+                  "id": "L_cZjggOR3mtmLvnSenrkA",
+                  "url": "https://www.datocms-assets.com/164201/1787292694-news.png",
+                  "title": null,
+                  "alt": null
+                }
+              },
+              {
+                "__typename": "PortfolioWebLinkRecord",
+                "id": "OJUOFyKZSDaAxLE1tfkPoA",
+                "websiteSource": "https://github.com/subhakant31/Weather-App",
+                "imagereference": {
+                  "__typename": "FileField",
+                  "id": "Qnjb5oPWTCKT6RQTI1xkJA",
+                  "url": "https://www.datocms-assets.com/164201/1787293002-weather.png",
                   "title": null,
                   "alt": null
                 }

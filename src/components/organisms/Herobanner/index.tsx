@@ -103,7 +103,7 @@ export const HeroBanner = (props: HeroBannerProps) => {
                   className={styles.description}
                   html={props.bodycopy}
                 ></RichText>
-                <AnimatedCounters />
+                <AnimatedCounters counters={props.animatedCounterReference || []} />
                 <div className={styles.resumeActions}>
                   <button className={styles.viewResumeBtn} onClick={handleViewResume}>
                     <HiEye />

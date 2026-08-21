@@ -19,4 +19,10 @@ export interface HeroBannerProps {
     resumeFileName: string;
     resumeCv: { url: string };
   };
+  animatedCounterReference?: {
+    value: number;
+    suffix: string;
+    label: string;
+    id?: string;
+  }[];
 }
