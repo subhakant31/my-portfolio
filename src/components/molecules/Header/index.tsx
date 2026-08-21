@@ -70,21 +70,23 @@ export const Header = (props: HeaderProps) => {
 
         if (href === activeSection) {
           const item = listItem as HTMLElement;
-          // Calculate offset relative to the navList, not the parent div
           const navListRect = navList.getBoundingClientRect();
           const itemRect = item.getBoundingClientRect();
           const offsetLeft = itemRect.left - navListRect.left;
 
-          activeElement.style.transform = `translateX(${offsetLeft}px)`;
-          activeElement.style.width = `${itemRect.width}px`;
-          activeElement.style.height = `${itemRect.height}px`;
+          // Only update if we got valid measurements
+          if (itemRect.width > 10) {
+            activeElement.style.transform = `translateX(${offsetLeft}px)`;
+            activeElement.style.width = `${itemRect.width}px`;
+            activeElement.style.height = `${itemRect.height}px`;
 
-          activeElement.style.animation = "none";
-          activeElement.offsetHeight;
-          activeElement.style.animation = "";
+            activeElement.style.animation = "none";
+            activeElement.offsetHeight;
+            activeElement.style.animation = "";
+          }
 
           if (scrollContainer) {
-            const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+            const itemCenter = itemRect.left - navListRect.left + itemRect.width / 2;
             const scrollTarget = itemCenter - scrollContainer.clientWidth / 2;
 
             scrollContainer.scrollTo({
@@ -96,12 +98,27 @@ export const Header = (props: HeaderProps) => {
       });
     };
 
-    // Wait for fonts to load before measuring
+    // Multiple attempts to ensure correct measurement after fonts + animations settle
+    const timers = [
+      setTimeout(updateActiveElement, 100),
+      setTimeout(updateActiveElement, 500),
+      setTimeout(updateActiveElement, 1000),
+    ];
+
+    // Also try after fonts load
     if (document.fonts?.ready) {
-      document.fonts.ready.then(updateActiveElement);
-    } else {
-      updateActiveElement();
+      document.fonts.ready.then(() => {
+        setTimeout(updateActiveElement, 50);
+      });
     }
+
+    // Re-measure on resize
+    window.addEventListener("resize", updateActiveElement);
+
+    return () => {
+      timers.forEach(clearTimeout);
+      window.removeEventListener("resize", updateActiveElement);
+    };
   }, [activeSection]);
 
   return (
