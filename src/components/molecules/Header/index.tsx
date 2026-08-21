@@ -4,6 +4,8 @@ import { Jost } from "next/font/google";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { ThemeToggle } from "@/components/atoms/ThemeToggle";
+import { AccentPicker } from "@/components/atoms/AccentPicker";
 
 const jost = Jost({ subsets: ["latin"] });
 
@@ -15,11 +17,11 @@ export const Header = (props: HeaderProps) => {
   const navListRef = useRef<HTMLUListElement>(null);
   const activeElementRef = useRef<HTMLDivElement>(null);
 
-  /*
-   * Intersection Observer to detect which section is currently active
-   * This will update the activeSection state based on the section in view
-   * It uses rootMargin to adjust the visibility threshold for better UX
-   */
+  // Split nav items into left and right groups
+  const midPoint = Math.ceil(props.listitems.length / 2);
+  const leftItems = props.listitems.slice(0, midPoint);
+  const rightItems = props.listitems.slice(midPoint);
+
   useEffect(() => {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
@@ -49,10 +51,6 @@ export const Header = (props: HeaderProps) => {
     return () => observer.disconnect();
   }, [props.listitems]);
 
-  /*
-   * Move the active element to align with the currently active nav link
-   * and scroll the header wrapper to keep the active item visible on mobile
-   */
   useEffect(() => {
     const navList = navListRef.current;
     const activeElement = activeElementRef.current;
@@ -74,13 +72,12 @@ export const Header = (props: HeaderProps) => {
         const offsetLeft = item.offsetLeft;
 
         activeElement.style.transform = `translateX(${offsetLeft}px)`;
+        activeElement.style.width = `${item.offsetWidth}px`;
 
-        // Re-trigger the fluid animation on section change
         activeElement.style.animation = "none";
-        activeElement.offsetHeight; // force reflow
+        activeElement.offsetHeight;
         activeElement.style.animation = "";
 
-        // Scroll the header wrapper to center the active item (mobile)
         if (scrollContainer) {
           const itemCenter = item.offsetLeft + item.offsetWidth / 2;
           const scrollTarget = itemCenter - scrollContainer.clientWidth / 2;
@@ -95,33 +92,80 @@ export const Header = (props: HeaderProps) => {
   }, [activeSection]);
 
   return (
-    <motion.div
-      ref={headerWrapperRef}
-      initial={{ y: 100, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className='header show-header'
-    >
-      <header className={`${styles.header} ${jost.className}`}>
-        <nav className={styles.navigation}>
-          <ul className={styles.navList} ref={navListRef}>
-            <div className={styles.activeElement} ref={activeElementRef}></div>
-            {props.listitems?.map((item, index) => (
-              <li
-                key={item.linklocation + index}
-                className={`${styles.listItem} listItem`}
-              >
-                <Link
-                  href={item.linklocation}
-                  className={`${styles.link} navLink`}
-                >
-                  {item.linktext}
+    <>
+      {/* Mobile logo — fixed at top center */}
+      <div className={styles.mobileLogo}>
+        <Link href="/" className={styles.logoLink}>
+          Subha<span className={styles.logoAccent}>kanta</span>
+        </Link>
+      </div>
+
+      {/* Mobile floating controls — top right */}
+      <div className={styles.mobileControls}>
+        <AccentPicker />
+        <ThemeToggle />
+      </div>
+
+      <motion.div
+        ref={headerWrapperRef}
+        initial={{ y: 100, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className='header show-header'
+      >
+        <header className={`${styles.header} ${jost.className}`}>
+          <nav className={styles.navigation}>
+            <ul className={styles.navList} ref={navListRef}>
+              <div className={styles.activeElement} ref={activeElementRef}></div>
+
+              {/* Left nav group */}
+              <div className={styles.leftNav}>
+                {leftItems.map((item, index) => (
+                  <li
+                    key={item.linklocation + index}
+                    className={`${styles.listItem} listItem`}
+                  >
+                    <Link
+                      href={item.linklocation}
+                      className={`${styles.link} navLink`}
+                    >
+                      {item.linktext}
+                    </Link>
+                  </li>
+                ))}
+              </div>
+
+              {/* Center logo */}
+              <li className={styles.logoItem}>
+                <Link href="/" className={styles.logoLink}>
+                  Subha<span className={styles.logoAccent}>kanta</span>
                 </Link>
               </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
-    </motion.div>
+
+              {/* Right nav group */}
+              <div className={styles.rightNav}>
+                {rightItems.map((item, index) => (
+                  <li
+                    key={item.linklocation + index}
+                    className={`${styles.listItem} listItem`}
+                  >
+                    <Link
+                      href={item.linklocation}
+                      className={`${styles.link} navLink`}
+                    >
+                      {item.linktext}
+                    </Link>
+                  </li>
+                ))}
+                <li className={styles.controlsItem}>
+                  <AccentPicker />
+                  <ThemeToggle />
+                </li>
+              </div>
+            </ul>
+          </nav>
+        </header>
+      </motion.div>
+    </>
   );
 };

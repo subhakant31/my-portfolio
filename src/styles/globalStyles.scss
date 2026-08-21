@@ -109,7 +109,9 @@ main {
   transition: background-color 0.3s ease;
   position: relative;
   scroll-margin-top: 80px;
-
+  @media screen and (max-width: 768px) {
+    scroll-margin-top: 0px;
+  }
   // Soft gradient fade at top and bottom of each section
   &::before {
     content: "";
@@ -153,8 +155,8 @@ main {
   top: 20px;
   left: 0;
   right: 0;
-  margin: auto;
-  max-width: 1200px;
+  margin: 0 auto;
+  width: fit-content;
   z-index: 99;
   border-radius: 50px;
   background: var(--header-bg);
@@ -167,10 +169,11 @@ main {
   @media screen and (max-width: 768px) {
     position: fixed;
     top: unset;
-    bottom: 20px;
     left: 16px;
     right: 16px;
-    transform: translateY(0px) !important;
+    bottom: 16px;
+    margin: auto;
+    transform: none;
     overflow-x: scroll;
     overflow-y: hidden;
     height: fit-content;

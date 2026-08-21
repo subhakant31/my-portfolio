@@ -65,7 +65,7 @@ export default function Portfolio(props: PortfolioProps) {
   return (
     <ComponentWrapper className='portfolio section' id='portfolio'>
       {/* Professional Work */}
-      <div className={styles.subsection}>
+      <div className={`${styles.subsection} professionalWork`}>
         <h2 className={styles.subsectionTitle}>{props.professionalWorkHeading || "Professional Work"}</h2>
         <p className={styles.subsectionDesc}>{props.professionalWorkDescription || ""}</p>
         <ProjectCarousel projects={props.professionalProjectReference || []} />
@@ -75,16 +75,42 @@ export default function Portfolio(props: PortfolioProps) {
       <div className={styles.subsection}>
         <h2 className={styles.subsectionTitle}>{props.personalProjectHeading || "Personal Projects"}</h2>
         <p className={styles.subsectionDesc}>{props.personalProjectDescription || ""}</p>
-        <div className={styles.websiteListContainer}>
-          <div className={`${styles.websiteRow}`}>
-            {firstHalf.map((item, index) => (
-              <PortfolioCard key={`first-${index}`} item={item} index={index} direction="left" />
-            ))}
+        <div className={styles.marqueeContainer}>
+          {/* Row 1: scrolls left */}
+          <div className={styles.marqueeRow}>
+            <div className={styles.marqueeTrack}>
+              {[...firstHalf, ...firstHalf].map((item, index) => (
+                <div key={`row1-${index}`} className={styles.marqueeCard}>
+                  <a href={item.websiteSource} target="_blank" rel="noopener noreferrer">
+                    <Image
+                      src={item.imagereference?.url || item.imageSource || ""}
+                      alt={item.imagereference?.alt || `Project ${index + 1}`}
+                      width={350}
+                      height={180}
+                      style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: "16px" }}
+                    />
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className={`${styles.websiteRow} ${styles.secondRow}`}>
-            {secondHalf.map((item, index) => (
-              <PortfolioCard key={`second-${index}`} item={item} index={index} direction="right" />
-            ))}
+          {/* Row 2: scrolls right */}
+          <div className={styles.marqueeRow}>
+            <div className={`${styles.marqueeTrack} ${styles.marqueeReverse}`}>
+              {[...secondHalf, ...secondHalf].map((item, index) => (
+                <div key={`row2-${index}`} className={styles.marqueeCard}>
+                  <a href={item.websiteSource} target="_blank" rel="noopener noreferrer">
+                    <Image
+                      src={item.imagereference?.url || item.imageSource || ""}
+                      alt={item.imagereference?.alt || `Project ${index + 1}`}
+                      width={350}
+                      height={180}
+                      style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: "16px" }}
+                    />
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
