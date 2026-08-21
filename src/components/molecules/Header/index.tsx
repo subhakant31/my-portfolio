@@ -1,7 +1,7 @@
 import { HeaderProps } from "@/types/HeaderProps";
 import styles from "./Header.module.scss";
 import { Jost } from "next/font/google";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useLayoutEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ThemeToggle } from "@/components/atoms/ThemeToggle";
@@ -13,14 +13,22 @@ export const Header = (props: HeaderProps) => {
   const [activeSection, setActiveSection] = useState<string>(
     props.listitems[0].linklocation.replace("#", "")
   );
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const headerWrapperRef = useRef<HTMLDivElement>(null);
-  const navListRef = useRef<HTMLUListElement>(null);
-  const activeElementRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLUListElement>(null);
+  const itemRefs = useRef<Map<string, HTMLLIElement>>(new Map());
 
   // Split nav items into left and right groups
   const midPoint = Math.ceil(props.listitems.length / 2);
   const leftItems = props.listitems.slice(0, midPoint);
   const rightItems = props.listitems.slice(midPoint);
+
+  // Store ref for each nav item
+  const setItemRef = useCallback((id: string, el: HTMLLIElement | null) => {
+    if (el) {
+      itemRefs.current.set(id, el);
+    }
+  }, []);
 
   useEffect(() => {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
@@ -51,56 +59,43 @@ export const Header = (props: HeaderProps) => {
     return () => observer.disconnect();
   }, [props.listitems]);
 
-  useEffect(() => {
-    const navList = navListRef.current;
-    const activeElement = activeElementRef.current;
-    const scrollContainer = headerWrapperRef.current;
+  // Measure and position the sliding indicator
+  useLayoutEffect(() => {
+    const activeEl = itemRefs.current.get(activeSection);
+    const nav = navRef.current;
+    if (!activeEl || !nav) return;
 
-    if (!navList || !activeElement || !activeSection) return;
+    const navRect = nav.getBoundingClientRect();
+    const itemRect = activeEl.getBoundingClientRect();
 
-    const listItems = navList.querySelectorAll(".listItem");
-
-    listItems.forEach((listItem) => {
-      const link = listItem.querySelector(".navLink");
-      const href = link
-        ?.getAttribute("href")
-        ?.replace("#", "")
-        ?.replace("/", "");
-
-      if (href === activeSection) {
-        const item = listItem as HTMLElement;
-        const offsetLeft = item.offsetLeft;
-
-        activeElement.style.transform = `translateX(${offsetLeft}px)`;
-        activeElement.style.width = `${item.offsetWidth}px`;
-
-        activeElement.style.animation = "none";
-        activeElement.offsetHeight;
-        activeElement.style.animation = "";
-
-        if (scrollContainer) {
-          const itemCenter = item.offsetLeft + item.offsetWidth / 2;
-          const scrollTarget = itemCenter - scrollContainer.clientWidth / 2;
-
-          scrollContainer.scrollTo({
-            left: scrollTarget,
-            behavior: "smooth",
-          });
-        }
-      }
+    setIndicatorStyle({
+      left: itemRect.left - navRect.left,
+      width: itemRect.width,
     });
+
+    // Auto-scroll on mobile
+    if (headerWrapperRef.current) {
+      const container = headerWrapperRef.current;
+      const itemCenter = activeEl.offsetLeft + activeEl.offsetWidth / 2;
+      const scrollTarget = itemCenter - container.clientWidth / 2;
+      container.scrollTo({ left: scrollTarget, behavior: "smooth" });
+    }
   }, [activeSection]);
+
+  const isActive = (linklocation: string) => {
+    return linklocation.replace("#", "") === activeSection;
+  };
 
   return (
     <>
-      {/* Mobile logo — fixed at top center */}
+      {/* Mobile logo */}
       <div className={styles.mobileLogo}>
         <Link href="/" className={styles.logoLink}>
           Subha<span className={styles.logoAccent}>kanta</span>
         </Link>
       </div>
 
-      {/* Mobile floating controls — top right */}
+      {/* Mobile floating controls */}
       <div className={styles.mobileControls}>
         <AccentPicker />
         <ThemeToggle />
@@ -115,20 +110,25 @@ export const Header = (props: HeaderProps) => {
       >
         <header className={`${styles.header} ${jost.className}`}>
           <nav className={styles.navigation}>
-            <ul className={styles.navList} ref={navListRef}>
-              <div className={styles.activeElement} ref={activeElementRef}></div>
+            <ul className={styles.navList} ref={navRef}>
+              {/* Sliding active indicator */}
+              <div
+                className={styles.activeIndicator}
+                style={{
+                  transform: `translateX(${indicatorStyle.left}px)`,
+                  width: `${indicatorStyle.width}px`,
+                }}
+              />
 
               {/* Left nav group */}
               <div className={styles.leftNav}>
                 {leftItems.map((item, index) => (
                   <li
                     key={item.linklocation + index}
-                    className={`${styles.listItem} listItem`}
+                    ref={(el) => setItemRef(item.linklocation.replace("#", ""), el)}
+                    className={`${styles.listItem} ${isActive(item.linklocation) ? styles.active : ""}`}
                   >
-                    <Link
-                      href={item.linklocation}
-                      className={`${styles.link} navLink`}
-                    >
+                    <Link href={item.linklocation} className={styles.link}>
                       {item.linktext}
                     </Link>
                   </li>
@@ -147,12 +147,10 @@ export const Header = (props: HeaderProps) => {
                 {rightItems.map((item, index) => (
                   <li
                     key={item.linklocation + index}
-                    className={`${styles.listItem} listItem`}
+                    ref={(el) => setItemRef(item.linklocation.replace("#", ""), el)}
+                    className={`${styles.listItem} ${isActive(item.linklocation) ? styles.active : ""}`}
                   >
-                    <Link
-                      href={item.linklocation}
-                      className={`${styles.link} navLink`}
-                    >
+                    <Link href={item.linklocation} className={styles.link}>
                       {item.linktext}
                     </Link>
                   </li>

@@ -1,6 +1,6 @@
 @import "@/styles/variables";
 
-// Mobile logo — above the nav bar
+// Mobile logo
 .mobileLogo {
   display: none;
 
@@ -15,7 +15,7 @@
   }
 }
 
-// Mobile floating controls — top right
+// Mobile floating controls
 .mobileControls {
   display: none;
 
@@ -40,7 +40,6 @@
   }
 
   .navigation {
-    // Desktop: flex layout with logo centered
     .navList {
       list-style: none;
       display: flex;
@@ -52,36 +51,25 @@
       @media screen and (max-width: 768px) {
         justify-content: flex-start;
       }
+    }
 
-      .activeElement {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 100%;
-        pointer-events: none;
-        background: var(--header-active-bg);
-        border: 1px solid var(--header-active-border);
-        box-shadow: var(--header-active-shadow);
-        border-radius: 35px;
-        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-          width 0.3s ease;
-        animation: fluidSlide 0.4s ease-out;
+    // Sliding liquid indicator
+    .activeIndicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: var(--header-active-bg);
+      border: 1px solid var(--header-active-border);
+      box-shadow: var(--header-active-shadow);
+      border-radius: 35px;
+      pointer-events: none;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 0;
 
-        @media screen and (max-width: 768px) {
-          border-radius: 25px;
-        }
-      }
-
-      @keyframes fluidSlide {
-        0% {
-          scale: 1 1;
-        }
-        40% {
-          scale: 1.08 0.94;
-        }
-        100% {
-          scale: 1 1;
-        }
+      @media screen and (max-width: 768px) {
+        border-radius: 25px;
       }
     }
 
@@ -96,22 +84,26 @@
     }
 
     .listItem {
-      padding: 15px 28px;
+      padding: 12px 24px;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: $font-size-small;
+      border-radius: 35px;
+      position: relative;
+      z-index: 1;
 
       @media screen and (max-width: 768px) {
         padding: 8px 16px;
         flex-shrink: 0;
+        border-radius: 25px;
       }
 
       .link {
         color: var(--text-primary);
         text-decoration: none;
         font-size: 1.1rem;
-        transition: color 0.2s ease, opacity 0.2s ease;
+        transition: color 0.2s ease;
         font-weight: 500;
         white-space: nowrap;
 
@@ -123,6 +115,11 @@
           color: var(--accent-color);
         }
       }
+    }
+
+    // Active text highlight
+    .active .link {
+      color: var(--accent-color);
     }
 
     .logoItem {
