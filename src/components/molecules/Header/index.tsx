@@ -52,43 +52,53 @@ export const Header = (props: HeaderProps) => {
   }, [props.listitems]);
 
   useEffect(() => {
-    const navList = navListRef.current;
-    const activeElement = activeElementRef.current;
-    const scrollContainer = headerWrapperRef.current;
+    const updateActiveElement = () => {
+      const navList = navListRef.current;
+      const activeElement = activeElementRef.current;
+      const scrollContainer = headerWrapperRef.current;
 
-    if (!navList || !activeElement || !activeSection) return;
+      if (!navList || !activeElement || !activeSection) return;
 
-    const listItems = navList.querySelectorAll(".listItem");
+      const listItems = navList.querySelectorAll(".listItem");
 
-    listItems.forEach((listItem) => {
-      const link = listItem.querySelector(".navLink");
-      const href = link
-        ?.getAttribute("href")
-        ?.replace("#", "")
-        ?.replace("/", "");
+      listItems.forEach((listItem) => {
+        const link = listItem.querySelector(".navLink");
+        const href = link
+          ?.getAttribute("href")
+          ?.replace("#", "")
+          ?.replace("/", "");
 
-      if (href === activeSection) {
-        const item = listItem as HTMLElement;
-        const offsetLeft = item.offsetLeft;
+        if (href === activeSection) {
+          const item = listItem as HTMLElement;
+          const offsetLeft = item.offsetLeft;
 
-        activeElement.style.transform = `translateX(${offsetLeft}px)`;
-        activeElement.style.width = `${item.offsetWidth}px`;
+          activeElement.style.transform = `translateX(${offsetLeft}px)`;
+          activeElement.style.width = `${item.offsetWidth}px`;
+          activeElement.style.height = `${item.offsetHeight}px`;
 
-        activeElement.style.animation = "none";
-        activeElement.offsetHeight;
-        activeElement.style.animation = "";
+          activeElement.style.animation = "none";
+          activeElement.offsetHeight;
+          activeElement.style.animation = "";
 
-        if (scrollContainer) {
-          const itemCenter = item.offsetLeft + item.offsetWidth / 2;
-          const scrollTarget = itemCenter - scrollContainer.clientWidth / 2;
+          if (scrollContainer) {
+            const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+            const scrollTarget = itemCenter - scrollContainer.clientWidth / 2;
 
-          scrollContainer.scrollTo({
-            left: scrollTarget,
-            behavior: "smooth",
-          });
+            scrollContainer.scrollTo({
+              left: scrollTarget,
+              behavior: "smooth",
+            });
+          }
         }
-      }
-    });
+      });
+    };
+
+    // Wait for fonts to load before measuring
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(updateActiveElement);
+    } else {
+      updateActiveElement();
+    }
   }, [activeSection]);
 
   return (
