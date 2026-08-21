@@ -70,11 +70,14 @@ export const Header = (props: HeaderProps) => {
 
         if (href === activeSection) {
           const item = listItem as HTMLElement;
-          const offsetLeft = item.offsetLeft;
+          // Calculate offset relative to the navList, not the parent div
+          const navListRect = navList.getBoundingClientRect();
+          const itemRect = item.getBoundingClientRect();
+          const offsetLeft = itemRect.left - navListRect.left;
 
           activeElement.style.transform = `translateX(${offsetLeft}px)`;
-          activeElement.style.width = `${item.offsetWidth}px`;
-          activeElement.style.height = `${item.offsetHeight}px`;
+          activeElement.style.width = `${itemRect.width}px`;
+          activeElement.style.height = `${itemRect.height}px`;
 
           activeElement.style.animation = "none";
           activeElement.offsetHeight;
