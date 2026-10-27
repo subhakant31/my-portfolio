@@ -119,7 +119,9 @@ export const HeroBanner = (props: HeroBannerProps) => {
                     {props.resumeReference?.downloadResumeText || "Download"}
                   </button>
                 </div>
-                <AvailabilityBadge />
+                {props?.showAvailability !== false && (
+                  <AvailabilityBadge text={props?.availabilityText} />
+                )}
               </motion.div>
             )}
           </div>

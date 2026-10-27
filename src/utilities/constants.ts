@@ -30,6 +30,8 @@ const componentFragments = `
     borderColor
     enableImageEffects
     eyebrowText
+    availabilityText
+    showAvailability
     animatedCounterReference {
       __typename
       value
@@ -166,6 +168,10 @@ const componentFragments = `
       formTitle
       submitBtnText
       location
+      requiredMessage
+      lettersOnlyMessage
+      phoneMessage
+      emailMessage
       modalReference {
         __typename
         successTitle
@@ -174,6 +180,8 @@ const componentFragments = `
         failureTitle
         failureDescription
         closeText
+        resumeModalTitle
+        emailCopiedToast
       }
       contactForm {
         __typename
@@ -253,5 +261,14 @@ export const pageQuery = `query getPageByPath {
     components {
       ${componentFragments}
     }
+  }
+}`;
+
+// Global site settings (intro loader + header logo identity)
+export const siteSettingsQuery = `query getSiteSettings {
+  siteSetting {
+    loaderName
+    loaderTagline
+    logoText
   }
 }`;

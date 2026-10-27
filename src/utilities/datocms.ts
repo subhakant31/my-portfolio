@@ -90,5 +90,32 @@ async function fetchAPI(
   return response.json();
 }
 
+export interface SiteSettings {
+  loaderName?: string | null;
+  loaderTagline?: string | null;
+  logoText?: string | null;
+}
+
+/**
+ * Fetch global site settings (intro loader + header logo).
+ * Returns null on any error or when the singleton hasn't been created yet,
+ * so callers fall back to their hardcoded defaults.
+ */
+export async function fetchSiteSettings(): Promise<SiteSettings | null> {
+  if (useLocalData) {
+    const local = (localPageData as { data: { siteSetting?: SiteSettings } }).data;
+    return local.siteSetting ?? null;
+  }
+
+  try {
+    const { siteSettingsQuery } = await import("./constants");
+    const response = await fetchAPI(siteSettingsQuery);
+    return response.data?.siteSetting ?? null;
+  } catch (error) {
+    console.error("Error fetching site settings:", (error as Error).message);
+    return null;
+  }
+}
+
 // Keep backward compatible export
 export const fetchFromDatoCMS = fetchAPI;

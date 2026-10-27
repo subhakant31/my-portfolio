@@ -30,7 +30,7 @@ export default function ContactForm(props: ContactFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { isValid, errors } = validateFormData(formData, props.formFields);
+    const { isValid, errors } = validateFormData(formData, props.formFields, props);
 
     if (!isValid) {
       console.error("Validation errors:", errors);
@@ -88,7 +88,7 @@ export default function ContactForm(props: ContactFormProps) {
       <form className={styles.form} onSubmit={handleSubmit}>
         <h1 className={styles.formHeading}>{props.formTitle}</h1>
         {props.formFields.map((field) => {
-          const { errors } = validateFormData(formData, props.formFields);
+          const { errors } = validateFormData(formData, props.formFields, props);
           const hasError = !isValid && errors[field.name];
           return (
             <div key={field.id} className={styles.inputWrapper}>
@@ -130,7 +130,7 @@ export default function ContactForm(props: ContactFormProps) {
           <>
             <ul className={styles.errorList}>
               {props.formFields.map((field) => {
-                const error = validateFormData(formData, props.formFields)
+                const error = validateFormData(formData, props.formFields, props)
                   .errors[field.name];
                 return error ? (
                   <li

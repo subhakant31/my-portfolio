@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { urbanist } from "@/styles/fonts";
 
 export default function Document() {
   // Inline script to set theme before paint, preventing flash of wrong theme
@@ -15,19 +16,8 @@ export default function Document() {
   `;
 
   return (
-    <Html lang='en'>
-      <Head>
-        <link rel='preconnect' href='https://fonts.googleapis.com'></link>
-        <link
-          rel='preconnect'
-          href='https://fonts.gstatic.com'
-          crossOrigin='anonymous'
-        ></link>
-        <link
-          href='https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap'
-          rel='stylesheet'
-        ></link>
-      </Head>
+    <Html lang='en' className={urbanist.variable}>
+      <Head />
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Main />

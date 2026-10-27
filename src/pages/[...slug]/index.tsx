@@ -1,5 +1,5 @@
 import RenderLayout from "@/layouts/LayoutRenderer";
-import { fetchAllSlugs, fetchPageBySlug } from "@/utilities/datocms";
+import { fetchAllSlugs, fetchPageBySlug, fetchSiteSettings } from "@/utilities/datocms";
 import { GetStaticPropsContext } from "next";
 
 const SlugPage = ({
@@ -58,10 +58,13 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       return { notFound: true };
     }
 
+    const siteSettings = await fetchSiteSettings();
+
     return {
       props: {
         pageComponentList: pageData.components,
         pageTitle: pageData.pageTitle || "My Portfolio",
+        siteSettings,
       },
       revalidate: 60,
     };

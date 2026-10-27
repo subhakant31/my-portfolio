@@ -111,7 +111,7 @@ export default function Footer(props: FooterProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className={styles.resumeModalHeader}>
-              <h3 className={styles.resumeModalTitle}>Resume</h3>
+              <h3 className={styles.resumeModalTitle}>{props.resumeModalTitle || "Resume"}</h3>
               <button
                 className={styles.resumeModalClose}
                 onClick={() => setShowResumeModal(false)}
@@ -129,7 +129,7 @@ export default function Footer(props: FooterProps) {
         </div>
       )}
 
-      <Toast message="Email copied to clipboard!" visible={showToast} onClose={handleCloseToast} />
+      <Toast message={props.emailCopiedToast || "Email copied to clipboard!"} visible={showToast} onClose={handleCloseToast} />
     </ComponentWrapper>
   );
 }

@@ -1,13 +1,12 @@
 import { HeaderProps } from "@/types/HeaderProps";
 import styles from "./Header.module.scss";
-import { Jost } from "next/font/google";
 import { useEffect, useLayoutEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ThemeToggle } from "@/components/atoms/ThemeToggle";
 import { AccentPicker } from "@/components/atoms/AccentPicker";
-
-const jost = Jost({ subsets: ["latin"] });
+import { jost } from "@/styles/fonts";
+import { useSiteSettings } from "@/context/SiteSettingsContext";
 
 export const Header = (props: HeaderProps) => {
   const [activeSection, setActiveSection] = useState<string>(
@@ -86,12 +85,26 @@ export const Header = (props: HeaderProps) => {
     return linklocation.replace("#", "") === activeSection;
   };
 
+  // Logo text is authorable via Site Settings. The brand splits into a plain
+  // first half and an accent-colored second half; falls back to "Subhakanta".
+  const siteSettings = useSiteSettings();
+  const logoText = siteSettings?.logoText?.trim() || "Subhakanta";
+  const splitAt = Math.ceil(logoText.length / 2);
+  const logoHead = logoText.slice(0, splitAt);
+  const logoAccent = logoText.slice(splitAt);
+  const renderLogo = () => (
+    <>
+      {logoHead}
+      <span className={styles.logoAccent}>{logoAccent}</span>
+    </>
+  );
+
   return (
     <>
       {/* Mobile logo */}
       <div className={styles.mobileLogo}>
         <Link href="/" className={styles.logoLink}>
-          Subha<span className={styles.logoAccent}>kanta</span>
+          {renderLogo()}
         </Link>
       </div>
 
@@ -138,7 +151,7 @@ export const Header = (props: HeaderProps) => {
               {/* Center logo */}
               <li className={styles.logoItem}>
                 <Link href="/" className={styles.logoLink}>
-                  Subha<span className={styles.logoAccent}>kanta</span>
+                  {renderLogo()}
                 </Link>
               </li>
 

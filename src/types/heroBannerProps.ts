@@ -5,6 +5,8 @@ export interface HeroBannerProps {
   titleSize?: React.ElementType | string;
   bodycopy?: RichTextProps;
   eyebrowText?: string;
+  availabilityText?: string | null;
+  showAvailability?: boolean | null;
   enableImageEffects?: boolean;
   imageReference?: {
     url: string;

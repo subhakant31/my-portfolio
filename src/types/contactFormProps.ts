@@ -13,6 +13,8 @@ export interface ModalProps {
   successDescription: string;
   failureDescription: string;
   closeText: string;
+  resumeModalTitle?: string | null;
+  emailCopiedToast?: string | null;
 }
 
 export interface ContactFormProps {
@@ -22,7 +24,14 @@ export interface ContactFormProps {
   from: string;
 }
 
-export interface ContactFormProps {
+export interface ValidationMessages {
+  requiredMessage?: string | null;
+  lettersOnlyMessage?: string | null;
+  phoneMessage?: string | null;
+  emailMessage?: string | null;
+}
+
+export interface ContactFormProps extends ValidationMessages {
   formTitle: string;
   submitBtnText: string;
   location: string;

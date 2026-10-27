@@ -3,9 +3,11 @@ import styles from "./PageLoader.module.scss";
 
 interface PageLoaderProps {
   onLoadComplete?: () => void;
+  name?: string | null;
+  tagline?: string | null;
 }
 
-export const PageLoader = ({ onLoadComplete }: PageLoaderProps) => {
+export const PageLoader = ({ onLoadComplete, name, tagline }: PageLoaderProps) => {
   const [loaded, setLoaded] = useState(false);
   const [hidden, setHidden] = useState(false);
 
@@ -31,10 +33,10 @@ export const PageLoader = ({ onLoadComplete }: PageLoaderProps) => {
     <div className={`${styles.loaderOverlay} ${loaded ? styles.exit : ""}`}>
       <div className={styles.loaderContent}>
         <div className={styles.nameWrapper}>
-          <span className={styles.firstName}>Subhakanta</span>
+          <span className={styles.firstName}>{name || "Subhakanta"}</span>
           <span className={styles.dot}>.</span>
         </div>
-        <div className={styles.tagline}>Full Stack Developer</div>
+        <div className={styles.tagline}>{tagline || "Full Stack Developer"}</div>
         <div className={styles.progressLine}>
           <div className={styles.progressFill} />
         </div>

@@ -23,4 +23,6 @@ export interface FooterProps {
   socialShareReference: SocialShareReference;
   copyrightText: string;
   resumeReference: ResumeReference;
+  resumeModalTitle?: string | null;
+  emailCopiedToast?: string | null;
 }
