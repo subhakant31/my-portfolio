@@ -1,0 +1,18 @@
+.editable {
+  outline: 1px dashed rgba(var(--accent-color-rgb), 0.5);
+  outline-offset: 3px;
+  border-radius: 3px;
+  cursor: text;
+  transition: outline-color 0.15s ease, background-color 0.15s ease;
+  min-width: 1ch;
+
+  &:hover {
+    outline-color: var(--accent-color);
+    background-color: rgba(var(--accent-color-rgb), 0.06);
+  }
+
+  &:focus {
+    outline: 2px solid var(--accent-color);
+    background-color: rgba(var(--accent-color-rgb), 0.08);
+  }
+}

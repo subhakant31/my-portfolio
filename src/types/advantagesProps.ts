@@ -5,6 +5,7 @@ export interface Advantage {
   advantageIcon?: string;
   confidentPercentage?: number;
   id: string;
+  __typename?: string;
   index: number;
 }
 

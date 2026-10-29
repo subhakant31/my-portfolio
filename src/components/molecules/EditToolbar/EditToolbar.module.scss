@@ -1,0 +1,143 @@
+.toolbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(20, 20, 24, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  color: #fff;
+  max-width: calc(100vw - 32px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  display: inline-block;
+}
+
+.primaryBtn,
+.secondaryBtn,
+.ghostBtn {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):active {
+    transform: scale(0.97);
+  }
+}
+
+.primaryBtn {
+  background: var(--accent-color);
+  color: #0a0a0c;
+}
+
+.secondaryBtn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.ghostBtn {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.status {
+  color: var(--accent-color);
+  font-size: 12px;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 12px;
+}
+
+/* --- Login modal --- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  padding: 20px;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 360px;
+  background: #16161a;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.25);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.loginTitle {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.loginHint {
+  margin: 0 0 4px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+}
+
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 14px;
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+}
+
+.loginActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}

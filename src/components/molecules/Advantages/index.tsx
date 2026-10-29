@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import styles from "./Advantages.module.scss";
 import { Advantage, AdvantagesProps } from "@/types/advantagesProps";
 import { getReactIcon } from "@/utilities/getReactIcon";
-import { Heading } from "@/components/atoms/Heading";
+import { EditableText } from "@/components/atoms/EditableText";
 import ComponentWrapper from "@/components/ComponentWrapper";
 import PageHeading from "../PageHeading";
 import { motion, useScroll, useTransform } from "motion/react";
@@ -15,7 +15,8 @@ const AdvantageCard = ({
   advantageIcon,
   advantageTitle,
   confidentPercentage,
-  index,
+  id,
+  __typename,
 }: Advantage) => {
   const [currentWidth, setCurrentWidth] = useState("0%");
   const cardRef = useRef<HTMLDivElement>(null);
@@ -62,10 +63,13 @@ const AdvantageCard = ({
           <div className={styles.iconWrapper}>
             {advantageIcon && getReactIcon(advantageIcon)}
           </div>
-          <Heading
-            tagName='h3'
+          <EditableText
+            as="h3"
             className={styles.advantageTitle}
-            content={advantageTitle}
+            recordId={id}
+            typename={__typename}
+            apiKey="advantage_title"
+            value={advantageTitle}
           />
         </div>
         <div className={styles.confidentPercentage}>{confidentPercentage}%</div>

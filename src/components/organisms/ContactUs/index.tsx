@@ -1,6 +1,6 @@
 import PageHeading from "@/components/molecules/PageHeading";
 import { ContactUsSectionProps } from "@/types/contactUsSectionProps";
-import { RichText } from "@/components/atoms/RichText";
+import { RichEditableText } from "@/components/atoms/RichEditableText";
 import styles from "./ContactUsSection.module.scss";
 import SocialShare from "@/components/molecules/SocialShare";
 import ContactForm from "@/components/molecules/ContactForm";
@@ -16,11 +16,15 @@ export default function ContactUsSection(props: ContactUsSectionProps) {
             <PageHeading {...props.pageHeading} />
           </MotionContainer>
 
-          {props.bodycopy && (
-            <MotionContainer animationType='leftToRight' index={1}>
-              <RichText className={styles.description} html={props.bodycopy} />
-            </MotionContainer>
-          )}
+          <MotionContainer animationType='leftToRight' index={1}>
+            <RichEditableText
+              className={styles.description}
+              html={props.bodycopy}
+              recordId={props.id}
+              typename={props.__typename}
+              apiKey="bodycopy"
+            />
+          </MotionContainer>
           <div className={styles.separator}></div>
           <MotionContainer animationType='leftToRight' index={2}>
             <SocialShare {...props.socialShareReference} />

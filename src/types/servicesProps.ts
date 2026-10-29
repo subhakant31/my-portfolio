@@ -1,10 +1,12 @@
-import { RichTextProps } from "./commonModels";
 import { PageHeadingProps } from "./pageHeadingProps";
 
 export interface Service {
+  id?: string;
+  __typename?: string;
   serviceTitle?: string;
   iconCode?: string;
-  serviceDescription?: RichTextProps;
+  // CMS WYSIWYG field: HTML string at runtime.
+  serviceDescription?: string;
 }
 
 export interface ServicesProps {

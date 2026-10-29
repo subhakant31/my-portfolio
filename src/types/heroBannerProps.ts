@@ -1,9 +1,10 @@
-import { RichTextProps } from "./commonModels";
-
 export interface HeroBannerProps {
+  id?: string;
+  __typename?: string;
   title?: string;
   titleSize?: React.ElementType | string;
-  bodycopy?: RichTextProps;
+  // CMS WYSIWYG field: HTML string at runtime.
+  bodycopy?: string;
   eyebrowText?: string;
   availabilityText?: string | null;
   showAvailability?: boolean | null;

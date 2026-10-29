@@ -21,6 +21,8 @@ export interface ProfessionalProject {
 }
 
 export interface PortfolioProps {
+  id?: string;
+  __typename?: string;
   pageHeading: PageHeadingProps;
   items: WebsiteLinks[];
   professionalWorkHeading?: string;

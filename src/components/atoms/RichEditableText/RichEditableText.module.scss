@@ -1,0 +1,53 @@
+.wrapper {
+  position: relative;
+}
+
+.editable {
+  outline: 1px dashed rgba(var(--accent-color-rgb), 0.5);
+  outline-offset: 4px;
+  border-radius: 4px;
+  cursor: text;
+  transition: outline-color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    outline-color: var(--accent-color);
+    background-color: rgba(var(--accent-color-rgb), 0.05);
+  }
+
+  &:focus {
+    outline: 2px solid var(--accent-color);
+    background-color: rgba(var(--accent-color-rgb), 0.07);
+  }
+}
+
+.formatBar {
+  position: absolute;
+  top: -44px;
+  left: 0;
+  z-index: 9998;
+  display: flex;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: rgba(20, 20, 24, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+  button {
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-radius: 6px;
+    padding: 4px 9px;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1.4;
+
+    &:hover {
+      background: var(--accent-color);
+      color: #0a0a0c;
+    }
+  }
+}

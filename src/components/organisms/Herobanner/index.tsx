@@ -4,14 +4,18 @@ import { TextPill, renderPillIcon } from "@/components/atoms/TextPill";
 import { TypewriterHeading } from "@/components/atoms/TypewriterHeading";
 import { ProfilePicture } from "@/components/atoms/ProfilePicture";
 import { HeroBannerProps } from "@/types/heroBannerProps";
-import { RichText } from "@/components/atoms/RichText";
 import { motion } from "motion/react";
 import MotionContainer from "@/components/atoms/MotionContainer";
 import { AvailabilityBadge } from "@/components/atoms/AvailabilityBadge";
 import { AnimatedCounters } from "@/components/molecules/AnimatedCounters";
 import { HiEye, HiDownload } from "react-icons/hi";
+import { EditableText } from "@/components/atoms/EditableText";
+import { RichEditableText } from "@/components/atoms/RichEditableText";
+import { useEditMode } from "@/context/EditModeContext";
 
 export const HeroBanner = (props: HeroBannerProps) => {
+  const { authenticated, editing } = useEditMode();
+  const inlineEdit = authenticated && editing;
   const [typingDone, setTypingDone] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showResumeModal, setShowResumeModal] = useState(false);
@@ -68,23 +72,45 @@ export const HeroBanner = (props: HeroBannerProps) => {
       <div className='heading-content-wrapper'>
         <div className={styles.heroBanner}>
           <div className={styles.textWrapper}>
-            {props?.eyebrowText && (
-              <MotionContainer animationType='leftToRight' index={0}>
-                <TextPill
-                  text={props?.eyebrowText}
+            {(props?.eyebrowText || inlineEdit) && (
+              inlineEdit ? (
+                <EditableText
+                  as="div"
                   className={styles.textPill}
-                ></TextPill>
-              </MotionContainer>
+                  recordId={props.id}
+                  typename={props.__typename}
+                  apiKey="eyebrow_text"
+                  value={props?.eyebrowText}
+                />
+              ) : (
+                <MotionContainer animationType='leftToRight' index={0}>
+                  <TextPill
+                    text={props?.eyebrowText}
+                    className={styles.textPill}
+                  ></TextPill>
+                </MotionContainer>
+              )
             )}
             <div className={styles.headingWrapper}>
-              {props?.title && (
-                <TypewriterHeading
-                  tagName={props?.titleSize}
-                  content={props?.title}
-                  className={styles.heading}
-                  speed={35}
-                  onComplete={handleTypingComplete}
-                />
+              {(props?.title || inlineEdit) && (
+                inlineEdit ? (
+                  <EditableText
+                    as="h1"
+                    className={styles.heading}
+                    recordId={props.id}
+                    typename={props.__typename}
+                    apiKey="title"
+                    value={props?.title}
+                  />
+                ) : (
+                  <TypewriterHeading
+                    tagName={props?.titleSize}
+                    content={props?.title}
+                    className={styles.heading}
+                    speed={35}
+                    onComplete={handleTypingComplete}
+                  />
+                )
               )}
 
               {props?.renderPillIcon && (
@@ -98,16 +124,19 @@ export const HeroBanner = (props: HeroBannerProps) => {
                 </motion.div>
               )}
             </div>
-            {props.bodycopy && (
+            {(props.bodycopy || inlineEdit) && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                animate={(typingDone || isMobile) ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                animate={(typingDone || isMobile || inlineEdit) ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
               >
-                <RichText
+                <RichEditableText
                   className={styles.description}
                   html={props.bodycopy}
-                ></RichText>
+                  recordId={props.id}
+                  typename={props.__typename}
+                  apiKey="bodycopy"
+                />
                 <AnimatedCounters counters={props.animatedCounterReference || []} />
                 <div className={styles.resumeActions}>
                   <button className={styles.viewResumeBtn} onClick={handleViewResume}>
@@ -119,8 +148,18 @@ export const HeroBanner = (props: HeroBannerProps) => {
                     {props.resumeReference?.downloadResumeText || "Download"}
                   </button>
                 </div>
-                {props?.showAvailability !== false && (
-                  <AvailabilityBadge text={props?.availabilityText} />
+                {(props?.showAvailability !== false || inlineEdit) && (
+                  inlineEdit ? (
+                    <EditableText
+                      as="div"
+                      recordId={props.id}
+                      typename={props.__typename}
+                      apiKey="availability_text"
+                      value={props?.availabilityText || "Available for hire"}
+                    />
+                  ) : (
+                    <AvailabilityBadge text={props?.availabilityText} />
+                  )
                 )}
               </motion.div>
             )}

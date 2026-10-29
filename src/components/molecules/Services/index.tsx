@@ -1,7 +1,7 @@
 import styles from "./ServiceCard.module.scss";
-import { Heading } from "@/components/atoms/Heading";
+import { EditableText } from "@/components/atoms/EditableText";
+import { RichEditableText } from "@/components/atoms/RichEditableText";
 import { Service, ServicesProps } from "@/types/servicesProps";
-import { RichText } from "@/components/atoms/RichText";
 import { getReactIcon } from "@/utilities/getReactIcon";
 import React, { useRef } from "react";
 import ComponentWrapper from "@/components/ComponentWrapper";
@@ -32,21 +32,25 @@ const ServiceCard = (props: ServiceCardProps) => {
         <div className={styles.iconWrapper}>
           {props?.iconCode && getReactIcon(props?.iconCode)}
         </div>
-        <Heading
-          tagName={"h5"}
+        <EditableText
+          as="h5"
           className={styles.heading}
-          content={props?.serviceTitle}
-        ></Heading>
+          recordId={props?.id}
+          typename={props?.__typename}
+          apiKey="service_title"
+          value={props?.serviceTitle}
+        />
         <div className={styles.separator}>
           <div className={styles.separatorLarge}></div>
           <div className={styles.separatorSmall}></div>
         </div>
-        {props?.serviceDescription && (
-          <RichText
-            className={styles.description}
-            html={props?.serviceDescription}
-          ></RichText>
-        )}
+        <RichEditableText
+          className={styles.description}
+          html={props?.serviceDescription}
+          recordId={props?.id}
+          typename={props?.__typename}
+          apiKey="service_description"
+        />
       </motion.div>
     </TiltCard>
   );

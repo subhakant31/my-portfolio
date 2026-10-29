@@ -1,8 +1,9 @@
 import { useCallback, useState } from "react";
 import { FooterProps } from "@/types/footerProps";
-import { RichText } from "@/components/atoms/RichText";
+import { RichEditableText } from "@/components/atoms/RichEditableText";
 import SocialShare from "@/components/molecules/SocialShare";
 import { getReactIcon } from "@/utilities/getReactIcon";
+import { EditableText } from "@/components/atoms/EditableText";
 import ComponentWrapper from "@/components/ComponentWrapper";
 import { Toast } from "@/components/atoms/Toast";
 import { WaveDivider } from "@/components/atoms/WaveDivider";
@@ -53,10 +54,20 @@ export default function Footer(props: FooterProps) {
       <footer className={styles.footer}>
         <div className={styles.footerContainer}>
           <div className={styles.footerInfoContainer}>
-            <h2 className={styles.footerLogoHeading}>{props.title}</h2>
-            <RichText
+            <EditableText
+              as="h2"
+              className={styles.footerLogoHeading}
+              recordId={props.id}
+              typename={props.__typename}
+              apiKey="title"
+              value={props.title}
+            />
+            <RichEditableText
               html={props.bodycopy}
               className={styles.footerDescription}
+              recordId={props.id}
+              typename={props.__typename}
+              apiKey="bodycopy"
             />
             <p className={styles.emailAddress} onClick={handleCopyEmail} title="Click to copy email" style={{ cursor: "pointer" }}>
               {getReactIcon("email")}
@@ -98,7 +109,14 @@ export default function Footer(props: FooterProps) {
           </div>
         </div>
         <div className={styles.separator}></div>
-        <p className={styles.copyrightText}>{props.copyrightText}</p>
+        <EditableText
+          as="p"
+          className={styles.copyrightText}
+          recordId={props.id}
+          typename={props.__typename}
+          apiKey="copyright_text"
+          value={props.copyrightText}
+        />
       </footer>
 
       {showResumeModal && (

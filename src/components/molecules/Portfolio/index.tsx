@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
 import { ProjectCarousel } from "@/components/molecules/ProjectCarousel";
+import { EditableText } from "@/components/atoms/EditableText";
 
 function PortfolioCard({ item, index, direction }: { item: any; index: number; direction: "left" | "right" }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -66,15 +67,43 @@ export default function Portfolio(props: PortfolioProps) {
     <ComponentWrapper className='portfolio section' id='portfolio'>
       {/* Professional Work */}
       <div className={`${styles.subsection} professionalWork`}>
-        <h2 className={styles.subsectionTitle}>{props.professionalWorkHeading || "Professional Work"}</h2>
-        <p className={styles.subsectionDesc}>{props.professionalWorkDescription || ""}</p>
+        <EditableText
+          as="h2"
+          className={styles.subsectionTitle}
+          recordId={props.id}
+          typename={props.__typename}
+          apiKey="professional_work_heading"
+          value={props.professionalWorkHeading || "Professional Work"}
+        />
+        <EditableText
+          as="p"
+          className={styles.subsectionDesc}
+          recordId={props.id}
+          typename={props.__typename}
+          apiKey="professional_work_description"
+          value={props.professionalWorkDescription || ""}
+        />
         <ProjectCarousel projects={props.professionalProjectReference || []} />
       </div>
 
       {/* Personal Projects */}
       <div className={styles.subsection}>
-        <h2 className={styles.subsectionTitle}>{props.personalProjectHeading || "Personal Projects"}</h2>
-        <p className={styles.subsectionDesc}>{props.personalProjectDescription || ""}</p>
+        <EditableText
+          as="h2"
+          className={styles.subsectionTitle}
+          recordId={props.id}
+          typename={props.__typename}
+          apiKey="personal_project_heading"
+          value={props.personalProjectHeading || "Personal Projects"}
+        />
+        <EditableText
+          as="p"
+          className={styles.subsectionDesc}
+          recordId={props.id}
+          typename={props.__typename}
+          apiKey="personal_project_description"
+          value={props.personalProjectDescription || ""}
+        />
         <div className={styles.marqueeContainer}>
           {/* Row 1: scrolls left */}
           <div className={styles.marqueeRow}>

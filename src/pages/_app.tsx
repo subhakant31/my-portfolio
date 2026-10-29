@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LoaderProvider, useLoader } from "@/context/LoaderContext";
 import { SiteSettingsProvider, useSiteSettings } from "@/context/SiteSettingsContext";
+import { EditModeProvider } from "@/context/EditModeContext";
 import { ScrollProgress } from "@/components/atoms/ScrollProgress";
 import { PageLoader } from "@/components/atoms/PageLoader";
 import { urbanist } from "@/styles/fonts";
@@ -32,6 +33,11 @@ const BackToTop = dynamic(
 );
 const SectionDots = dynamic(
   () => import("@/components/atoms/SectionDots").then((m) => ({ default: m.SectionDots })),
+  { ssr: false }
+);
+// Edit-mode UI is client-only and loaded on demand.
+const EditToolbar = dynamic(
+  () => import("@/components/molecules/EditToolbar").then((m) => ({ default: m.EditToolbar })),
   { ssr: false }
 );
 
@@ -71,6 +77,7 @@ function AppContent({ Component, pageProps }: AppProps) {
         </>
       )}
       <Component {...pageProps} />
+      <EditToolbar />
     </>
   );
 }
@@ -81,12 +88,14 @@ export default function App(props: AppProps) {
     <ThemeProvider>
       <LoaderProvider>
         <SiteSettingsProvider value={siteSettings}>
-          {/* Apply the Urbanist CSS-variable class here so the font is referenced
-              in the _app module graph (required for Next to emit its stylesheet)
-              and so the variable cascades to all page content. */}
-          <div className={urbanist.variable} style={{ display: "contents" }}>
-            <AppContent {...props} />
-          </div>
+          <EditModeProvider>
+            {/* Apply the Urbanist CSS-variable class here so the font is referenced
+                in the _app module graph (required for Next to emit its stylesheet)
+                and so the variable cascades to all page content. */}
+            <div className={urbanist.variable} style={{ display: "contents" }}>
+              <AppContent {...props} />
+            </div>
+          </EditModeProvider>
         </SiteSettingsProvider>
       </LoaderProvider>
     </ThemeProvider>

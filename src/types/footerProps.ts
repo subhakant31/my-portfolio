@@ -1,4 +1,4 @@
-import { CtaLink, RichTextProps } from "./commonModels";
+import { CtaLink } from "./commonModels";
 import { SocialShareReference } from "./socialShareReference";
 
 export interface ResumeReference {
@@ -16,8 +16,11 @@ export interface FooterNavLinks {
 }
 
 export interface FooterProps {
+  id?: string;
+  __typename?: string;
   title: string;
-  bodycopy: RichTextProps;
+  // CMS WYSIWYG field: HTML string at runtime.
+  bodycopy: string;
   emailAddress: string;
   navLinkReference: FooterNavLinks[];
   socialShareReference: SocialShareReference;
